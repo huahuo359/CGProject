@@ -21,7 +21,7 @@ const unsigned int SCR_WIDTH = 1600;
 const unsigned int SCR_HEIGHT = 1200;
 
 // camera
-Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+Camera camera(glm::vec3(0.0f, 0.0f, 5.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
@@ -32,10 +32,11 @@ float lastFrame = 0.0f;
 
 // lighting
 glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
+glm::vec3 lightDir(-0.2f, -1.0f, -0.3f);
 
 GLFWwindow* Init()
 {
-      glfwInit();
+    glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -74,41 +75,79 @@ GLFWwindow* Init()
 
 }
 
+class Car {
+
+public:
+    Model carModel;
+    Shader carShader;
+
+
+    Car(): carModel("truck/TruckM.obj"), carShader("shaders/nano.vs", "shaders/nano.fs") {
+        
+        carShader.use(); 
+    
+        carShader.setInt("material.diffuse", 0);
+        carShader.setInt("material.specular", 1);
+        std::cout << "load our car" << endl;
+    }
+
+    void Draw() {
+        carShader.use();
+
+        carShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
+        carShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+
+        // change the light's position values over time (can be done anywhere in the render loop actually, but try to do it at least before using the light source positions)
+        lightPos.x = 1.0f + sin(glfwGetTime()) * 2.0f;
+        lightPos.y = sin(glfwGetTime() / 2.0f) * 1.0f;
+
+        // ourShader.setVec3("light.position", lightPos);
+        carShader.setVec3("light.direction", lightDir);
+        carShader.setVec3("viewPos", camera.Position);
+
+        carShader.setVec3("light.ambient", 1.0f, 1.0f, 1.0f);
+        carShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
+        carShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+        carShader.setFloat("material.shininess", 64.0f);
+
+
+        // view/projection transformations
+        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        glm::mat4 view = camera.GetViewMatrix();
+        carShader.setMat4("projection", projection);
+        carShader.setMat4("view", view);
+
+        // render the loaded model
+        glm::mat4 model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
+        model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));	// it's a bit too big for our scene, so scale it down
+        carShader.setMat4("model", model);
+        carModel.Draw(carShader);
+    }
+
+
+};
+
 
 void mainLoop(GLFWwindow* window ) {
-    Shader ourShader("shaders/back.vs", "shaders/back.fs");
-   
-    Model ourModel("backpack/backpack.obj");
-   
-    ourShader.use(); 
+
+    Car car;
     
     while (!glfwWindowShouldClose(window))
     {
-       
+        
         float currentFrame = static_cast<float>(glfwGetTime());
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
 
         processInput(window);
 
-       
+    
         glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-        ourShader.use();
-
-    
-        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        glm::mat4 view = camera.GetViewMatrix();
-        ourShader.setMat4("projection", projection);
-        ourShader.setMat4("view", view);
-
-        glm::mat4 model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); 
-        model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	
-        ourShader.setMat4("model", model);
-        ourModel.Draw(ourShader);
-
+        
+        car.Draw();
+       
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
