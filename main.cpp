@@ -128,10 +128,47 @@ public:
 
 };
 
+class Sun {
+
+};
+
+class Earth {
+
+};
+
+class Moon {
+
+};
+
+class Jupiter {
+
+};
+
+class Ground {
+    /* 地面场景绘制 */
+};
+
+class Tree {
+    /* 在近景中添加树的元素 */
+};
+
+class Aircraft {
+    /* load 一个飞行器的模型 */
+};
+
+
+class Elevator {
+    /* load 太空电梯场景 */
+};
+
+class SpaceStation {
+    /* load 空间站的模型 */
+};
 
 void mainLoop(GLFWwindow* window ) {
 
     Car car;
+    bool flag = true;
     
     while (!glfwWindowShouldClose(window))
     {
@@ -146,7 +183,14 @@ void mainLoop(GLFWwindow* window ) {
         glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
-        car.Draw();
+
+        if(flag) {
+            // close shot
+            car.Draw();
+        } else {
+            // near shot
+        }
+        
        
         glfwSwapBuffers(window);
         glfwPollEvents();
