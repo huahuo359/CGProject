@@ -81,54 +81,71 @@ GLFWwindow* Init()
 
 }
 
-class Car {
+
+
+
+// Load Obj Class
+class Obj {
 
 public:
-    Model carModel;
-    Shader carShader;
+    Model objModel;
+    Shader objShader;
+    GLuint TextureID;
+    GLuint TextureNormal;
+    GLuint TextureSpecular;
 
 
-    Car(): carModel("truck/TruckM.obj"), carShader("shaders/nano.vs", "shaders/nano.fs") {
+    Obj(): objModel("starbase/spyorb.obj"), objShader("shaders/earth.vs", "shaders/earth.fs") {
         
-        carShader.use(); 
-    
-        carShader.setInt("material.diffuse", 0);
-        carShader.setInt("material.specular", 1);
-        std::cout << "load our car" << endl;
+     
+        std::cout << "load our obj" << endl;
+        TextureID = loadTexture("starbase/diffuse.png", 1);
+        TextureNormal = loadTexture("starbase/normal.png", 1);
+        TextureSpecular = loadTexture("starbase/specular.png",1);
+
     }
 
     void Draw() {
-        carShader.use();
+        objShader.use();
 
-        carShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
-        carShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+        
+        objShader.setVec3("light.ambient", glm::vec3(0.05f, 0.05f, 0.05f)); 
+        objShader.setVec3("light.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+        objShader.setVec3("light.specular", glm::vec3(0.5f, 0.5f, 0.5f));
+        // earthShader.setVec3("light.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
+        objShader.setVec3("viewPos", camera.Position);
+        
+        // set textures
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, TextureID);
+        objShader.setInt("texture_diffuse", 0);
 
-        // change the light's position values over time (can be done anywhere in the render loop actually, but try to do it at least before using the light source positions)
-        lightPos.x = 1.0f + sin(glfwGetTime()) * 2.0f;
-        lightPos.y = sin(glfwGetTime() / 2.0f) * 1.0f;
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, TextureNormal);
+        objShader.setInt("texture_normal", 1);
 
-        // ourShader.setVec3("light.position", lightPos);
-        carShader.setVec3("light.direction", lightDir);
-        carShader.setVec3("viewPos", camera.Position);
-
-        carShader.setVec3("light.ambient", 1.0f, 1.0f, 1.0f);
-        carShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
-        carShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
-        carShader.setFloat("material.shininess", 64.0f);
-
-
-        // view/projection transformations
+        glActiveTexture(GL_TEXTURE2);
+        glBindTexture(GL_TEXTURE_2D, TextureSpecular);
+        objShader.setInt("texture_specular", 2);
+       
+        glm::mat4 view;
+        view = glm::lookAt(camera.Position, camera.Position + camera.Front, camera.Up);
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        glm::mat4 view = camera.GetViewMatrix();
-        carShader.setMat4("projection", projection);
-        carShader.setMat4("view", view);
-
-        // render the loaded model
+        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -40.0f));
         glm::mat4 model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
-        model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));	// it's a bit too big for our scene, so scale it down
-        carShader.setMat4("model", model);
-        carModel.Draw(carShader);
+
+        
+        float angle = (GLfloat)glfwGetTime() * 3.5f;
+        model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.3f));
+
+        objShader.setMat4("projection", projection); 
+        objShader.setMat4("view", view);
+        objShader.setMat4("model", model);
+
+        objShader.setVec3("light.direction", glm::vec3(0.0f, 0.0f, 10.0f));
+
+
+        objModel.Draw(objShader);
     }
 
 
@@ -482,12 +499,12 @@ void mainLoop(GLFWwindow* window ) {
    
    
     SkyBox skybox1(faces);
-    Car car;
+    Obj planet;
     Planet sun("image/planet/sun.jpg", 2);
     Earth earth("image/planet/earth_diffuse.png", 1);
    
-    //bool flag = true;
-    bool flag = false;
+    bool flag = true;
+    //bool flag = false;
     
     while (!glfwWindowShouldClose(window))
     {
@@ -505,8 +522,8 @@ void mainLoop(GLFWwindow* window ) {
 
         if(flag) {
             // close shot
-            skybox1.Draw();
-            //car.Draw();
+            //skybox1.Draw();
+            planet.Draw();
 
         } else {
             // near shot
