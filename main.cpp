@@ -95,13 +95,13 @@ public:
     GLuint TextureSpecular;
 
 
-    Obj(): objModel("starbase/spyorb.obj"), objShader("shaders/earth.vs", "shaders/earth.fs") {
+    Obj(): objModel("plane/ship_03.obj"), objShader("shaders/earth.vs", "shaders/earth.fs") {
         
      
         std::cout << "load our obj" << endl;
-        TextureID = loadTexture("starbase/diffuse.png", 1);
-        TextureNormal = loadTexture("starbase/normal.png", 1);
-        TextureSpecular = loadTexture("starbase/specular.png",1);
+        TextureID = loadTexture("plane/diffuse2.png", 1);
+        TextureNormal = loadTexture("plane/normal2.png", 1);
+        TextureSpecular = loadTexture("plane/specular2.png",1);
 
     }
 
@@ -131,11 +131,12 @@ public:
         glm::mat4 view;
         view = glm::lookAt(camera.Position, camera.Position + camera.Front, camera.Up);
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -40.0f));
+        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f));
         glm::mat4 model = glm::mat4(1.0f);
 
         
         float angle = (GLfloat)glfwGetTime() * 3.5f;
+        //model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
         model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.3f));
 
         objShader.setMat4("projection", projection); 
@@ -143,6 +144,75 @@ public:
         objShader.setMat4("model", model);
 
         objShader.setVec3("light.direction", glm::vec3(0.0f, 0.0f, 10.0f));
+
+
+        objModel.Draw(objShader);
+    }
+
+
+};
+
+
+class Car {
+
+public:
+    Model objModel;
+    Shader objShader;
+    GLuint TextureID;
+    GLuint TextureNormal;
+    GLuint TextureSpecular;
+
+
+    Car(): objModel("truck/monster truck 3d model.obj"), objShader("shaders/earth.vs", "shaders/earth.fs") {
+        
+     
+        std::cout << "load our car" << endl;
+        TextureID = loadTexture("truck/truck2.png", 1);
+        TextureNormal = loadTexture("truck/normal.jpg", 2);
+        TextureSpecular = loadTexture("truck/specular.png",1);
+        std::cout << "load is ok" << endl;
+
+    }
+
+    void Draw() {
+        objShader.use();
+
+        
+        objShader.setVec3("light.ambient", glm::vec3(1.0f, 1.0f, 1.0f)); 
+        objShader.setVec3("light.diffuse", glm::vec3(0.0f, 0.0f, 0.0f));
+        objShader.setVec3("light.specular", glm::vec3(0.0f, 0.0f, 0.0f));
+        // earthShader.setVec3("light.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
+        objShader.setVec3("viewPos", camera.Position);
+        
+        // set textures
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, TextureID);
+        objShader.setInt("texture_diffuse", 0);
+
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, TextureNormal);
+        objShader.setInt("texture_normal", 1);
+
+        glActiveTexture(GL_TEXTURE2);
+        glBindTexture(GL_TEXTURE_2D, TextureSpecular);
+        objShader.setInt("texture_specular", 2);
+       
+        glm::mat4 view;
+        view = glm::lookAt(camera.Position, camera.Position + camera.Front, camera.Up);
+        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f));
+        glm::mat4 model = glm::mat4(1.0f);
+
+        
+        float angle = (GLfloat)glfwGetTime() * 3.5f;
+        model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
+        model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.3f));
+
+        objShader.setMat4("projection", projection); 
+        objShader.setMat4("view", view);
+        objShader.setMat4("model", model);
+
+        objShader.setVec3("light.direction", glm::vec3(0.0f, 0.0f, -10.0f));
 
 
         objModel.Draw(objShader);
@@ -229,6 +299,7 @@ public:
         float z_sun = -10;
         model = glm::translate(model, glm::vec3( x_sun,  0.0f, z_sun));
         float angle = (GLfloat)glfwGetTime() * 25.0f;
+       
         model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.3f));
 
         sunShader.setMat4("projection", projection); 
@@ -295,6 +366,8 @@ public:
 
         float x_earth1 = 0 + 3*std::cos((GLfloat)glfwGetTime() * 0.5f);
         float z_earth1 = -10 + 3*std::sin((GLfloat)glfwGetTime() * 0.5f);
+        x_earth1 = -3;
+        z_earth1 = -7;
         model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
         model = glm::translate(model, glm::vec3( x_earth1/0.5f,  0.3f/0.5f, z_earth1/0.5f));
         
@@ -308,7 +381,7 @@ public:
         glm::vec3 earthPos = glm::vec3(x_earth1, 0.3f, z_earth1);
         glm::vec3 sunPos = glm::vec3(0.0f, 0.0f, -10.0f);
         glm::vec3 lightDirection = earthPos - sunPos;
-        earthShader.setVec3("light.direction", -lightDirection);
+        earthShader.setVec3("light.direction", lightDirection);
 
 
 
@@ -500,11 +573,12 @@ void mainLoop(GLFWwindow* window ) {
    
     SkyBox skybox1(faces);
     Obj planet;
+    Car car;
     Planet sun("image/planet/sun.jpg", 2);
     Earth earth("image/planet/earth_diffuse.png", 1);
    
-    bool flag = true;
-    //bool flag = false;
+    //bool flag = true;
+    bool flag = false;
     
     while (!glfwWindowShouldClose(window))
     {
@@ -524,6 +598,7 @@ void mainLoop(GLFWwindow* window ) {
             // close shot
             //skybox1.Draw();
             planet.Draw();
+            //car.Draw();
 
         } else {
             // near shot

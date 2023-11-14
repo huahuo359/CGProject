@@ -15,4 +15,5 @@ void main()
     FragPos =  vec3(model * vec4(aPos, 1.0));
 
 	TexCoord = vec2(aTexCoord.x, -aTexCoord.y);
+	//TexCoord = vec2(aTexCoord.x * model[0][0], -aTexCoord.y * model[1][1]);
 }
