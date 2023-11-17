@@ -1,15 +1,28 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
 #include "tools/shader.h"
 #include "tools/camera.h"
 #include "tools/model.h"
+#include "entity/Terrain.h"
+#include "entity/Player.h"
+#include "entity/constants.h"
+#include "entity/GameTime.h"
+#include "entity/Camera.h"
+#include "renders/RenderManager.h"
+#include "Window.h"
 
 #include <iostream>
+
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include "glm/ext.hpp"
+#include <glm/gtc/type_ptr.hpp>
+
+#define GLM_ENABLE_EXPERIMENTAL
+#include <glm/gtx/string_cast.hpp>
+
+
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -62,6 +75,7 @@ GLFWwindow* Init()
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     glfwSetCursorPosCallback(window, mouse_callback);
     glfwSetScrollCallback(window, scroll_callback);
+//    glfwset
 
     
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -80,9 +94,6 @@ GLFWwindow* Init()
     return window;
 
 }
-
-
-
 
 // Load Obj Class
 class Obj {
@@ -370,8 +381,9 @@ class Jupiter {
 
 };
 
-class Ground {
+class Ground : public Entity{
     /* 地面场景绘制 */
+
 };
 
 class Tree {
@@ -486,8 +498,12 @@ public:
 
 };
 
-void mainLoop(GLFWwindow* window ) {
-
+void mainLoop() {
+    InputState input;
+    glm::mat4 projection;
+    vector<Entity*> entities;
+    vector<Light*> lights;
+    Window new_window;
 
     vector<const GLchar*> faces;
     faces.push_back("image/skybox/right.jpg");
@@ -496,54 +512,161 @@ void mainLoop(GLFWwindow* window ) {
     faces.push_back("image/skybox/top.jpg");
     faces.push_back("image/skybox/back.jpg");
     faces.push_back("image/skybox/front.jpg");
-   
-   
+
+    MY_Model player_mod = Loader::getLoader()->loadModel("truck/TruckM.obj");
+
+    std::vector<std::string> terrin_img;
+    terrin_img.push_back("image/terrin/blendMap.png");
+    terrin_img.push_back("image/terrin/dirt.png");
+    terrin_img.push_back("image/terrin/grass.jpg");
+    terrin_img.push_back("image/terrin/mud.jpg");
+    terrin_img.push_back("image/terrin/road.jpg");
+
+    Terrain* terrain = Terrain::loadTerrain(terrin_img, "image/terrin/heightmap.png");
+    terrain->setPosition(glm::vec3(-Terrain::TERRAIN_SIZE/2, 0.0f, -Terrain::TERRAIN_SIZE/2));
+
+    Player* player = new Player(&player_mod, terrain, 1);
+    player->setScale(glm::vec3(0.4f, 0.4f, 0.4f));
+    player->setPosition(terrain->getPositionFromPixel(555,751));
+    player->setRotationY((GLfloat)5.0f * constants::PI / 8.0f);
+    entities.push_back(player);
+
+    new_window.set_key_callback([&](GLFWwindow* window, int key, int scancode, int action, int mods) {
+        // Terminate program if escape is pressed
+        if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
+            glfwSetWindowShouldClose(window, GLFW_TRUE);
+        }
+        player->handleKeyboardEvents(window, key, scancode, action, mods);
+    });
+
+    new_window.set_mouse_position_callback([&](GLFWwindow* /*window*/, double x, double y) {
+        input.update((float)x, (float)y);
+    });
+
+    new_window.set_mouse_scroll_callback([&](GLFWwindow* /*window*/, double xoffset, double yoffset) {
+        input.updateScroll((float)xoffset, (float)yoffset);
+    });
+
+    new_window.set_mouse_button_callback([&](GLFWwindow* /*window*/, int button, int action, int /*mods*/) {
+        if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS) {
+            input.rMousePressed = true;
+        } else if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_RELEASE) {
+            input.rMousePressed = false;
+        } else if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
+            input.lMousePressed = true;
+        } else if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE) {
+            input.lMousePressed = false;
+        }
+    });
+
+    new_window.set_window_reshape_callback([&](GLFWwindow* /*window*/, int x, int y) {
+        projection = glm::perspective(constants::PI/4.0, double (x)/double (y), 1.0, 800.0);
+        glViewport(0, 0, x, y);
+    });
+
+    srand(static_cast<unsigned int>(time(nullptr)));
+
+    projection = glm::perspective(constants::PI/4.0, double (new_window.get_width())/double (new_window.get_height()), 1.0, 800.0);
+    MY_Camera* camera = new PlayerCamera(player);
+
     SkyBox skybox1(faces);
-    Obj planet;
-    Planet sun("image/planet/sun.jpg", 2);
-    Earth earth("image/planet/earth_diffuse.png", 1);
+//    Obj planet;
+//    Planet sun("image/planet/sun.jpg", 2);
+//    Earth earth("image/planet/earth_diffuse.png", 1);
    
     bool flag = true;
-    //bool flag = false;
-    
-    while (!glfwWindowShouldClose(window))
+
+    std::vector<std::string> skyboxTextures = {
+            "image/skybox/sky_back.tga",
+            "image/skybox/sky_bottom.tga",
+            "image/skybox/sky_front.tga",
+            "image/skybox/sky_left.tga",
+            "image/skybox/sky_top.tga",
+            "image/skybox/sky_right.tga"
+    };
+    SkyboxRenderer skybox = SkyboxRenderer(skyboxTextures, 200.0f);
+
+    // Create light sources
+    auto* sunny = new Light();
+    sunny->position = glm::vec4(-1.25 * 200.0f / 10, 2.5 * 200.0f / 10, 3 * 200.0f / 10, 0.0f);  // w = 0 - directional
+    sunny->specular = glm::vec3(1.0f, 1.0f, 1.0f);
+    sunny->diffuse = glm::vec3(0.7f, 0.7f, 0.7f);
+    sunny->ambient = glm::vec3(0.1f, 0.1f, 0.1f);
+    lights.push_back(sunny);
+
+    auto* headlight = new Light();
+    headlight->position = glm::vec4(2.0f, 8.0f, 0.0f, 1.0f);
+    headlight->specular = glm::vec3(0.8f, 0.8f, 0.4f);
+    headlight->diffuse = glm::vec3(0.8f, 0.8f, 0.4f);
+    headlight->coneDirection = glm::vec3(0.0f, -1.0f, 0.0f);
+    headlight->coneAngle = constants::PI / 4.f;
+    headlight->radius = 10.0f;
+    lights.push_back(headlight);
+
+    for(auto it : entities) {
+        it->placeBottomEdge(terrain->getHeight(it->getPosition().x, it->getPosition().z));
+    }
+
+    // Create the large lake
+    auto* water = new Entity();
+    water->setScale(glm::vec3(100.0f, 1.0f, 50.0f));
+    water->setPosition(terrain->getPositionFromPixel(650, 826));
+    water->setPosition(glm::vec3(water->getPosition().x, 0.4f, water->getPosition().z));
+
+    ShadowMap shadowmap(player, lights[0], 4096);
+    RenderManager manager;
+
+    while (!glfwWindowShouldClose(new_window.get_window()))
     {
-        
-        float currentFrame = static_cast<float>(glfwGetTime());
-        deltaTime = currentFrame - lastFrame;
-        lastFrame = currentFrame;
+        GameTime::getGameTime()->update();
+        camera->update(input);
+        manager.render(entities, lights, terrain, water, skybox, shadowmap, camera, projection, new_window.get_width(), new_window.get_height());
+//        float currentFrame = static_cast<float>(glfwGetTime());
+//        deltaTime = currentFrame - lastFrame;
+//        lastFrame = currentFrame;
 
-        processInput(window);
+
+//        processInput(new_window);
 
     
-        glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+//        glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
+//        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
 
         if(flag) {
             // close shot
-            //skybox1.Draw();
-            planet.Draw();
+            for(auto it : entities) {
+                it->update();
+            }
+            headlight->position = glm::vec4(player->getPosition() + glm::vec3(0.0f, 0.1f, 0.0f), 1.0f);
+            headlight->coneDirection = player->calculateDirectionVector();
+//            skybox1.Draw();
+//            planet.Draw();
 
         } else {
             // near shot
-            sun.Draw();
-            earth.Draw();
+//            sun.Draw();
+//            earth.Draw();
         }
         
-       
-        glfwSwapBuffers(window);
+        glFlush();
+        glfwSwapBuffers(new_window.get_window());
         glfwPollEvents();
     }
-    
+    delete player;
+    delete water;
+    for(auto it : entities) {
+        delete it;
+    }
+    glfwDestroyWindow(new_window.get_window());
 }
 
 int main()
 {
    
-    GLFWwindow* window = Init();
+//    GLFWwindow* window = Init();
    
-    mainLoop(window);
+    mainLoop();
 
     glfwTerminate();
     return 0;
