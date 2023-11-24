@@ -49,6 +49,7 @@
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/SkyboxShader.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/WaterShader.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/Window.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
@@ -94,6 +95,7 @@
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/SkyboxShader.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/WaterShader.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/Window.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
@@ -228,6 +230,21 @@
 		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main.cpp">
 			<Option target="main"/>
 		</Unit>
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/particles/ParticleSystem.cpp">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/particles/ParticleSystem.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/particles/particle.cpp">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/particles/particle.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/particles/particleSystem.h">
+			<Option target="main"/>
+		</Unit>
 		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/EntityRenderer.cpp">
 			<Option target="main"/>
 		</Unit>
@@ -238,6 +255,12 @@
 			<Option target="main"/>
 		</Unit>
 		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/FrameBuffer.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/ParticleManager.cpp">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/ParticleManager.h">
 			<Option target="main"/>
 		</Unit>
 		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/RenderManager.cpp">
@@ -270,6 +293,12 @@
 		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/WaterRenderer.h">
 			<Option target="main"/>
 		</Unit>
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/particleRenderer.cpp">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/particleRenderer.h">
+			<Option target="main"/>
+		</Unit>
 		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/EntityShader.cpp">
 			<Option target="main"/>
 		</Unit>
@@ -298,6 +327,12 @@
 			<Option target="main"/>
 		</Unit>
 		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/WaterShader.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/particleShader.cpp">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/particleShader.h">
 			<Option target="main"/>
 		</Unit>
 		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/CMakeLists.txt">

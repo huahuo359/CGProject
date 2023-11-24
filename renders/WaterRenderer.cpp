@@ -21,7 +21,7 @@ WaterRenderer::WaterRenderer() {
     vao = Loader::getLoader()->loadVAO(vertices, indices);
     movement = 0.0f;
 
-    dudvMap = Loader::getLoader()->loadTexture("res/water/dudv.png");
+    dudvMap = Loader::getLoader()->loadTexture("image/water/dudv.png");
 }
 
 // Only works for one set of water, update to reflect

@@ -134,6 +134,7 @@ ModelComponent Loader::loadModelComponent(
     const tinyobj::shape_t& shape, const std::vector<tinyobj::material_t>& materials, const std::string& materialpath) {
     GLuint vao = loadVAO(shape);
     size_t numIndices = shape.mesh.indices.size();
+//    std::cout<<"Enter load model component"<<std::endl;
 
     // TODO - revisit this. Likely a result of the file not loading on windows requiring this, meaning no textures can
     // load.

@@ -767,6 +767,54 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+particles/ParticleSystem.o: particles/ParticleSystem.cpp.o
+.PHONY : particles/ParticleSystem.o
+
+# target to build an object file
+particles/ParticleSystem.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/particles/ParticleSystem.cpp.o
+.PHONY : particles/ParticleSystem.cpp.o
+
+particles/ParticleSystem.i: particles/ParticleSystem.cpp.i
+.PHONY : particles/ParticleSystem.i
+
+# target to preprocess a source file
+particles/ParticleSystem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/particles/ParticleSystem.cpp.i
+.PHONY : particles/ParticleSystem.cpp.i
+
+particles/ParticleSystem.s: particles/ParticleSystem.cpp.s
+.PHONY : particles/ParticleSystem.s
+
+# target to generate assembly for a file
+particles/ParticleSystem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/particles/ParticleSystem.cpp.s
+.PHONY : particles/ParticleSystem.cpp.s
+
+particles/particle.o: particles/particle.cpp.o
+.PHONY : particles/particle.o
+
+# target to build an object file
+particles/particle.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/particles/particle.cpp.o
+.PHONY : particles/particle.cpp.o
+
+particles/particle.i: particles/particle.cpp.i
+.PHONY : particles/particle.i
+
+# target to preprocess a source file
+particles/particle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/particles/particle.cpp.i
+.PHONY : particles/particle.cpp.i
+
+particles/particle.s: particles/particle.cpp.s
+.PHONY : particles/particle.s
+
+# target to generate assembly for a file
+particles/particle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/particles/particle.cpp.s
+.PHONY : particles/particle.cpp.s
+
 renders/EntityRenderer.o: renders/EntityRenderer.cpp.o
 .PHONY : renders/EntityRenderer.o
 
@@ -814,6 +862,30 @@ renders/FrameBuffer.s: renders/FrameBuffer.cpp.s
 renders/FrameBuffer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/renders/FrameBuffer.cpp.s
 .PHONY : renders/FrameBuffer.cpp.s
+
+renders/ParticleManager.o: renders/ParticleManager.cpp.o
+.PHONY : renders/ParticleManager.o
+
+# target to build an object file
+renders/ParticleManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/renders/ParticleManager.cpp.o
+.PHONY : renders/ParticleManager.cpp.o
+
+renders/ParticleManager.i: renders/ParticleManager.cpp.i
+.PHONY : renders/ParticleManager.i
+
+# target to preprocess a source file
+renders/ParticleManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/renders/ParticleManager.cpp.i
+.PHONY : renders/ParticleManager.cpp.i
+
+renders/ParticleManager.s: renders/ParticleManager.cpp.s
+.PHONY : renders/ParticleManager.s
+
+# target to generate assembly for a file
+renders/ParticleManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/renders/ParticleManager.cpp.s
+.PHONY : renders/ParticleManager.cpp.s
 
 renders/RenderManager.o: renders/RenderManager.cpp.o
 .PHONY : renders/RenderManager.o
@@ -935,6 +1007,30 @@ renders/WaterRenderer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/renders/WaterRenderer.cpp.s
 .PHONY : renders/WaterRenderer.cpp.s
 
+renders/particleRenderer.o: renders/particleRenderer.cpp.o
+.PHONY : renders/particleRenderer.o
+
+# target to build an object file
+renders/particleRenderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/renders/particleRenderer.cpp.o
+.PHONY : renders/particleRenderer.cpp.o
+
+renders/particleRenderer.i: renders/particleRenderer.cpp.i
+.PHONY : renders/particleRenderer.i
+
+# target to preprocess a source file
+renders/particleRenderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/renders/particleRenderer.cpp.i
+.PHONY : renders/particleRenderer.cpp.i
+
+renders/particleRenderer.s: renders/particleRenderer.cpp.s
+.PHONY : renders/particleRenderer.s
+
+# target to generate assembly for a file
+renders/particleRenderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/renders/particleRenderer.cpp.s
+.PHONY : renders/particleRenderer.cpp.s
+
 shaders/EntityShader.o: shaders/EntityShader.cpp.o
 .PHONY : shaders/EntityShader.o
 
@@ -1055,6 +1151,30 @@ shaders/WaterShader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/shaders/WaterShader.cpp.s
 .PHONY : shaders/WaterShader.cpp.s
 
+shaders/particleShader.o: shaders/particleShader.cpp.o
+.PHONY : shaders/particleShader.o
+
+# target to build an object file
+shaders/particleShader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/shaders/particleShader.cpp.o
+.PHONY : shaders/particleShader.cpp.o
+
+shaders/particleShader.i: shaders/particleShader.cpp.i
+.PHONY : shaders/particleShader.i
+
+# target to preprocess a source file
+shaders/particleShader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/shaders/particleShader.cpp.i
+.PHONY : shaders/particleShader.cpp.i
+
+shaders/particleShader.s: shaders/particleShader.cpp.s
+.PHONY : shaders/particleShader.s
+
+# target to generate assembly for a file
+shaders/particleShader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/shaders/particleShader.cpp.s
+.PHONY : shaders/particleShader.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1126,12 +1246,21 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... particles/ParticleSystem.o"
+	@echo "... particles/ParticleSystem.i"
+	@echo "... particles/ParticleSystem.s"
+	@echo "... particles/particle.o"
+	@echo "... particles/particle.i"
+	@echo "... particles/particle.s"
 	@echo "... renders/EntityRenderer.o"
 	@echo "... renders/EntityRenderer.i"
 	@echo "... renders/EntityRenderer.s"
 	@echo "... renders/FrameBuffer.o"
 	@echo "... renders/FrameBuffer.i"
 	@echo "... renders/FrameBuffer.s"
+	@echo "... renders/ParticleManager.o"
+	@echo "... renders/ParticleManager.i"
+	@echo "... renders/ParticleManager.s"
 	@echo "... renders/RenderManager.o"
 	@echo "... renders/RenderManager.i"
 	@echo "... renders/RenderManager.s"
@@ -1147,6 +1276,9 @@ help:
 	@echo "... renders/WaterRenderer.o"
 	@echo "... renders/WaterRenderer.i"
 	@echo "... renders/WaterRenderer.s"
+	@echo "... renders/particleRenderer.o"
+	@echo "... renders/particleRenderer.i"
+	@echo "... renders/particleRenderer.s"
 	@echo "... shaders/EntityShader.o"
 	@echo "... shaders/EntityShader.i"
 	@echo "... shaders/EntityShader.s"
@@ -1162,6 +1294,9 @@ help:
 	@echo "... shaders/WaterShader.o"
 	@echo "... shaders/WaterShader.i"
 	@echo "... shaders/WaterShader.s"
+	@echo "... shaders/particleShader.o"
+	@echo "... shaders/particleShader.i"
+	@echo "... shaders/particleShader.s"
 .PHONY : help
 
 

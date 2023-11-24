@@ -137,7 +137,7 @@ void main(void) {
         lit_colour += applyLight(lights[i], mixedColour.rgb, normal, vertex.xyz);
     }
     lit_colour = lit_colour * visibility;
-    lit_colour = applyFog(lit_colour,-cameraSpaceVert.z);
+//    lit_colour = applyFog(lit_colour,-cameraSpaceVert.z);
 
     fragColour = vec4(lit_colour, 1.0);
 }

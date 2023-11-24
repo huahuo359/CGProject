@@ -19,18 +19,23 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Terrain.cpp" "CMakeFiles/main.dir/entity/Terrain.cpp.o" "gcc" "CMakeFiles/main.dir/entity/Terrain.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/tiny_obj_loader.cpp" "CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.o" "gcc" "CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main.cpp" "CMakeFiles/main.dir/main.cpp.o" "gcc" "CMakeFiles/main.dir/main.cpp.o.d"
+  "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/particles/ParticleSystem.cpp" "CMakeFiles/main.dir/particles/ParticleSystem.cpp.o" "gcc" "CMakeFiles/main.dir/particles/ParticleSystem.cpp.o.d"
+  "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/particles/particle.cpp" "CMakeFiles/main.dir/particles/particle.cpp.o" "gcc" "CMakeFiles/main.dir/particles/particle.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/EntityRenderer.cpp" "CMakeFiles/main.dir/renders/EntityRenderer.cpp.o" "gcc" "CMakeFiles/main.dir/renders/EntityRenderer.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/FrameBuffer.cpp" "CMakeFiles/main.dir/renders/FrameBuffer.cpp.o" "gcc" "CMakeFiles/main.dir/renders/FrameBuffer.cpp.o.d"
+  "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/ParticleManager.cpp" "CMakeFiles/main.dir/renders/ParticleManager.cpp.o" "gcc" "CMakeFiles/main.dir/renders/ParticleManager.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/RenderManager.cpp" "CMakeFiles/main.dir/renders/RenderManager.cpp.o" "gcc" "CMakeFiles/main.dir/renders/RenderManager.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/ShadowMap.cpp" "CMakeFiles/main.dir/renders/ShadowMap.cpp.o" "gcc" "CMakeFiles/main.dir/renders/ShadowMap.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/SkyboxRenderer.cpp" "CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.o" "gcc" "CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/TerrainRenderer.cpp" "CMakeFiles/main.dir/renders/TerrainRenderer.cpp.o" "gcc" "CMakeFiles/main.dir/renders/TerrainRenderer.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/WaterRenderer.cpp" "CMakeFiles/main.dir/renders/WaterRenderer.cpp.o" "gcc" "CMakeFiles/main.dir/renders/WaterRenderer.cpp.o.d"
+  "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/particleRenderer.cpp" "CMakeFiles/main.dir/renders/particleRenderer.cpp.o" "gcc" "CMakeFiles/main.dir/renders/particleRenderer.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/EntityShader.cpp" "CMakeFiles/main.dir/shaders/EntityShader.cpp.o" "gcc" "CMakeFiles/main.dir/shaders/EntityShader.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/ShaderProgram.cpp" "CMakeFiles/main.dir/shaders/ShaderProgram.cpp.o" "gcc" "CMakeFiles/main.dir/shaders/ShaderProgram.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/SkyboxShader.cpp" "CMakeFiles/main.dir/shaders/SkyboxShader.cpp.o" "gcc" "CMakeFiles/main.dir/shaders/SkyboxShader.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/TerrainShader.cpp" "CMakeFiles/main.dir/shaders/TerrainShader.cpp.o" "gcc" "CMakeFiles/main.dir/shaders/TerrainShader.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/WaterShader.cpp" "CMakeFiles/main.dir/shaders/WaterShader.cpp.o" "gcc" "CMakeFiles/main.dir/shaders/WaterShader.cpp.o.d"
+  "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/particleShader.cpp" "CMakeFiles/main.dir/shaders/particleShader.cpp.o" "gcc" "CMakeFiles/main.dir/shaders/particleShader.cpp.o.d"
   )
 
 # Targets to which this target links.

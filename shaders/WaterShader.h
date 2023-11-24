@@ -8,8 +8,8 @@
 #include <glm/glm.hpp>
 #include <glad/glad.h>
 
-const std::string WATER_VERTEX_SHADER = "water/water.vert";
-const std::string WATER_FRAGMENT_SHADER = "water/water.frag";
+const std::string WATER_VERTEX_SHADER = "shaders/water.vert";
+const std::string WATER_FRAGMENT_SHADER = "shaders/water.frag";
 
 class WaterShader : public ShaderProgram {
   private:

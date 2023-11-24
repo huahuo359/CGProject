@@ -20,7 +20,7 @@ Window::Window() {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     // Create the window and OpenGL context
-    m_window = glfwCreateWindow(win_x, win_y, "OpenGL Car Game", nullptr, nullptr);
+    m_window = glfwCreateWindow(win_x, win_y, "Ground View", nullptr, nullptr);
     if (m_window == nullptr) {
         fmt::print(stderr, "Failed to create window");
         glfwTerminate();

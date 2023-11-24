@@ -85,10 +85,10 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
 # 执行编译命令
 # set(SOURCES glad.c main.cpp)
-set(SOURCES main.cpp glad.c ${MY_SRC})
+set(SOURCES main.cpp glad.c ${MY_SRC} particles/particle.h particles/particle.cpp shaders/particleShader.h shaders/particleShader.cpp renders/particleRenderer.h renders/particleRenderer.cpp renders/ParticleManager.h renders/ParticleManager.cpp particles/particleSystem.h particles/ParticleSystem.cpp)
 add_executable(main ${SOURCES})
 #target_link_libraries(main PRIVATE fmt::fmt ${CMAKE_DL_LIBS})
-#target_include_directories(main PUBLIC ${CMAKE_CURRENT_LIST_DIR})
+target_include_directories(main PUBLIC ${CMAKE_CURRENT_LIST_DIR})
 # 链接系统的 OpenGL 框架
 if (APPLE)
     target_link_libraries(main "-framework OpenGL")
@@ -100,3 +100,10 @@ enable_testing()
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
+
+add_custom_command(TARGET main POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_CURRENT_LIST_DIR}/image
+        ${PROJECT_BINARY_DIR}/image
+        COMMENT "Copy resources to build tree")
+

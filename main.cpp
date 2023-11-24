@@ -11,6 +11,8 @@
 #include "entity/Camera.h"
 #include "renders/RenderManager.h"
 #include "Window.h"
+#include "particles/particleSystem.h"
+#include "renders/ParticleManager.h"
 
 #include <iostream>
 
@@ -21,7 +23,6 @@
 
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/string_cast.hpp>
-
 
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -414,47 +415,47 @@ public:
      
     GLfloat skyboxVertices[108] = {
         // Positions          
-        -1.0f,  1.0f, -1.0f,
-        -1.0f, -1.0f, -1.0f,
-         1.0f, -1.0f, -1.0f,
-         1.0f, -1.0f, -1.0f,
-         1.0f,  1.0f, -1.0f,
-        -1.0f,  1.0f, -1.0f,
+        -100.0f,  100.0f, -100.0f,
+        -100.0f, -100.0f, -100.0f,
+         100.0f, -100.0f, -100.0f,
+         100.0f, -100.0f, -100.0f,
+         100.0f,  100.0f, -100.0f,
+        -100.0f,  100.0f, -100.0f,
   
-        -1.0f, -1.0f,  1.0f,
-        -1.0f, -1.0f, -1.0f,
-        -1.0f,  1.0f, -1.0f,
-        -1.0f,  1.0f, -1.0f,
-        -1.0f,  1.0f,  1.0f,
-        -1.0f, -1.0f,  1.0f,
+        -100.0f, -100.0f,  100.0f,
+        -100.0f, -100.0f, -100.0f,
+        -100.0f,  100.0f, -100.0f,
+        -100.0f,  100.0f, -100.0f,
+        -100.0f,  100.0f,  100.0f,
+        -100.0f, -100.0f,  100.0f,
   
-         1.0f, -1.0f, -1.0f,
-         1.0f, -1.0f,  1.0f,
-         1.0f,  1.0f,  1.0f,
-         1.0f,  1.0f,  1.0f,
-         1.0f,  1.0f, -1.0f,
-         1.0f, -1.0f, -1.0f,
+         100.0f, -100.0f, -100.0f,
+         100.0f, -100.0f,  100.0f,
+         100.0f,  100.0f,  100.0f,
+         100.0f,  100.0f,  100.0f,
+         100.0f,  100.0f, -100.0f,
+         100.0f, -100.0f, -100.0f,
    
-        -1.0f, -1.0f,  1.0f,
-        -1.0f,  1.0f,  1.0f,
-         1.0f,  1.0f,  1.0f,
-         1.0f,  1.0f,  1.0f,
-         1.0f, -1.0f,  1.0f,
-        -1.0f, -1.0f,  1.0f,
+        -100.0f, -100.0f,  100.0f,
+        -100.0f,  100.0f,  100.0f,
+         100.0f,  100.0f,  100.0f,
+         100.0f,  100.0f,  100.0f,
+         100.0f, -100.0f,  100.0f,
+        -100.0f, -100.0f,  100.0f,
   
-        -1.0f,  1.0f, -1.0f,
-         1.0f,  1.0f, -1.0f,
-         1.0f,  1.0f,  1.0f,
-         1.0f,  1.0f,  1.0f,
-        -1.0f,  1.0f,  1.0f,
-        -1.0f,  1.0f, -1.0f,
+        -100.0f,  100.0f, -100.0f,
+         100.0f,  100.0f, -100.0f,
+         100.0f,  100.0f,  100.0f,
+         100.0f,  100.0f,  100.0f,
+        -100.0f,  100.0f,  100.0f,
+        -100.0f,  100.0f, -100.0f,
   
-        -1.0f, -1.0f, -1.0f,
-        -1.0f, -1.0f,  1.0f,
-         1.0f, -1.0f, -1.0f,
-         1.0f, -1.0f, -1.0f,
-        -1.0f, -1.0f,  1.0f,
-         1.0f, -1.0f,  1.0f
+        -100.0f, -100.0f, -100.0f,
+        -100.0f, -100.0f,  100.0f,
+         100.0f, -100.0f, -100.0f,
+         100.0f, -100.0f, -100.0f,
+        -100.0f, -100.0f,  100.0f,
+         100.0f, -100.0f,  100.0f
     };
 
     SkyBox(vector<const GLchar*> faces):skyboxShader("shaders/skybox.vs", "shaders/skybox.fs"),faces(faces) {
@@ -513,7 +514,7 @@ void mainLoop() {
     faces.push_back("image/skybox/back.jpg");
     faces.push_back("image/skybox/front.jpg");
 
-    MY_Model player_mod = Loader::getLoader()->loadModel("truck/TruckM.obj");
+    MY_Model player_mod = Loader::getLoader()->loadModel("res/car-n.obj");
 
     std::vector<std::string> terrin_img;
     terrin_img.push_back("image/terrin/blendMap.png");
@@ -526,10 +527,13 @@ void mainLoop() {
     terrain->setPosition(glm::vec3(-Terrain::TERRAIN_SIZE/2, 0.0f, -Terrain::TERRAIN_SIZE/2));
 
     Player* player = new Player(&player_mod, terrain, 1);
-    player->setScale(glm::vec3(0.4f, 0.4f, 0.4f));
+    player->setScale(glm::vec3(0.1f, 0.1f, 0.1f));
     player->setPosition(terrain->getPositionFromPixel(555,751));
     player->setRotationY((GLfloat)5.0f * constants::PI / 8.0f);
     entities.push_back(player);
+
+    MY_Model starbase = Loader::getLoader()->loadModel("starbase/spyorb.obj");
+    entities.push_back(new Entity(&starbase));
 
     new_window.set_key_callback([&](GLFWwindow* window, int key, int scancode, int action, int mods) {
         // Terminate program if escape is pressed
@@ -577,12 +581,12 @@ void mainLoop() {
     bool flag = true;
 
     std::vector<std::string> skyboxTextures = {
-            "image/skybox/sky_back.tga",
-            "image/skybox/sky_bottom.tga",
-            "image/skybox/sky_front.tga",
-            "image/skybox/sky_left.tga",
-            "image/skybox/sky_top.tga",
-            "image/skybox/sky_right.tga"
+            "image/skybox/back.jpg",
+            "image/skybox/bottom.jpg",
+            "image/skybox/front.jpg",
+            "image/skybox/left.jpg",
+            "image/skybox/right.jpg",
+            "image/skybox/top.jpg"
     };
     SkyboxRenderer skybox = SkyboxRenderer(skyboxTextures, 200.0f);
 
@@ -616,30 +620,34 @@ void mainLoop() {
     ShadowMap shadowmap(player, lights[0], 4096);
     RenderManager manager;
 
+    GLuint dust_texture = Loader::getLoader()->loadTexture("image/dust_single.png");
+    ParticleSystem particleSystem(30.0f, 3.0f, 0.2f, 0.5f, dust_texture);
+
+    GLuint snow_texture = Loader::getLoader()->loadTexture("image/snow.png");
+    ParticleSystem snowSystem(10.0f, 2.0f, 0.5f, 100.0f, snow_texture);
+
     while (!glfwWindowShouldClose(new_window.get_window()))
     {
         GameTime::getGameTime()->update();
         camera->update(input);
         manager.render(entities, lights, terrain, water, skybox, shadowmap, camera, projection, new_window.get_width(), new_window.get_height());
-//        float currentFrame = static_cast<float>(glfwGetTime());
-//        deltaTime = currentFrame - lastFrame;
-//        lastFrame = currentFrame;
-
-
-//        processInput(new_window);
-
-    
-//        glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
-//        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        
 
         if(flag) {
             // close shot
+            ParticleManager::getParticleManager()->update();
+
             for(auto it : entities) {
                 it->update();
             }
             headlight->position = glm::vec4(player->getPosition() + glm::vec3(0.0f, 0.1f, 0.0f), 1.0f);
             headlight->coneDirection = player->calculateDirectionVector();
+
+            if (player->absVel > 5.0f || player->getThrottle() > 0.1f || (1 && player->getBrake() > 0.1f)) {
+                particleSystem.generateParticles(player->getPosition() - player->calculateDirectionVector(), 100.0f);
+            }
+
+            snowSystem.generateParticles(player->getPosition()+glm::vec3(0.0f,20.0f,0.0f), 20000.0f);
+
 //            skybox1.Draw();
 //            planet.Draw();
 
@@ -653,8 +661,8 @@ void mainLoop() {
         glfwSwapBuffers(new_window.get_window());
         glfwPollEvents();
     }
-    delete player;
-    delete water;
+//    delete player;
+//    delete water;
     for(auto it : entities) {
         delete it;
     }

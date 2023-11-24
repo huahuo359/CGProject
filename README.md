@@ -69,7 +69,7 @@ public:
     Shader carShader;
 
 
-    Car(): carModel("truck/TruckM.obj"), carShader("shaders/nano.vs", "shaders/nano.fs") {
+    Car(): carModel("truck/car-n.obj"), carShader("shaders/nano.vs", "shaders/nano.fs") {
         ...
     }
 

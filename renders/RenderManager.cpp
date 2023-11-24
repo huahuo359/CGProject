@@ -1,9 +1,9 @@
 #include "RenderManager.h"
 
 #include <glad/glad.h>
-//#include "../particles/Particle.h"
-//#include "../particles/ParticleManager.h"
-//#include "../particles/ParticleSystem.h"
+#include "../particles/particle.h"
+#include "ParticleManager.h"
+#include "../particles/ParticleSystem.h"
 
 const float WATER_PLANE_HEIGHT = 0.398918f;
 
@@ -33,7 +33,7 @@ void RenderManager::render(const std::vector<Entity*>& entities, const std::vect
     skybox.render(cam->getViewMtx(), projection);
     renderer.render(entities, lights, cam->getViewMtx(), projection, skybox.getSkyboxTexture(), shadowMap.getView(),
         shadowMap.getProjection(), shadowMap.getTextureID(), glm::vec4(0, -1, 0, water->getPosition().y));
-//    ParticleManager::getParticleManager()->render(cam->getViewMtx(), projection);
+    ParticleManager::getParticleManager()->render(cam->getViewMtx(), projection);
     refractionBuffer.unbind();
 
     // REFLECTION PASS
@@ -45,7 +45,7 @@ void RenderManager::render(const std::vector<Entity*>& entities, const std::vect
     skybox.render(invView, projection);
     renderer.render(entities, lights, invView, projection, skybox.getSkyboxTexture(), shadowMap.getView(),
         shadowMap.getProjection(), shadowMap.getTextureID(), glm::vec4(0, 1, 0, -water->getPosition().y));
-//    ParticleManager::getParticleManager()->render(invView, projection);
+    ParticleManager::getParticleManager()->render(invView, projection);
     reflectionBuffer.unbind();
 
     // NORMAL PASS
@@ -58,7 +58,7 @@ void RenderManager::render(const std::vector<Entity*>& entities, const std::vect
     skybox.render(cam->getViewMtx(), projection);
     renderer.render(entities, lights, cam->getViewMtx(), projection, skybox.getSkyboxTexture(), shadowMap.getView(),
         shadowMap.getProjection(), shadowMap.getTextureID(), glm::vec4(0, 1, 0, 10000));
-//    ParticleManager::getParticleManager()->render(cam->getViewMtx(), projection);
+    ParticleManager::getParticleManager()->render(cam->getViewMtx(), projection);
     waterRenderer.render(water, cam->getViewMtx(), projection, refractionBuffer.getColourTexture(),
         reflectionBuffer.getColourTexture(), cam->getPosition(), lights[0]);
 }
