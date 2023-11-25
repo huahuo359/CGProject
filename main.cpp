@@ -1,5 +1,8 @@
-#include <glad/glad.h>
+// #include <glad/glad.h>
+#include <GL/glew.h>
+
 #include <GLFW/glfw3.h>
+
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -8,8 +11,10 @@
 #include "tools/shader.h"
 #include "tools/camera.h"
 #include "tools/model.h"
+#include "tools/Gshader.h"
 
 #include <iostream>
+
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -67,11 +72,18 @@ GLFWwindow* Init()
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
  
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-    {
-        std::cout << "Failed to initialize GLAD" << std::endl;
+    // if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    // {
+    //     std::cout << "Failed to initialize GLAD" << std::endl;
+    //     return NULL;
+    // }
+
+    if (glewInit() != GLEW_OK) {
+        // 处理初始化失败
+        std::cout << "Failed to initialize GLEW" << std::endl;
         return NULL;
     }
+
 
     stbi_set_flip_vertically_on_load(true);
 
@@ -226,7 +238,7 @@ public:
     std::vector<float> sphereVertices;
     std::vector<int> sphereIndices;
     Shader sunShader;
-    int PRECISE = 50;
+    int PRECISE = 550;
     unsigned int VBO, VAO;
     GLuint EBO;
     GLuint TextureID;
@@ -341,19 +353,17 @@ public:
         // earthShader.setVec3("light.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
         earthShader.setVec3("viewPos", camera.Position);
         
-        // draw earth
+        // set texture
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, TextureID);
         earthShader.setInt("texture_diffuse", 0);
 
-        
-        // draw earth
+        // set texture
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, TextureNormal);
         earthShader.setInt("texture_normal", 1);
 
-       
-        // // draw earth
+        // set texture
         glActiveTexture(GL_TEXTURE2);
         glBindTexture(GL_TEXTURE_2D, TextureSpecular);
         earthShader.setInt("texture_specular", 2);
@@ -397,44 +407,80 @@ public:
 class Moon: public Planet {
 
 public:
-    Moon(GLchar* path, int imagecase): Planet(path, imagecase) {}
 
-     void Draw() {
-        
-        sunShader.use();
-        sunShader.setInt("texture1", 1);
-        // draw sun
-        glActiveTexture(GL_TEXTURE1);
+    GShader moonShader;
+    GLuint TextureNormal;
+    GLuint TextureSpecular;
+    Moon(GLchar* path, int imagecase): Planet(path, imagecase), moonShader("shaders/moon.vs", "shaders/moon.fs", "shaders/moon.gs") {
+        TextureNormal = loadTexture("image/planet/earth_normal.png", 1);
+        TextureSpecular = loadTexture("image/planet/earth_specular.png",1);
+    }
+
+    void Draw() {
+        moonShader.use();
+        moonShader.setVec3("light.ambient", glm::vec3(0.05f, 0.05f, 0.05f)); 
+        moonShader.setVec3("light.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+        moonShader.setVec3("light.specular", glm::vec3(0.5f, 0.5f, 0.5f));
+        moonShader.setVec3("viewPos", camera.Position);
+
+        // set texture
+        glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, TextureID);
-       
+        moonShader.setInt("texture_diffuse", 0);
+
+        // set texture
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, TextureNormal);
+        moonShader.setInt("texture_normal", 1);
+
+        // set texture
+        glActiveTexture(GL_TEXTURE2);
+        glBindTexture(GL_TEXTURE_2D, TextureSpecular);
+        moonShader.setInt("texture_specular", 2);
+
         glm::mat4 view;
         view = glm::lookAt(camera.Position, camera.Position + camera.Front, camera.Up);
-        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f));
+        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 4.1f, 100.0f);
+        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -5.0f));
         glm::mat4 model = glm::mat4(1.0f);
 
-        float x_earth1 = 0 + 3*std::cos((GLfloat)glfwGetTime() * 0.5f);
-        float z_earth1 = -10 + 3*std::sin((GLfloat)glfwGetTime() * 0.5f);
-        float x_moon1 = x_earth1 + 1.5*std::cos((GLfloat)glfwGetTime() * 0.5f);
-        float z_moon1 = z_earth1 + 1.5*std::sin((GLfloat)glfwGetTime() * 0.5f);
-        model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
-        model = glm::translate(model, glm::vec3( x_earth1/0.3f,  0.3f/0.3f, z_earth1/0.3f));
+        float x_moon1 = 0 + 3*std::cos((GLfloat)glfwGetTime() * 0.5f);
+        float z_moon1 = -30 + 3*std::sin((GLfloat)glfwGetTime() * 0.5f);
+        x_moon1 = -3;
+        z_moon1 = -7;
+        // x_moon1 = 0;
+        // z_moon1 = 0;
+        model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+        model = glm::translate(model, glm::vec3( x_moon1/0.5f,  0.3f/0.5f, z_moon1/0.5f));
         
-        float angle = (GLfloat)glfwGetTime() * 25.0f;
+        float angle = (GLfloat)glfwGetTime() * 3.5f;
         model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.3f));
 
-        sunShader.setMat4("projection", projection); 
-        sunShader.setMat4("view", view);
-        sunShader.setMat4("model", model);
+        moonShader.setMat4("projection", projection); 
+        moonShader.setMat4("view", view);
+        moonShader.setMat4("model", model);
+
+        glm::vec3 earthPos = glm::vec3(x_moon1, 0.3f, z_moon1);
+        glm::vec3 sunPos = glm::vec3(0.0f, 0.0f, -10.0f);
+        glm::vec3 lightDirection = earthPos - sunPos;
+        moonShader.setVec3("light.direction", lightDirection);
+
+        // Set time
+        moonShader.setFloat("time", static_cast<float>(glfwGetTime()));
+
 
 
         glEnable(GL_CULL_FACE); 
         glCullFace(GL_BACK);
         glBindVertexArray(VAO);
-        //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glDrawElements(GL_TRIANGLES, PRECISE*PRECISE*6, GL_UNSIGNED_INT, 0);
+
+
+
+
     }
 
+    
 
 
 };
@@ -562,20 +608,21 @@ public:
 void mainLoop(GLFWwindow* window ) {
 
 
-    vector<const GLchar*> faces;
-    faces.push_back("image/skybox/right.jpg");
-    faces.push_back("image/skybox/left.jpg");
-    faces.push_back("image/skybox/bottom.jpg");
-    faces.push_back("image/skybox/top.jpg");
-    faces.push_back("image/skybox/back.jpg");
-    faces.push_back("image/skybox/front.jpg");
+    // vector<const GLchar*> faces;
+    // faces.push_back("image/skybox/right.jpg");
+    // faces.push_back("image/skybox/left.jpg");
+    // faces.push_back("image/skybox/bottom.jpg");
+    // faces.push_back("image/skybox/top.jpg");
+    // faces.push_back("image/skybox/back.jpg");
+    // faces.push_back("image/skybox/front.jpg");
    
    
-    SkyBox skybox1(faces);
+    // SkyBox skybox1(faces);
     Obj planet;
-    Car car;
+    // Car car;
     Planet sun("image/planet/sun.jpg", 2);
-    Earth earth("image/planet/earth_diffuse.png", 1);
+    // Earth earth("image/planet/earth_diffuse.png", 1);
+    Moon moon("image/planet/earth_diffuse.png", 1);
    
     //bool flag = true;
     bool flag = false;
@@ -602,8 +649,9 @@ void mainLoop(GLFWwindow* window ) {
 
         } else {
             // near shot
-            sun.Draw();
-            earth.Draw();
+            //sun.Draw();
+            // earth.Draw();
+            moon.Draw();
         }
         
        

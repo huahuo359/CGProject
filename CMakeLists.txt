@@ -10,7 +10,7 @@ set(CMAKE_BINARY_DIR ${PROJECT_SOURCE_DIR})
 # 添加头文件
 set(GLAD_H ${PROJECT_SOURCE_DIR}/dependencies/include)
 # set(GLFW_H /usr/local/include)
-# set(GLFW_H ${PROJECT_SOURCE_DIR}/dependencies/include/GLFW)
+set(GLFW_H ${PROJECT_SOURCE_DIR}/dependencies/include/GLFW)
 set(LEARNOPENGL_INCLUDE ${PROJECT_SOURCE_DIR}/learnopengl)  # 新增这一行，指定learnopengl目录的路径
 include_directories(${GLAD_H} ${GLFW_H} ${LEARNOPENGL_INCLUDE})
 
@@ -19,10 +19,13 @@ include_directories(${GLAD_H} ${GLFW_H} ${LEARNOPENGL_INCLUDE})
 set(GLFW_LINK ${PROJECT_SOURCE_DIR}/dependencies/library/libglfw.3.3.dylib)
 set(ASSIMP_LINK ${PROJECT_SOURCE_DIR}/dependencies/library/libassimp.dylib)
 set(LIB_LINK ${PROJECT_SOURCE_DIR}/dependencies/library/libzlibstatic.a)
+set(GLEW_LINK ${PROJECT_SOURCE_DIR}/dependencies/library/libGLEW.2.2.0.dylib)
+# set(GLEW_LIB ${PROJECT_SOURCE_DIR}/dependencies/library/libGLEW.a)
 
 link_libraries(${GLFW_LINK})
 link_libraries(${ASSIMP_LINK})
 link_libraries(${LIB_LINK})
+link_libraries(${GLEW_LINK})
 
 
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
