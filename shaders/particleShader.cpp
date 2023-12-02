@@ -19,8 +19,9 @@ void ParticleShader::loadCamera(const glm::mat4& view) {
 
 void ParticleShader::loadParticle(const Particle *particle, const glm::mat4& viewmtx) {
     auto modelmtx = particle->calculateModelMatrix();
+    // auto originMtx = modelmtx;
 
-    // Apply transpose of view matrix to make sure the particle always faces the camera.
+    // // Apply transpose of view matrix to make sure the particle always faces the camera.
     modelmtx[0][0] = viewmtx[0][0];
     modelmtx[0][1] = viewmtx[1][0];
     modelmtx[0][2] = viewmtx[2][0];
@@ -30,8 +31,13 @@ void ParticleShader::loadParticle(const Particle *particle, const glm::mat4& vie
     modelmtx[2][0] = viewmtx[0][2];
     modelmtx[2][1] = viewmtx[1][2];
     modelmtx[2][2] = viewmtx[2][2];
+    // 保存模型矩阵的旋转和缩放部分
+    // glm::mat4 rotationAndScale = modelmtx;
+    // loadUniformValue(location_model, rotationAndScale);
 
     loadUniformValue(location_model, modelmtx);
+
+
 }
 
 void ParticleShader::loadProjection(const glm::mat4& proj) {

@@ -12,4 +12,5 @@ out vec2 st;
 void main(void){
     gl_Position = projection * view * model * vec4(position, 1.0);
     st = vec2(tex_coord.x, 1.0 - tex_coord.y);
+    gl_PointSize = 0.001;
 }

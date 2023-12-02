@@ -88,7 +88,6 @@ std::vector<float> Loader::generateNormals(
     return resultNormals;
 }
 
-// http://stackoverflow.com/questions/12774207/fastest-way-to-check-if-a-file-exist-using-standard-c-c11-c
 inline bool Loader::fileExists(const std::string& name) {
     struct stat buffer{};
     return (stat(name.c_str(), &buffer) == 0);

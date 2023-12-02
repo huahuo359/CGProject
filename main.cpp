@@ -14,6 +14,7 @@
 #include "particles/particleSystem.h"
 #include "renders/ParticleManager.h"
 
+
 #include <iostream>
 
 #include <glm/glm.hpp>
@@ -623,8 +624,8 @@ void mainLoop() {
     GLuint dust_texture = Loader::getLoader()->loadTexture("image/dust_single.png");
     ParticleSystem particleSystem(30.0f, 3.0f, 0.2f, 0.5f, dust_texture);
 
-    GLuint snow_texture = Loader::getLoader()->loadTexture("image/snow.png");
-    ParticleSystem snowSystem(10.0f, 2.0f, 0.5f, 100.0f, snow_texture);
+    GLuint snow_texture = Loader::getLoader()->loadTexture("image/snow4.png");
+    ParticleSystem snowSystem(1500.0f, 0.2f, 0.02f, 100.0f, snow_texture);
 
     while (!glfwWindowShouldClose(new_window.get_window()))
     {
@@ -646,7 +647,7 @@ void mainLoop() {
                 particleSystem.generateParticles(player->getPosition() - player->calculateDirectionVector(), 100.0f);
             }
 
-            snowSystem.generateParticles(player->getPosition()+glm::vec3(0.0f,20.0f,0.0f), 20000.0f);
+            snowSystem.generateParticles(player->getPosition()+glm::vec3(0.0f,20.0f,0.0f), 200000.0f);
 
 //            skybox1.Draw();
 //            planet.Draw();

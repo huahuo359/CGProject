@@ -1,4 +1,4 @@
-//
+                                 //
 // Created by sirui lai on 2023/11/24.
 //
 #include "particleRenderer.h"
@@ -11,10 +11,10 @@ ParticleRenderer::ParticleRenderer() {
     // clang-format off
     // Create a square mesh encompassing the viewport
     std::vector<float> vertices = {
-            -0.5f, 0.5f, 0.0f,
-            -0.5f, -0.5f, 0.0f,
-            0.5f, -0.5f, 0.0f,
-            0.5f, 0.5f, 0.0f,
+            -0.05f, 0.05f, 0.0f,
+            -0.05f, -0.05f, 0.0f,
+            0.05f, -0.05f, 0.0f,
+            0.05f, 0.05f, 0.0f,
     };
 
     std::vector<float> texcoords = {
@@ -36,6 +36,7 @@ void ParticleRenderer::render(std::vector<Particle*> particles, glm::mat4 view, 
     shader.enable();
 
     glActiveTexture(GL_TEXTURE0);
+    glEnable(GL_DEPTH_TEST);
 
     glBindVertexArray(quad.getVaoID());
     glEnable(GL_BLEND);
@@ -50,6 +51,7 @@ void ParticleRenderer::render(std::vector<Particle*> particles, glm::mat4 view, 
 
     for (const auto& particle : particles) {
         shader.loadParticle(particle, view);
+        glPointSize(0.001f);
         glBindTexture(GL_TEXTURE_2D, particle->getTextureID());
         glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(quad.getIndexCount()), GL_UNSIGNED_INT, (void*)0);
     }
