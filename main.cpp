@@ -555,7 +555,7 @@ public:
     GLuint TextureNormal;
     std::vector<float> sphereVertices;  // 顶点属性
     std::vector<int> sphereIndices;     // 顶点索引
-    int PRECISE = 64;
+    int PRECISE = 640;
     unsigned int VBO, VAO;
     GLuint EBO;
 
@@ -568,9 +568,9 @@ public:
         // TextureNormal = loadDDS("image/planet/earth_normal.dds");
         // TextureSpecular = loadDDS("image/planet/earth_specular.dds");
 
-        TextureDiffuse = loadDDS("image/planet/arctic_01_diffuse.dds");
-        TextureNormal = loadDDS("image/planet/arctic_01_normal.dds");
-        TextureSpecular = loadDDS("image/planet/arctic_01_specular.dds");
+        TextureDiffuse = loadDDS("image/planet/molten_02_diffuse.dds");
+        TextureNormal = loadDDS("image/planet/molten_02_normal.dds");
+        TextureSpecular = loadDDS("image/planet/molten_02_specular.dds");
 
 
 
@@ -1018,16 +1018,18 @@ public:
 void mainLoop(GLFWwindow* window ) {
 
 
-    // vector<const GLchar*> faces;
-    // faces.push_back("image/skybox/right.jpg");
-    // faces.push_back("image/skybox/left.jpg");
-    // faces.push_back("image/skybox/bottom.jpg");
-    // faces.push_back("image/skybox/top.jpg");
-    // faces.push_back("image/skybox/back.jpg");
-    // faces.push_back("image/skybox/front.jpg");
+    vector<const GLchar*> faces;
+
+    faces.push_back("image/skybox/1.png");
+    faces.push_back("image/skybox/2.png");
+    faces.push_back("image/skybox/4.png");
+    faces.push_back("image/skybox/3.png");
+    faces.push_back("image/skybox/5.png");
+    faces.push_back("image/skybox/6.png");
    
    
-    // SkyBox skybox1(faces);
+   
+    SkyBox skybox1(faces);
     // Obj planet;
     // Car car;
     // Planet sun("image/planet/sun.jpg", 2);
@@ -1058,7 +1060,7 @@ void mainLoop(GLFWwindow* window ) {
 
         if(flag) {
             // close shot
-            //skybox1.Draw();
+            skybox1.Draw();
             //planet.Draw();
             //car.Draw();
             //sun.Draw();
@@ -1203,7 +1205,7 @@ GLuint loadCubemap(vector<const GLchar*> faces)
         } else {
             std::cout<< "[INFO] faile to load image" << std::endl;
         }
-        glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+        glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0, GL_RGB, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
         //glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
 
 

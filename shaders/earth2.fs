@@ -39,8 +39,11 @@ void main()
     vec4 SpecMap = texture(texture_specular, TexCoord).rgba;
 
     // 获取 normal map 中的法向量的值
-    vec3 norm = vec3(NormMap.ra*2.0 - 1.0, 0.0);
-    norm.z = sqrt(max(0.0, 1.0 - norm.x * norm.x - norm.y * norm.y));
+    // vec3 norm = vec3(NormMap.ra*2.0 - 1.0, 0.0);
+    // norm.z = sqrt(max(0.0, 1.0 - norm.x * norm.x - norm.y * norm.y));
+
+    vec3 norm = vec3(NormMap.ra * 2.0 - 1.0, 0.0);
+    norm.z = sqrt(1.0 - norm.x * norm.x - norm.y * norm.y);
 
 
     // 光滑度
