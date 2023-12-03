@@ -12,6 +12,8 @@
 #include "tools/camera.h"
 #include "tools/model.h"
 #include "tools/Gshader.h"
+// #include "ObjLoader.hpp"
+#include "Loader.hpp"
 
 #include <iostream>
 
@@ -918,6 +920,66 @@ class Elevator {
 
 class SpaceStation {
     /* load 空间站的模型 */
+public:
+    Shader spaceShader;
+    GLuint TextureDiffuse;
+    GLuint TextureNormal;
+    GLuint TextureSpecular;
+    ObjLoader obj;
+
+    SpaceStation(): spaceShader("shaders/space.vs", "shaders/space.fs"), obj("starbase/spyorb.obj") {
+        std::cout << "load our SpaceStation" << endl;
+        TextureDiffuse = loadDDS("starbase/diffuse.dds");
+        TextureNormal = loadDDS("starbase/normal.dds");
+        TextureSpecular = loadDDS("starbase/specular.dds");
+        std::cout << "load is ok" << endl;
+
+    }
+
+    void Draw() {
+        spaceShader.use();
+        spaceShader.setVec3("light.ambient", glm::vec3(0.05f, 0.05f, 0.05f)); 
+        spaceShader.setVec3("light.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+        spaceShader.setVec3("light.specular", glm::vec3(0.5f, 0.5f, 0.5f));
+        // spaceShader.setVec3("light.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
+        spaceShader.setVec3("viewPos", camera.Position);;
+
+        // set textures
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, TextureDiffuse);
+        spaceShader.setInt("texture_diffuse", 0);
+
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, TextureNormal);
+        spaceShader.setInt("texture_normal", 1);
+
+        glActiveTexture(GL_TEXTURE2);
+        glBindTexture(GL_TEXTURE_2D, TextureSpecular);
+        spaceShader.setInt("texture_specular", 2);
+
+        glm::mat4 view;
+        view = glm::lookAt(camera.Position, camera.Position + camera.Front, camera.Up);
+        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f));
+        glm::mat4 model = glm::mat4(1.0f);
+
+        
+        float angle = (GLfloat)glfwGetTime() * 3.5f;
+        model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+        model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.3f));
+
+        spaceShader.setMat4("projection", projection); 
+        spaceShader.setMat4("view", view);
+        spaceShader.setMat4("model", model);
+
+        spaceShader.setVec3("light.direction", glm::vec3(0.0f, 0.0f, -10.0f));
+
+        obj.Draw();
+
+    }
+    
+    
+
 };
 
 
@@ -1043,6 +1105,7 @@ void mainLoop(GLFWwindow* window ) {
 
     NormalEarth earth;
     Earth earth2("image/planet/earth_diffuse.png", 1);
+    SpaceStation space;
     
     while (!glfwWindowShouldClose(window))
     {
@@ -1064,9 +1127,10 @@ void mainLoop(GLFWwindow* window ) {
             //planet.Draw();
             //car.Draw();
             //sun.Draw();
-            earth.Draw();
-            earth2.Draw();
+            //earth.Draw();
+            //earth2.Draw();
             //surface.Draw();
+            space.Draw();
 
         } else {
             // near shot
