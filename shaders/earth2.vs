@@ -7,7 +7,6 @@ layout (location = 3) in vec3 atangent;
 out vec2 TexCoord;
 out vec3 TangentViewPos;
 out vec3 TangentFragPos;
-out vec3 TangentLightPos;
 out vec3 TangentLightDir;
 out vec3 TangentPointPos[4];
 
@@ -15,9 +14,9 @@ uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 uniform vec3 viewPos;
-uniform vec3 lightPos;  // 点光源的坐标
 uniform vec3 lightDir;  // 设置一个平行光源
 uniform vec3 pointPose[4];   // 设定一组点光源
+uniform int pointNum;
 
 void main()
 {
@@ -34,10 +33,10 @@ void main()
 
     TangentViewPos = TBN * viewPos;
     TangentFragPos = TBN * vec3(model * vec4(aPos, 1.0));
-    TangentLightPos = TBN * lightPos;
+  
     TangentLightDir = TBN * lightDir;
 
-    for(int i=0; i<4; i++)
+    for(int i=0; i<pointNum; i++)
         TangentPointPos[i] = TBN * pointPose[i];
 
 	

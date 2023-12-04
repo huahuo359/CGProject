@@ -548,34 +548,16 @@ public:
 
 };
 
-class NormalEarth {
-    
+
+class PlanetVertex {
 public:
-    Shader earthShader;
-    GLuint TextureDiffuse;
-    GLuint TextureSpecular;
-    GLuint TextureNormal;
     std::vector<float> sphereVertices;  // 顶点属性
     std::vector<int> sphereIndices;     // 顶点索引
     int PRECISE = 640;
     unsigned int VBO, VAO;
     GLuint EBO;
 
-    NormalEarth(): earthShader("shaders/earth2.vs", "shaders/earth2.fs"){
-        // TextureDiffuse = loadTexture("image/planet/earth_diffuse.png", 1);
-        // TextureNormal = loadTexture("image/planet/earth_normal.png", 1);
-        // TextureSpecular = loadTexture("image/planet/earth_specular.png",1);
-
-        // TextureDiffuse = loadDDS("image/planet/earth_diffuse.dds");
-        // TextureNormal = loadDDS("image/planet/earth_normal.dds");
-        // TextureSpecular = loadDDS("image/planet/earth_specular.dds");
-
-        TextureDiffuse = loadDDS("image/planet/molten_02_diffuse.dds");
-        TextureNormal = loadDDS("image/planet/molten_02_normal.dds");
-        TextureSpecular = loadDDS("image/planet/molten_02_specular.dds");
-
-
-
+    PlanetVertex() {
         float PI = 3.14159;
         // 生成球体的相关点数据
         for(int i=0; i<=PRECISE; ++i) {
@@ -669,6 +651,32 @@ public:
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
 
+    }
+
+
+};
+
+class NormalEarth: PlanetVertex {
+    
+public:
+    Shader earthShader;
+    GLuint TextureDiffuse;
+    GLuint TextureSpecular;
+    GLuint TextureNormal;
+ 
+
+    NormalEarth(): earthShader("shaders/earth2.vs", "shaders/earth2.fs"){
+        // TextureDiffuse = loadTexture("image/planet/earth_diffuse.png", 1);
+        // TextureNormal = loadTexture("image/planet/earth_normal.png", 1);
+        // TextureSpecular = loadTexture("image/planet/earth_specular.png",1);
+
+        TextureDiffuse = loadDDS("image/planet/continental_02_diffuse.dds");
+        TextureNormal = loadDDS("image/planet/continental_02_normal.dds");
+        TextureSpecular = loadDDS("image/planet/continental_02_specular.dds");
+
+        // TextureDiffuse = loadDDS("image/planet/molten_02_diffuse.dds");
+        // TextureNormal = loadDDS("image/planet/molten_02_normal.dds");
+        // TextureSpecular = loadDDS("image/planet/molten_02_specular.dds");
 
     }
 
@@ -678,8 +686,8 @@ public:
 
         
         earthShader.setVec3("LightInfo.ambient", glm::vec3(0.05f, 0.05f, 0.05f)); 
-        earthShader.setVec3("LightInfo.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
-        earthShader.setVec3("LightInfo.specular", glm::vec3(0.5f, 0.5f, 0.5f));
+        earthShader.setVec3("LightInfo.diffuse", glm::vec3(0.5f, 0.5f, 0.5f));
+        earthShader.setVec3("LightInfo.specular", glm::vec3(1.0f, 1.0f, 1.0f));
         earthShader.setVec3("viewPos", camera.Position);
         
         // set texture
@@ -719,7 +727,8 @@ public:
 
         GLfloat lightX = 3*std::cos((GLfloat)glfwGetTime() * 0.1f);
         GLfloat lightZ = 3*std::sin((GLfloat)glfwGetTime() * 0.1f);
-        earthShader.setVec3("lightPos", glm::vec3(x_earth1, 0.1f, 0.5f));
+       //earthShader.setVec3("lightPos", glm::vec3(x_earth1, 0.1f, 0.5f));
+        earthShader.setInt("pointNum", 0);
         earthShader.setVec3("pointPose[0]", glm::vec3(x_earth1 - 2.0f, 1.1f, z_earth1 + 2.0f));
         earthShader.setVec3("pointPose[1]", glm::vec3(x_earth1 + 2.0f, 1.1f, 0.5f));
         earthShader.setVec3("pointPose[2]", glm::vec3(x_earth1+lightX , -2.1f, lightZ+z_earth1 - 3.0f));
@@ -802,7 +811,7 @@ public:
 
         glm::vec3 earthPos = glm::vec3(x_earth1, 0.3f, z_earth1);
         glm::vec3 sunPos = glm::vec3(0.0f, 0.0f, -10.0f);
-        glm::vec3 lightDirection = earthPos - sunPos;
+        glm::vec3 lightDirection = -(earthPos - sunPos);
         earthShader.setVec3("light.direction", lightDirection);
 
 
@@ -1127,10 +1136,10 @@ void mainLoop(GLFWwindow* window ) {
             //planet.Draw();
             //car.Draw();
             //sun.Draw();
-            //earth.Draw();
+            earth.Draw();
             //earth2.Draw();
             //surface.Draw();
-            space.Draw();
+            //space.Draw();
 
         } else {
             // near shot
