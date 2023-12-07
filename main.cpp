@@ -667,8 +667,11 @@ public:
     static GLfloat Planex;
     static GLfloat Planey;
     static GLfloat Planez;
+    static glm::vec3 direction; //飞行器移动方向
+    static GLfloat theta1; // 飞行器绕 y 轴旋转的角度
+    static GLfloat theta2; // 飞行器绕 x 轴旋转的角度
 
-    Plane(): spaceShader("shaders/space.vs", "shaders/space.fs"), obj("plane/plane_04.obj"), 
+    Plane(): spaceShader("newshaders/plane.vs", "newshaders/plane.fs"), obj("plane/plane_04.obj"), 
     AABBShader("shaders/AABB.vs", "shaders/AABB.fs") {
         std::cout << "load our SpaceStation" << endl;
         TextureDiffuse = loadDDS("plane/plane_04_diffuse.dds");
@@ -721,9 +724,9 @@ public:
 
     void Draw() {
         spaceShader.use();
-        spaceShader.setVec3("light.ambient", glm::vec3(0.05f, 0.05f, 0.05f)); 
-        spaceShader.setVec3("light.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
-        spaceShader.setVec3("light.specular", glm::vec3(0.5f, 0.5f, 0.5f));
+        spaceShader.setVec3("LightInfo.ambient", glm::vec3(0.05f, 0.05f, 0.05f)); 
+        spaceShader.setVec3("LightInfo.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+        spaceShader.setVec3("LightInfo.specular", glm::vec3(0.5f, 0.5f, 0.5f));
         // spaceShader.setVec3("light.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
         spaceShader.setVec3("viewPos", camera.Position);;
 
@@ -750,14 +753,26 @@ public:
         float angle = (GLfloat)glfwGetTime() * 3.5f;
 
         model = glm::translate(model, glm::vec3(Planex, Planey, Planez));
+        model = glm::rotate(model, glm::radians(theta1), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(theta2), glm::vec3(1.0f, 0.0f, 0.0f));
         model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
-        //model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
+
+        glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(Plane::theta1), glm::vec3(0.0f, 1.0f, 0.0f));
+        rotationMatrix = glm::rotate(rotationMatrix, glm::radians(Plane::theta2), glm::vec3(1.0f, 0.0f, 0.0f));
+        // 将方向向量旋转
+        Plane::direction = glm::vec3(rotationMatrix * glm::vec4(0.0f, 0.0f, -1.0f, 0.0f));
+       
         
         spaceShader.setMat4("projection", projection); 
         spaceShader.setMat4("view", view);
         spaceShader.setMat4("model", model);
+        spaceShader.setInt("lightNum", 1);
+        spaceShader.setVec3("PointPos[0]", glm::vec3(Sun::xsun, Sun::ysun, Sun::zsun));
 
-        spaceShader.setVec3("light.direction", glm::vec3(0.0f, 0.0f, -10.0f));
+        // 设置点光源衰减的因子
+        spaceShader.setFloat("LightInfo.constant", 1.0f);
+        spaceShader.setFloat("LightInfo.linear", 0.19f);
+        spaceShader.setFloat("LightInfo.quadratic", 0.032f);
 
         obj.Draw();
 
@@ -773,6 +788,8 @@ public:
 
        // modelAABB = glm::scale(modelAABB, glm::vec3(0.1f,0.1f,0.1f));
         modelAABB = glm::translate(modelAABB, glm::vec3(Planex, Planey, Planez));
+        modelAABB = glm::rotate(modelAABB, glm::radians(theta1), glm::vec3(0.0f, 1.0f, 0.0f));
+        modelAABB = glm::rotate(modelAABB, glm::radians(theta2), glm::vec3(1.0f, 0.0f, 0.0f));
         modelAABB = glm::translate(modelAABB, aabbCenter);
         modelAABB = glm::scale(modelAABB, aabbSize);
         //modelAABB = glm::rotate(modelAABB,glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -813,6 +830,10 @@ public:
 GLfloat Plane::Planex = -1.0f;
 GLfloat Plane::Planey = 0.0f;
 GLfloat Plane::Planez = 0.0f;
+glm::vec3 Plane::direction = glm::vec3(0.0f, 0.0f, -1.0f);
+GLfloat Plane::theta2 = 0.0f;
+GLfloat Plane::theta1 = 0.0f;
+
 
 class SkyBox {
 public:
@@ -1006,6 +1027,54 @@ void processInput(GLFWwindow *window)
         camera.ProcessKeyboard(UP, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
         camera.ProcessKeyboard(DOWN, deltaTime);
+    
+    // 增加 plane 移动的键盘控制
+    if(glfwGetKey(window, GLFW_KEY_J)){
+        // 逆时针旋转方向
+        Plane::theta1 += 0.5f;
+    }
+
+    if(glfwGetKey(window, GLFW_KEY_L)) {
+        // 顺时针旋转方向
+        Plane::theta1 -= 0.5f;
+        
+    }
+
+    if(glfwGetKey(window, GLFW_KEY_U)){
+        // 逆时针旋转方向
+        Plane::theta2 += 0.5f;
+    }
+
+    if(glfwGetKey(window, GLFW_KEY_O)) {
+        // 顺时针旋转方向
+        Plane::theta2 -= 0.5f;
+
+        // 构造绕 y 轴逆时针旋转 theta1 角度的旋转矩阵
+        glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(Plane::theta1), glm::vec3(0.0f, 1.0f, 0.0f));
+
+        // 将方向向量旋转
+        Plane::direction = glm::vec3(rotationMatrix * glm::vec4(0.0f, 0.0f, -1.0f, 0.0f));
+        
+    }
+
+
+    if(glfwGetKey(window, GLFW_KEY_I)) {
+        // 向前移动
+        glm::vec3 pos = glm::vec3(Plane::Planex, Plane::Planey, Plane::Planez);
+        pos += 0.01f * Plane::direction;
+        Plane::Planex = pos.x;
+        Plane::Planey = pos.y;
+        Plane::Planez = pos.z;
+    }
+
+    if(glfwGetKey(window, GLFW_KEY_K)) {
+        // 向后移动
+        glm::vec3 pos = glm::vec3(Plane::Planex, Plane::Planey, Plane::Planez);
+        pos -= 0.01f * Plane::direction;
+        Plane::Planex = pos.x;
+        Plane::Planey = pos.y;
+        Plane::Planez = pos.z;
+    }
 
 }
 
