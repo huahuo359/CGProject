@@ -194,370 +194,17 @@ GLFWwindow* Init()
 }
 
 
-
-
-// Load Obj Class
-class Obj {
-
-public:
-    Model objModel;
-    Shader objShader;
-    GLuint TextureID;
-    GLuint TextureNormal;
-    GLuint TextureSpecular;
-
-
-    Obj(): objModel("plane/ship_03.obj"), objShader("shaders/earth.vs", "shaders/earth.fs") {
-        
-     
-        std::cout << "load our obj" << endl;
-        TextureID = loadTexture("plane/diffuse2.png", 1);
-        TextureNormal = loadTexture("plane/normal2.png", 1);
-        TextureSpecular = loadTexture("plane/specular2.png",1);
-
-    }
-
-    void Draw() {
-        objShader.use();
-
-        
-        objShader.setVec3("light.ambient", glm::vec3(0.05f, 0.05f, 0.05f)); 
-        objShader.setVec3("light.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
-        objShader.setVec3("light.specular", glm::vec3(0.5f, 0.5f, 0.5f));
-        // earthShader.setVec3("light.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
-        objShader.setVec3("viewPos", camera.Position);
-        
-        // set textures
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, TextureID);
-        objShader.setInt("texture_diffuse", 0);
-
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, TextureNormal);
-        objShader.setInt("texture_normal", 1);
-
-        glActiveTexture(GL_TEXTURE2);
-        glBindTexture(GL_TEXTURE_2D, TextureSpecular);
-        objShader.setInt("texture_specular", 2);
-       
-        glm::mat4 view;
-        view = glm::lookAt(camera.Position, camera.Position + camera.Front, camera.Up);
-        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f));
-        glm::mat4 model = glm::mat4(1.0f);
-
-        
-        float angle = (GLfloat)glfwGetTime() * 3.5f;
-        //model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
-        model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.3f));
-
-        objShader.setMat4("projection", projection); 
-        objShader.setMat4("view", view);
-        objShader.setMat4("model", model);
-
-        objShader.setVec3("light.direction", glm::vec3(0.0f, 0.0f, 10.0f));
-
-
-        objModel.Draw(objShader);
-    }
-
-
-};
-
-
-class Car {
-
-public:
-    Model objModel;
-    Shader objShader;
-    GLuint TextureID;
-    GLuint TextureNormal;
-    GLuint TextureSpecular;
-
-
-    Car(): objModel("truck/monster truck 3d model.obj"), objShader("shaders/car.vs", "shaders/car.fs") {
-        
-     
-        std::cout << "load our car" << endl;
-        TextureID = loadTexture("truck/truck2.png", 1);
-        TextureNormal = loadTexture("truck/normal.jpg", 2);
-        TextureSpecular = loadTexture("truck/specular.png",1);
-        std::cout << "load is ok" << endl;
-
-    }
-
-    void Draw() {
-        objShader.use();
-
-        
-        objShader.setVec3("light.ambient", glm::vec3(1.0f, 1.0f, 1.0f)); 
-        objShader.setVec3("light.diffuse", glm::vec3(0.0f, 0.0f, 0.0f));
-        objShader.setVec3("light.specular", glm::vec3(0.0f, 0.0f, 0.0f));
-        // earthShader.setVec3("light.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
-        objShader.setVec3("viewPos", camera.Position);
-        
-        // set textures
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, TextureID);
-        objShader.setInt("texture_diffuse", 0);
-
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, TextureNormal);
-        objShader.setInt("texture_normal", 1);
-
-        glActiveTexture(GL_TEXTURE2);
-        glBindTexture(GL_TEXTURE_2D, TextureSpecular);
-        objShader.setInt("texture_specular", 2);
-       
-        glm::mat4 view;
-        view = glm::lookAt(camera.Position, camera.Position + camera.Front, camera.Up);
-        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f));
-        glm::mat4 model = glm::mat4(1.0f);
-
-        
-        float angle = (GLfloat)glfwGetTime() * 3.5f;
-        model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
-        model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.3f));
-
-        objShader.setMat4("projection", projection); 
-        objShader.setMat4("view", view);
-        objShader.setMat4("model", model);
-
-        objShader.setVec3("light.direction", glm::vec3(0.0f, 0.0f, -10.0f));
-
-
-        objModel.Draw(objShader);
-    }
-
-
-};
-
-
-
-
-std::vector<GLfloat> controlPoints = {
-    -1.5f, 0.5f, 0.0f,
-    -0.5f, 0.5f, 0.0f,
-     0.5f, 0.5f, 0.0f,
-     1.5f, 0.5f, 0.0f,
-
-    -1.5f, 1.0f, 0.0f,
-    -0.5f, 1.0f, -1.0f,
-     0.5f, 1.0f, -1.0f,
-     1.5f, 1.0f, 0.0f,
-
-    -1.5f, 1.5f, 0.0f,
-    -0.5f, 1.5f, -2.0f,
-     0.5f, 1.5f, -2.0f,
-     1.5f, 1.5f, 0.0f,
-
-    -1.5f, 2.0f, 0.0f,
-    -0.5f, 2.0f, 0.0f,
-     0.5f, 2.0f, 0.0f,
-     1.5f, 2.0f, 0.0f,
-}; 
-
-class Bezier {
-public:
-
-
-    std::vector<float> points;
-    Shader shader;
-    unsigned int VBO, VAO;
-    GLuint EBO;
-
-    int Fact(int n) {
-        int res = 1;
-        if(n==0 || n==1) { return 1;}
-        
-        for(int i=1; i<=n; i++) {
-            res *= i;
-        }
-
-        return res;
-    }
-
-    int BinomialCoeff(int n, int i) {
-        return Fact(n)/(Fact(i)*Fact(n-i));
-    }
-
-    Bezier(): shader("shaders/bezier.vs", "shaders/bezier.fs") {
-        for(int i=0; i<400; ++i) {
-            float u = (float)i/400;
-            for(int j=0; j<400; ++j) {
-                float v = (float)j/400;
-                 // 计算二次贝塞尔曲面上的点
-                glm::vec3 point(0.0f, 0.0f, 0.0f);
-                for (int row = 0; row < 4; ++row) {
-                    float blendU = (float)BinomialCoeff(3, row) * glm::pow(1.0f - u, 3 - row) * glm::pow(u, row);
-                    for (int col = 0; col < 4; ++col) {
-                        
-                        float blendV = (float)BinomialCoeff(3, col) * glm::pow(1.0f - v, 3 - col) * glm::pow(v, col);
-                        point += blendU * blendV * glm::vec3(controlPoints[(row * 4 + col) * 3], controlPoints[(row * 4 + col) * 3 + 1], controlPoints[(row * 4 + col) * 3 + 2]);
-                }
-            }
-
-
-            points.push_back(point.x);
-            points.push_back(point.y);
-            points.push_back(point.z);
-
-
-            }
-        }
-
-        
-
-        glGenVertexArrays(1, &VAO);
-        glGenBuffers(1, &VBO);
-        glBindVertexArray(VAO);
-        glBindBuffer(GL_ARRAY_BUFFER, VBO);
-        glBufferData(GL_ARRAY_BUFFER, points.size() * sizeof(float), &points[0], GL_STATIC_DRAW);
-
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3*sizeof(float), (void*)0);
-        glEnableVertexAttribArray(0);
-        // unbind
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-        glBindVertexArray(0);
-
-    }
-
-    void Draw() {
-        shader.use();
-        shader.setInt("texture1", 1);
-       
-        glm::mat4 view;
-        view = glm::lookAt(camera.Position, camera.Position + camera.Front, camera.Up);
-        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-        glm::mat4 model = glm::mat4(1.0f);
-        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-    
-    
-        shader.setMat4("projection", projection); 
-        shader.setMat4("view", view);
-        shader.setMat4("model", model);
-
-        glEnable(GL_CULL_FACE);
-        glCullFace(GL_BACK);
-        glBindVertexArray(VAO);
-        glDrawArrays(GL_POINTS, 0, points.size() / 3);
-        glBindVertexArray(0);
-    }
-
-
-};
-
+/* Planet 父类生成球体的顶点属性 */
 class Planet {
-public:
-    std::vector<float> sphereVertices;
-    std::vector<int> sphereIndices;
-    Shader sunShader;
-    int PRECISE = 550;
-    unsigned int VBO, VAO;
-    GLuint EBO;
-    GLuint TextureID;
 
-    Planet(GLchar* path, int imagecase): sunShader("shaders/sphere.vs", "shaders/sphere.fs") {
-        float PI = 3.14159;
-        for(int r=0; r<=PRECISE; r++) {
-        for(int c=0; c<=PRECISE; c++) {
-            float theta = (float)c / float(PRECISE);
-            float phi = (float)r / float(PRECISE);
-            float xPos = std::sin(phi * PI) * std::cos(theta * 2.0f * PI);
-            float yPos = std::cos(phi * PI);
-            float zPos = std::sin(phi * PI) * std::sin(theta * 2.0f * PI);
-
-            sphereVertices.push_back(xPos);
-            sphereVertices.push_back(yPos);
-            sphereVertices.push_back(zPos);
-            sphereVertices.push_back(theta);
-            sphereVertices.push_back(phi);
-
-        }
-    }
-
-        for(int i=0; i<PRECISE; i++) {
-            for(int j=0; j<PRECISE; j++) {
-                sphereIndices.push_back(i * (PRECISE + 1) + j);
-                sphereIndices.push_back((i+1) * (PRECISE + 1) + j);
-                sphereIndices.push_back((i+1) * (PRECISE + 1) + j + 1);
-                sphereIndices.push_back(i * (PRECISE + 1) + j);
-                sphereIndices.push_back((i+1) * (PRECISE + 1) + j + 1);
-                sphereIndices.push_back(i * (PRECISE + 1) + j + 1);
-            }
-        }
-
-        glGenVertexArrays(1, &VAO);
-        glGenBuffers(1, &VBO);
-        glBindVertexArray(VAO);
-        glBindBuffer(GL_ARRAY_BUFFER, VBO);
-        glBufferData(GL_ARRAY_BUFFER, sphereVertices.size() * sizeof(float), &sphereVertices[0], GL_STATIC_DRAW);
-
-        glGenBuffers(1, &EBO);
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sphereIndices.size() * sizeof(int), &sphereIndices[0], GL_STATIC_DRAW);
-
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5*sizeof(float), (void*)0);
-        glEnableVertexAttribArray(0);
-        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-        glEnableVertexAttribArray(1);
-        // unbind
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-        glBindVertexArray(0);
-
-        TextureID = loadTexture(path, imagecase);
-
-    }
-
-    void Draw() {
-        sunShader.use();
-        sunShader.setInt("texture1", 1);
-        // draw sun
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, TextureID);
-       
-        glm::mat4 view;
-        view = glm::lookAt(camera.Position, camera.Position + camera.Front, camera.Up);
-        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f));
-        glm::mat4 model = glm::mat4(1.0f);
-        float x_sun = 0;
-        float z_sun = -10;
-        model = glm::translate(model, glm::vec3( x_sun,  0.0f, z_sun));
-        float angle = (GLfloat)glfwGetTime() * 25.0f;
-       
-        model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.3f));
-
-        sunShader.setMat4("projection", projection); 
-        sunShader.setMat4("view", view);
-        sunShader.setMat4("model", model);
-
-        glEnable(GL_CULL_FACE); 
-        glCullFace(GL_BACK);
-        glBindVertexArray(VAO);
-        //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        glDrawElements(GL_TRIANGLES, PRECISE*PRECISE*6, GL_UNSIGNED_INT, 0);
-
-    
-
-    }
-
-
-};
-
-
-class PlanetVertex {
 public:
     std::vector<float> sphereVertices;  // 顶点属性
     std::vector<int> sphereIndices;     // 顶点索引
-    int PRECISE = 640;
     unsigned int VBO, VAO;
     GLuint EBO;
+    int PRECISE = 640;
 
-    PlanetVertex() {
+    Planet() {
         float PI = 3.14159;
         // 生成球体的相关点数据
         for(int i=0; i<=PRECISE; ++i) {
@@ -614,13 +261,6 @@ public:
                 sphereIndices.push_back((i+1) * (PRECISE + 1) + j);
                 sphereIndices.push_back(i * (PRECISE + 1) + j + 1);
                 sphereIndices.push_back((i+1) * (PRECISE + 1) + j + 1);
-
-                // sphereIndices.push_back(i * (PRECISE + 1) + j);
-                // sphereIndices.push_back((i+1) * (PRECISE + 1) + j);
-                // sphereIndices.push_back((i+1) * (PRECISE + 1) + j + 1);
-                // sphereIndices.push_back(i * (PRECISE + 1) + j);
-                // sphereIndices.push_back((i+1) * (PRECISE + 1) + j + 1);
-                // sphereIndices.push_back(i * (PRECISE + 1) + j + 1);
             }
         }
 
@@ -653,30 +293,113 @@ public:
 
     }
 
+    
 
 };
 
-class NormalEarth: PlanetVertex {
+class Sun: Planet {
+
+public:
+    Shader sunShader;
+    GLuint TextureDiffuse;
+    GLuint TextureSpecular;
+    GLuint TextureNormal;
+    static GLfloat xsun;
+    static GLfloat ysun;
+    static GLfloat zsun;
+
+
+
+    Sun(): sunShader("shaders/earth2.vs", "shaders/earth2.fs") {
+        TextureDiffuse = loadDDS("image/planet/molten_02_diffuse.dds");
+        TextureNormal = loadDDS("image/planet/molten_02_normal.dds");
+        TextureSpecular = loadDDS("image/planet/molten_02_specular.dds");
+        // xsun = 0.0f;
+        // ysun = 0.0f;
+        // zsun = -4.0f;
+    }
+
+    void Draw() {
+        
+        sunShader.use();
+
+        
+        sunShader.setVec3("LightInfo.ambient", glm::vec3(1.0f, 1.0f, 1.0f)); 
+        sunShader.setVec3("LightInfo.diffuse", glm::vec3(0.5f, 0.5f, 0.5f));
+        sunShader.setVec3("LightInfo.specular", glm::vec3(1.0f, 1.0f, 1.0f));
+        sunShader.setVec3("viewPos", camera.Position);
+        
+        // set texture
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, TextureDiffuse);
+        sunShader.setInt("texture_diffuse", 0);
+
+        // set texture
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, TextureNormal);
+        sunShader.setInt("texture_normal", 1);
+
+        // set texture
+        glActiveTexture(GL_TEXTURE2);
+        glBindTexture(GL_TEXTURE_2D, TextureSpecular);
+        sunShader.setInt("texture_specular", 2);
+       
+        glm::mat4 view;
+        view = glm::lookAt(camera.Position, camera.Position + camera.Front, camera.Up);
+        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f));
+        glm::mat4 model = glm::mat4(1.0f);
+
+        GLfloat PI = 3.14159;
+        xsun = 0.0f;
+        ysun = 0.0f;
+        zsun = -10.0f;
+        model = glm::translate(model, glm::vec3( xsun,  ysun, zsun));
+        
+        // 太阳自转
+        float angle = (GLfloat)glfwGetTime() * 3.5f;
+        model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.3f));
+
+        sunShader.setMat4("projection", projection); 
+        sunShader.setMat4("view", view);
+        sunShader.setMat4("model", model);
+
+        sunShader.setFloat("LightInfo.constant", 1.0f);
+        sunShader.setFloat("LightInfo.linear", 0.19f);
+        sunShader.setFloat("LightInfo.quadratic", 0.032f);
+        sunShader.setInt("lightNum", 0);
+
+       
+        sunShader.setVec3("lightDir", glm::vec3(0.0f, 0.0f, 1.0f));
+        glBindVertexArray(VAO);
+        glDrawElements(GL_TRIANGLES, PRECISE*PRECISE*6, GL_UNSIGNED_INT, 0);
+    }
+
+
+};
+
+GLfloat Sun::xsun = 0.0f;
+GLfloat Sun::ysun = 0.0f;
+GLfloat Sun::zsun = -8.0f;
+
+
+class Earth : Planet{
     
 public:
     Shader earthShader;
     GLuint TextureDiffuse;
     GLuint TextureSpecular;
     GLuint TextureNormal;
- 
+    static GLfloat xearth;
+    static GLfloat yearth;
+    static GLfloat zearth;
+   
 
-    NormalEarth(): earthShader("shaders/earth2.vs", "shaders/earth2.fs"){
-        // TextureDiffuse = loadTexture("image/planet/earth_diffuse.png", 1);
-        // TextureNormal = loadTexture("image/planet/earth_normal.png", 1);
-        // TextureSpecular = loadTexture("image/planet/earth_specular.png",1);
-
+    Earth(): earthShader("newshaders/planet.vs", "newshaders/planet.fs"){
+       
         TextureDiffuse = loadDDS("image/planet/continental_02_diffuse.dds");
         TextureNormal = loadDDS("image/planet/continental_02_normal.dds");
         TextureSpecular = loadDDS("image/planet/continental_02_specular.dds");
-
-        // TextureDiffuse = loadDDS("image/planet/molten_02_diffuse.dds");
-        // TextureNormal = loadDDS("image/planet/molten_02_normal.dds");
-        // TextureSpecular = loadDDS("image/planet/molten_02_specular.dds");
 
     }
 
@@ -685,8 +408,8 @@ public:
         earthShader.use();
 
         
-        earthShader.setVec3("LightInfo.ambient", glm::vec3(0.05f, 0.05f, 0.05f)); 
-        earthShader.setVec3("LightInfo.diffuse", glm::vec3(0.5f, 0.5f, 0.5f));
+        earthShader.setVec3("LightInfo.ambient", glm::vec3(0.2f, 0.2f, 0.2f)); 
+        earthShader.setVec3("LightInfo.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
         earthShader.setVec3("LightInfo.specular", glm::vec3(1.0f, 1.0f, 1.0f));
         earthShader.setVec3("viewPos", camera.Position);
         
@@ -711,14 +434,20 @@ public:
         view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f));
         glm::mat4 model = glm::mat4(1.0f);
 
-        // float x_earth1 = 0 + 3*std::cos((GLfloat)glfwGetTime() * 0.5f);
-        // float z_earth1 = -10 + 3*std::sin((GLfloat)glfwGetTime() * 0.5f);
-        float x_earth1 = 0;
-        float z_earth1 = -4;
-        // model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
-        model = glm::translate(model, glm::vec3( x_earth1,  0.0f, z_earth1));
-        
-        float angle = (GLfloat)glfwGetTime() * 3.5f;
+
+        xearth = Sun::xsun + 4*std::cos((GLfloat)glfwGetTime() * 0.5f);
+        yearth = 1.0f;
+        zearth = Sun::zsun + 3*std::sin((GLfloat)glfwGetTime() * 0.5f);
+        xearth = Sun::xsun + 4*std::cos(3.14159f);
+        yearth = 1.0f;
+        zearth = Sun::zsun + 3*std::sin(3.14159f);
+     
+     
+    
+        model = glm::scale(model, glm::vec3(0.7f, 0.7f, 0.7f));
+        model = glm::translate(model, glm::vec3( xearth/0.7f,  yearth/0.7f, zearth/0.7f));
+     
+        float angle = (GLfloat)glfwGetTime() * 5.5f;
         model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.3f));
 
         earthShader.setMat4("projection", projection); 
@@ -727,126 +456,56 @@ public:
 
         GLfloat lightX = 3*std::cos((GLfloat)glfwGetTime() * 0.1f);
         GLfloat lightZ = 3*std::sin((GLfloat)glfwGetTime() * 0.1f);
-       //earthShader.setVec3("lightPos", glm::vec3(x_earth1, 0.1f, 0.5f));
-        earthShader.setInt("pointNum", 0);
-        earthShader.setVec3("pointPose[0]", glm::vec3(x_earth1 - 2.0f, 1.1f, z_earth1 + 2.0f));
-        earthShader.setVec3("pointPose[1]", glm::vec3(x_earth1 + 2.0f, 1.1f, 0.5f));
-        earthShader.setVec3("pointPose[2]", glm::vec3(x_earth1+lightX , -2.1f, lightZ+z_earth1 - 3.0f));
-        earthShader.setVec3("pointPose[3]", glm::vec3(x_earth1, 2.1f, z_earth1 - 2.0f));
 
-
-        glm::vec3 earthPos = glm::vec3(x_earth1, 0.0f, z_earth1);
-        glm::vec3 sunPos = glm::vec3(0.0f, 0.0f, -1.0f);
-        glm::vec3 lightDirection = -(earthPos - sunPos);
-        earthShader.setVec3("lightDir", lightDirection);
-
-
-
-        // glEnable(GL_CULL_FACE); 
-        // glCullFace(GL_BACK);
-        glBindVertexArray(VAO);
-        //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        glDrawElements(GL_TRIANGLES, PRECISE*PRECISE*6, GL_UNSIGNED_INT, 0);
-    }
-
-
-};
-
-class Earth : public Planet {
-public:
-
-    Shader earthShader;
-    GLuint TextureNormal;
-    GLuint TextureSpecular;
-    Earth(GLchar* path, int imagecase): Planet(path, imagecase), earthShader("shaders/earth.vs", "shaders/earth.fs") {
-        TextureNormal = loadTexture("image/planet/earth_normal.png", 1);
-        TextureSpecular = loadTexture("image/planet/earth_specular.png",1);
-    }
-
-    void Draw() {
-        
-        earthShader.use();
-
-        
-        earthShader.setVec3("light.ambient", glm::vec3(0.05f, 0.05f, 0.05f)); 
-        earthShader.setVec3("light.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
-        earthShader.setVec3("light.specular", glm::vec3(0.5f, 0.5f, 0.5f));
-        earthShader.setVec3("light.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
-        earthShader.setVec3("viewPos", camera.Position);
-        
-        // set texture
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, TextureID);
-        earthShader.setInt("texture_diffuse", 0);
-
-        // set texture
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, TextureNormal);
-        earthShader.setInt("texture_normal", 1);
-
-        // set texture
-        glActiveTexture(GL_TEXTURE2);
-        glBindTexture(GL_TEXTURE_2D, TextureSpecular);
-        earthShader.setInt("texture_specular", 2);
+        // 设置点光源衰减的系数
+        earthShader.setFloat("LightInfo.constant", 1.0f);
+        earthShader.setFloat("LightInfo.linear", 0.19f);
+        earthShader.setFloat("LightInfo.quadratic", 0.032f);
+        earthShader.setInt("lightNum", 1);
+        earthShader.setVec3("pointPose[0]", glm::vec3(Sun::xsun, Sun::ysun, Sun::zsun));
        
-        glm::mat4 view;
-        view = glm::lookAt(camera.Position, camera.Position + camera.Front, camera.Up);
-        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f));
-        glm::mat4 model = glm::mat4(1.0f);
-
-        float x_earth1 = 0 + 3*std::cos((GLfloat)glfwGetTime() * 0.5f);
-        float z_earth1 = -10 + 3*std::sin((GLfloat)glfwGetTime() * 0.5f);
-        x_earth1 = -3;
-        z_earth1 = -7;
-        model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
-        model = glm::translate(model, glm::vec3( x_earth1/0.5f,  0.3f/0.5f, z_earth1/0.5f));
-        
-        float angle = (GLfloat)glfwGetTime() * 3.5f;
-        model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.3f));
-
-        earthShader.setMat4("projection", projection); 
-        earthShader.setMat4("view", view);
-        earthShader.setMat4("model", model);
-
-        glm::vec3 earthPos = glm::vec3(x_earth1, 0.3f, z_earth1);
-        glm::vec3 sunPos = glm::vec3(0.0f, 0.0f, -10.0f);
-        glm::vec3 lightDirection = -(earthPos - sunPos);
-        earthShader.setVec3("light.direction", lightDirection);
-
-
-
-       // glEnable(GL_CULL_FACE); 
-       //glCullFace(GL_BACK);
         glBindVertexArray(VAO);
-        //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         glDrawElements(GL_TRIANGLES, PRECISE*PRECISE*6, GL_UNSIGNED_INT, 0);
     }
 
+
 };
+GLfloat Earth::xearth = 0.0f;
+GLfloat Earth::yearth = 0.0f;
+GLfloat Earth::zearth = 0.0f;
 
-class Moon: public Planet {
 
+class Moon: Planet {
 public:
-
-    GShader moonShader;
-    GLuint TextureNormal;
+    Shader moonShader;
+    GLuint TextureDiffuse;
     GLuint TextureSpecular;
-    Moon(GLchar* path, int imagecase): Planet(path, imagecase), moonShader("shaders/moon.vs", "shaders/moon.fs", "shaders/moon.gs") {
-        TextureNormal = loadTexture("image/planet/earth_normal.png", 1);
-        TextureSpecular = loadTexture("image/planet/earth_specular.png",1);
+    GLuint TextureNormal;
+    static GLfloat xmoon;
+    static GLfloat ymoon;
+    static GLfloat zmoon;
+
+    Moon(): moonShader("newshaders/planet.vs", "newshaders/planet.fs"){
+       
+        TextureDiffuse = loadDDS("image/planet/arctic_01_diffuse.dds");
+        TextureNormal = loadDDS("image/planet/arctic_01_normal.dds");
+        TextureSpecular = loadDDS("image/planet/arctic_01_specular.dds");
+
     }
 
     void Draw() {
+        
         moonShader.use();
-        moonShader.setVec3("light.ambient", glm::vec3(0.05f, 0.05f, 0.05f)); 
-        moonShader.setVec3("light.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
-        moonShader.setVec3("light.specular", glm::vec3(0.5f, 0.5f, 0.5f));
-        moonShader.setVec3("viewPos", camera.Position);
 
+        
+        moonShader.setVec3("LightInfo.ambient", glm::vec3(0.1f, 0.1f, 0.1f)); 
+        moonShader.setVec3("LightInfo.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+        moonShader.setVec3("LightInfo.specular", glm::vec3(1.0f, 1.0f, 1.0f));
+        moonShader.setVec3("viewPos", camera.Position);
+        
         // set texture
         glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, TextureID);
+        glBindTexture(GL_TEXTURE_2D, TextureDiffuse);
         moonShader.setInt("texture_diffuse", 0);
 
         // set texture
@@ -858,53 +517,55 @@ public:
         glActiveTexture(GL_TEXTURE2);
         glBindTexture(GL_TEXTURE_2D, TextureSpecular);
         moonShader.setInt("texture_specular", 2);
-
+       
         glm::mat4 view;
         view = glm::lookAt(camera.Position, camera.Position + camera.Front, camera.Up);
-        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 4.1f, 100.0f);
-        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -5.0f));
+        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f));
         glm::mat4 model = glm::mat4(1.0f);
 
-        float x_moon1 = 0 + 3*std::cos((GLfloat)glfwGetTime() * 0.5f);
-        float z_moon1 = -30 + 3*std::sin((GLfloat)glfwGetTime() * 0.5f);
-        x_moon1 = -3;
-        z_moon1 = -7;
-        // x_moon1 = 0;
-        // z_moon1 = 0;
-        model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
-        model = glm::translate(model, glm::vec3( x_moon1/0.5f,  0.3f/0.5f, z_moon1/0.5f));
-        
-        float angle = (GLfloat)glfwGetTime() * 3.5f;
+        // float x_earth1 = 0 + 3*std::cos((GLfloat)glfwGetTime() * 0.5f);
+        // float z_earth1 = -10 + 3*std::sin((GLfloat)glfwGetTime() * 0.5f);
+        xmoon = Earth::xearth + 1*std::cos((GLfloat)glfwGetTime() * 0.5f);
+        ymoon = 1.5f;
+        zmoon = Earth::zearth + 1*std::sin((GLfloat)glfwGetTime() * 0.5f);
+        xmoon = Earth::xearth + 1*std::cos(3.14159f);
+        ymoon = 1.5f;
+        zmoon = Earth::zearth + 1*std::sin(3.14159f);
+     
+    
+        model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
+        model = glm::translate(model, glm::vec3( xmoon/0.3f,  ymoon/0.3f, zmoon/0.3f));
+     
+        float angle = (GLfloat)glfwGetTime() * 0.5f;
         model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.3f));
 
         moonShader.setMat4("projection", projection); 
         moonShader.setMat4("view", view);
         moonShader.setMat4("model", model);
 
-        glm::vec3 earthPos = glm::vec3(x_moon1, 0.3f, z_moon1);
-        glm::vec3 sunPos = glm::vec3(0.0f, 0.0f, -10.0f);
-        glm::vec3 lightDirection = earthPos - sunPos;
-        moonShader.setVec3("light.direction", lightDirection);
+        GLfloat lightX = 3*std::cos((GLfloat)glfwGetTime() * 0.1f);
+        GLfloat lightZ = 3*std::sin((GLfloat)glfwGetTime() * 0.1f);
+        moonShader.setInt("lightNum", 1);
+        moonShader.setVec3("pointPose[0]", glm::vec3(Sun::xsun, Sun::ysun, Sun::zsun));
 
-        // Set time
-        moonShader.setFloat("time", static_cast<float>(glfwGetTime()));
-
-
-
-        glEnable(GL_CULL_FACE); 
-        glCullFace(GL_BACK);
+        // 设置点光源衰减的因子
+        moonShader.setFloat("LightInfo.constant", 1.0f);
+        moonShader.setFloat("LightInfo.linear", 0.19f);
+        moonShader.setFloat("LightInfo.quadratic", 0.032f);
+       
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, PRECISE*PRECISE*6, GL_UNSIGNED_INT, 0);
-
-
-
-
     }
 
-    
+
 
 
 };
+GLfloat Moon::xmoon = 0.0f;
+GLfloat Moon::ymoon = 0.0f;
+GLfloat Moon::zmoon = 0.0f;
+
 
 class Jupiter {
 
@@ -991,6 +652,167 @@ public:
 
 };
 
+
+class Plane {
+    /* load 飞行器的模型 */
+public:
+    Shader spaceShader;
+    Shader AABBShader;
+    GLuint TextureDiffuse;
+    GLuint TextureNormal;
+    GLuint TextureSpecular;
+    ObjLoader obj;
+    GLuint cubeVAO, cubeVBO, cubeEBO;
+    glm::vec4 vertices[8];  // 记录 AABBB 包围盒的坐标信息  
+    static GLfloat Planex;
+    static GLfloat Planey;
+    static GLfloat Planez;
+
+    Plane(): spaceShader("shaders/space.vs", "shaders/space.fs"), obj("plane/plane_04.obj"), 
+    AABBShader("shaders/AABB.vs", "shaders/AABB.fs") {
+        std::cout << "load our SpaceStation" << endl;
+        TextureDiffuse = loadDDS("plane/plane_04_diffuse.dds");
+        TextureNormal = loadDDS("plane/plane_04_normal.dds");
+        TextureSpecular = loadDDS("plane/plane_04_specular.dds");
+
+
+        GLfloat cubeVertices[] = {
+        -0.5f, -0.5f, -0.5f,
+         0.5f, -0.5f, -0.5f,
+         0.5f,  0.5f, -0.5f,
+        -0.5f,  0.5f, -0.5f,
+        -0.5f, -0.5f,  0.5f,
+         0.5f, -0.5f,  0.5f,
+         0.5f,  0.5f,  0.5f,
+        -0.5f,  0.5f,  0.5f,
+        };
+
+        GLuint cubeIndices[] = {
+            0, 1, 1, 2, 2, 3, 3, 0,
+            4, 5, 5, 6, 6, 7, 7, 4,
+            0, 4, 1, 5, 2, 6, 3, 7
+        };
+
+        glGenVertexArrays(1, &cubeVAO);
+        glGenBuffers(1, &cubeVBO);
+        glGenBuffers(1, &cubeEBO);
+
+        glBindVertexArray(cubeVAO);
+
+        glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVertices), cubeVertices, GL_STATIC_DRAW);
+
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cubeEBO);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(cubeIndices), cubeIndices, GL_STATIC_DRAW);
+
+        // 位置属性
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
+        glEnableVertexAttribArray(0);
+
+        // 解绑VAO
+        glBindVertexArray(0);
+
+
+
+
+        std::cout << "load is ok" << endl;
+
+    }
+
+    void Draw() {
+        spaceShader.use();
+        spaceShader.setVec3("light.ambient", glm::vec3(0.05f, 0.05f, 0.05f)); 
+        spaceShader.setVec3("light.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+        spaceShader.setVec3("light.specular", glm::vec3(0.5f, 0.5f, 0.5f));
+        // spaceShader.setVec3("light.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
+        spaceShader.setVec3("viewPos", camera.Position);;
+
+        // set textures
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, TextureDiffuse);
+        spaceShader.setInt("texture_diffuse", 0);
+
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, TextureNormal);
+        spaceShader.setInt("texture_normal", 1);
+
+        glActiveTexture(GL_TEXTURE2);
+        glBindTexture(GL_TEXTURE_2D, TextureSpecular);
+        spaceShader.setInt("texture_specular", 2);
+
+        glm::mat4 view;
+        view = glm::lookAt(camera.Position, camera.Position + camera.Front, camera.Up);
+        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -2.0f));
+        glm::mat4 model = glm::mat4(1.0f);
+
+        
+        float angle = (GLfloat)glfwGetTime() * 3.5f;
+
+        model = glm::translate(model, glm::vec3(Planex, Planey, Planez));
+        model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+        //model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
+        
+        spaceShader.setMat4("projection", projection); 
+        spaceShader.setMat4("view", view);
+        spaceShader.setMat4("model", model);
+
+        spaceShader.setVec3("light.direction", glm::vec3(0.0f, 0.0f, -10.0f));
+
+        obj.Draw();
+
+
+        // 绘制 AABB 包围盒
+        AABBShader.use();
+        // 绘制线框立方体
+        glm::mat4 modelAABB = glm::mat4(1.0f);
+        glm::vec3 aabbSize = obj.maxCoords - obj.minCoords;
+        glm::vec3 aabbCenter = (obj.maxCoords + obj.minCoords) * 0.5f;
+        aabbSize *= 0.1f;
+        aabbCenter *= 0.1f;
+
+       // modelAABB = glm::scale(modelAABB, glm::vec3(0.1f,0.1f,0.1f));
+        modelAABB = glm::translate(modelAABB, glm::vec3(Planex, Planey, Planez));
+        modelAABB = glm::translate(modelAABB, aabbCenter);
+        modelAABB = glm::scale(modelAABB, aabbSize);
+        //modelAABB = glm::rotate(modelAABB,glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
+        
+        
+
+        
+        AABBShader.setMat4("projection", projection);
+        AABBShader.setMat4("view", view);
+        AABBShader.setMat4("model", modelAABB);
+
+        // 记录包围盒顶点信息
+        vertices[0] = modelAABB * glm::vec4(obj.minCoords.x, obj.minCoords.y, obj.minCoords.z, 1.0f);
+        vertices[1] = modelAABB * glm::vec4(obj.maxCoords.x, obj.minCoords.y, obj.minCoords.z, 1.0f);
+        vertices[2] = modelAABB * glm::vec4(obj.maxCoords.x, obj.maxCoords.y, obj.minCoords.z, 1.0f);
+        vertices[3] = modelAABB * glm::vec4(obj.minCoords.x, obj.maxCoords.y, obj.minCoords.z, 1.0f);
+        vertices[4] = modelAABB * glm::vec4(obj.minCoords.x, obj.minCoords.y, obj.maxCoords.z, 1.0f);
+        vertices[5] = modelAABB * glm::vec4(obj.maxCoords.x, obj.minCoords.y, obj.maxCoords.z, 1.0f);
+        vertices[6] = modelAABB * glm::vec4(obj.maxCoords.x, obj.maxCoords.y, obj.maxCoords.z, 1.0f);
+        vertices[7] = modelAABB * glm::vec4(obj.minCoords.x, obj.maxCoords.y, obj.maxCoords.z, 1.0f);
+
+
+        glEnable(GL_DEPTH_TEST);
+        glBindVertexArray(cubeVAO);
+        glDrawElements(GL_LINES, 24, GL_UNSIGNED_INT, 0);
+        //glBindVertexArray(0);
+
+
+
+    }
+
+
+    
+    
+
+};
+
+GLfloat Plane::Planex = -1.0f;
+GLfloat Plane::Planey = 0.0f;
+GLfloat Plane::Planez = 0.0f;
 
 class SkyBox {
 public:
@@ -1109,12 +931,13 @@ void mainLoop(GLFWwindow* window ) {
     // Bezier bezier;
     bool flag = true;
     //bool flag = false;
+    Sun sun;
+    Earth earth;
+    Moon moon;
 
-    Bezier surface;
-
-    NormalEarth earth;
-    Earth earth2("image/planet/earth_diffuse.png", 1);
+   
     SpaceStation space;
+    Plane plane;
     
     while (!glfwWindowShouldClose(window))
     {
@@ -1131,15 +954,14 @@ void mainLoop(GLFWwindow* window ) {
         
 
         if(flag) {
-            // close shot
+           
             skybox1.Draw();
-            //planet.Draw();
-            //car.Draw();
-            //sun.Draw();
+         
+            plane.Draw();
+            sun.Draw();
+            moon.Draw();
             earth.Draw();
-            //earth2.Draw();
-            //surface.Draw();
-            //space.Draw();
+        
 
         } else {
             // near shot

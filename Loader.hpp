@@ -12,9 +12,13 @@ using namespace std;
 
 class ObjLoader {
 
-private:
+public:
     GLuint VAO, VBO;
     int totalNum;
+
+    // 计算 AABB 包围盒
+    glm::vec3 minCoords;
+    glm::vec3 maxCoords;
 
 public:
     ObjLoader(string file) {
@@ -106,13 +110,27 @@ public:
 
         // 文件内容读取结束
         objFile.close();
+
+        minCoords = glm::vec3(std::numeric_limits<float>::max());
+        maxCoords = glm::vec3(std::numeric_limits<float>::lowest());
+
+
         totalNum = vertexIndex.size();
 
             for(int i=0; i<totalNum; ++i) {
+                // buffer 中添加顶点坐标
                 buffer.push_back(vertexCoords[3 * vertexIndex[i] + 0]);
                 buffer.push_back(vertexCoords[3 * vertexIndex[i] + 1]);
                 buffer.push_back(vertexCoords[3 * vertexIndex[i] + 2]);
 
+                glm::vec3 vertex = glm::vec3(vertexCoords[3 * vertexIndex[i] + 0],
+                                             vertexCoords[3 * vertexIndex[i] + 1],
+                                             vertexCoords[3 * vertexIndex[i] + 2]);
+                // 在遍历的过程中求出最大最小的顶点坐标
+                minCoords = glm::min(minCoords, vertex);
+                maxCoords = glm::max(maxCoords, vertex);
+
+                // buffer 中添加纹理坐标
                 if(textureIndex[i] == -1) {
                     buffer.push_back(0.0f);
                     buffer.push_back(0.0f);
@@ -121,6 +139,7 @@ public:
                     buffer.push_back(1.0f - textureCoords[2*textureIndex[i] + 1]);
                 }
 
+                // buffer 中添加法向量
                 buffer.push_back(normalVectors[3 * normalIndex[i] + 0]);
                 buffer.push_back(normalVectors[3 * normalIndex[i] + 1]);
                 buffer.push_back(normalVectors[3 * normalIndex[i] + 2]);
