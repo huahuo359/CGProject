@@ -14,7 +14,7 @@
 #include "tools/Gshader.h"
 // #include "ObjLoader.hpp"
 #include "Loader.hpp"
-
+#include <math.h>
 #include <iostream>
 
 
@@ -202,7 +202,7 @@ public:
     std::vector<int> sphereIndices;     // 顶点索引
     unsigned int VBO, VAO;
     GLuint EBO;
-    int PRECISE = 640;
+    int PRECISE = 64;
 
     Planet() {
         float PI = 3.14159;
@@ -380,7 +380,7 @@ public:
 
 GLfloat Sun::xsun = 0.0f;
 GLfloat Sun::ysun = 0.0f;
-GLfloat Sun::zsun = -8.0f;
+GLfloat Sun::zsun = -10.0f;
 
 
 class Earth : Planet{
@@ -390,16 +390,19 @@ public:
     GLuint TextureDiffuse;
     GLuint TextureSpecular;
     GLuint TextureNormal;
+    GLuint TextureDisp;
     static GLfloat xearth;
     static GLfloat yearth;
     static GLfloat zearth;
    
 
-    Earth(): earthShader("newshaders/planet.vs", "newshaders/planet.fs"){
+    Earth(): earthShader("newshaders/disp.vs", "newshaders/disp.fs"){
        
-        TextureDiffuse = loadDDS("image/planet/continental_02_diffuse.dds");
-        TextureNormal = loadDDS("image/planet/continental_02_normal.dds");
-        TextureSpecular = loadDDS("image/planet/continental_02_specular.dds");
+        TextureDiffuse = loadDDS("image/planet/earth_diffuse.dds");
+        TextureNormal = loadDDS("image/planet/earth_normal.dds");
+        TextureSpecular = loadDDS("image/planet/earth_specular.dds");
+        TextureDisp = loadTexture("image/planet/earth_disp.jpg",2);  // for jpg
+
 
     }
 
@@ -409,7 +412,7 @@ public:
 
         
         earthShader.setVec3("LightInfo.ambient", glm::vec3(0.2f, 0.2f, 0.2f)); 
-        earthShader.setVec3("LightInfo.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+        earthShader.setVec3("LightInfo.diffuse", glm::vec3(1.5f, 1.5f, 1.5f));
         earthShader.setVec3("LightInfo.specular", glm::vec3(1.0f, 1.0f, 1.0f));
         earthShader.setVec3("viewPos", camera.Position);
         
@@ -427,6 +430,11 @@ public:
         glActiveTexture(GL_TEXTURE2);
         glBindTexture(GL_TEXTURE_2D, TextureSpecular);
         earthShader.setInt("texture_specular", 2);
+
+        // set texture
+        glActiveTexture(GL_TEXTURE3);
+        glBindTexture(GL_TEXTURE_2D, TextureDisp);
+        earthShader.setInt("texture_disp", 3);
        
         glm::mat4 view;
         view = glm::lookAt(camera.Position, camera.Position + camera.Front, camera.Up);
@@ -461,8 +469,9 @@ public:
         earthShader.setFloat("LightInfo.constant", 1.0f);
         earthShader.setFloat("LightInfo.linear", 0.19f);
         earthShader.setFloat("LightInfo.quadratic", 0.032f);
-        earthShader.setInt("lightNum", 1);
+        earthShader.setInt("lightNum", 2);
         earthShader.setVec3("pointPose[0]", glm::vec3(Sun::xsun, Sun::ysun, Sun::zsun));
+        earthShader.setVec3("pointPose[1]", glm::vec3(0.0f, 0.0f, -1.0f));
        
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, PRECISE*PRECISE*6, GL_UNSIGNED_INT, 0);
@@ -470,9 +479,9 @@ public:
 
 
 };
-GLfloat Earth::xearth = 0.0f;
-GLfloat Earth::yearth = 0.0f;
-GLfloat Earth::zearth = 0.0f;
+GLfloat Earth::xearth = Sun::xsun + 4*std::cos(3.14159f);
+GLfloat Earth::yearth = 1.0f;
+GLfloat Earth::zearth = Sun::zsun + 3*std::sin(3.14159f);
 
 
 class Moon: Planet {
@@ -490,7 +499,7 @@ public:
         TextureDiffuse = loadDDS("image/planet/arctic_01_diffuse.dds");
         TextureNormal = loadDDS("image/planet/arctic_01_normal.dds");
         TextureSpecular = loadDDS("image/planet/arctic_01_specular.dds");
-
+       
     }
 
     void Draw() {
@@ -829,10 +838,263 @@ public:
 
 GLfloat Plane::Planex = -1.0f;
 GLfloat Plane::Planey = 0.0f;
-GLfloat Plane::Planez = 0.0f;
+GLfloat Plane::Planez = -5.0f;
 glm::vec3 Plane::direction = glm::vec3(0.0f, 0.0f, -1.0f);
 GLfloat Plane::theta2 = 0.0f;
 GLfloat Plane::theta1 = 0.0f;
+
+
+
+class Stone {
+    /* load 陨石的模型 */
+public:
+    Shader spaceShader;
+    Shader AABBShader;
+    GLuint TextureDiffuse;
+    GLuint TextureNormal;
+    GLuint TextureSpecular;
+    ObjLoader obj;
+    GLuint cubeVAO, cubeVBO, cubeEBO;
+    glm::vec4 vertices[8];  // 记录 AABBB 包围盒的坐标信息  
+    GLfloat Stonex;
+    GLfloat Stoney;
+    GLfloat Stonez;
+    glm::vec3 direction;    // 陨石移动的方向
+
+    glm::vec3 aabbSize;
+    glm::vec3 aabbCenter;
+
+
+    Stone(): spaceShader("newshaders/plane.vs", "newshaders/plane.fs"), obj("stone/asteroid_05.obj"), 
+    AABBShader("shaders/AABB.vs", "shaders/AABB.fs") {
+        Stonex = -2.0f;
+        Stoney = 0.0f;
+        Stonez = -6.0f;
+        TextureDiffuse = loadDDS("stone/asteroid_01_diffuse.dds");
+        TextureNormal = loadDDS("stone/asteroid_01_normal.dds");
+        TextureSpecular = loadDDS("stone/asteroid_01_specular.dds");
+
+        aabbSize = obj.maxCoords - obj.minCoords;
+        aabbCenter = (obj.maxCoords + obj.minCoords) * 0.5f;
+        // 陨石的缩放因子是 0.1 对于不同的 scale 需要进行调整
+        aabbSize *= 0.1f;
+        aabbCenter *= 0.1f;
+        std::cout << "Center: " << aabbCenter.x << "," << aabbCenter.y << "," << aabbCenter.z << std::endl; 
+
+
+
+        GLfloat cubeVertices[] = {
+        -0.5f, -0.5f, -0.5f,
+         0.5f, -0.5f, -0.5f,
+         0.5f,  0.5f, -0.5f,
+        -0.5f,  0.5f, -0.5f,
+        -0.5f, -0.5f,  0.5f,
+         0.5f, -0.5f,  0.5f,
+         0.5f,  0.5f,  0.5f,
+        -0.5f,  0.5f,  0.5f,
+        };
+
+        GLuint cubeIndices[] = {
+            0, 1, 1, 2, 2, 3, 3, 0,
+            4, 5, 5, 6, 6, 7, 7, 4,
+            0, 4, 1, 5, 2, 6, 3, 7
+        };
+
+        glGenVertexArrays(1, &cubeVAO);
+        glGenBuffers(1, &cubeVBO);
+        glGenBuffers(1, &cubeEBO);
+
+        glBindVertexArray(cubeVAO);
+
+        glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVertices), cubeVertices, GL_STATIC_DRAW);
+
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cubeEBO);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(cubeIndices), cubeIndices, GL_STATIC_DRAW);
+
+        // 位置属性
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
+        glEnableVertexAttribArray(0);
+
+        // 解绑VAO
+        glBindVertexArray(0);
+
+
+
+
+        std::cout << "load is ok" << endl;
+
+    }
+
+    void Draw() {
+        spaceShader.use();
+        spaceShader.setVec3("LightInfo.ambient", glm::vec3(0.55f, 0.55f, 0.55f)); 
+        spaceShader.setVec3("LightInfo.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+        spaceShader.setVec3("LightInfo.specular", glm::vec3(0.5f, 0.5f, 0.5f));
+        // spaceShader.setVec3("light.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
+        spaceShader.setVec3("viewPos", camera.Position);;
+
+        // set textures
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, TextureDiffuse);
+        spaceShader.setInt("texture_diffuse", 0);
+
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, TextureNormal);
+        spaceShader.setInt("texture_normal", 1);
+
+        glActiveTexture(GL_TEXTURE2);
+        glBindTexture(GL_TEXTURE_2D, TextureSpecular);
+        spaceShader.setInt("texture_specular", 2);
+
+        glm::mat4 view;
+        view = glm::lookAt(camera.Position, camera.Position + camera.Front, camera.Up);
+        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -2.0f));
+        glm::mat4 model = glm::mat4(1.0f);
+
+        
+        float angle = (GLfloat)glfwGetTime() * 3.5f;
+
+        // 先把 obj model 的中心平移到 （0，0，0）
+        // 经过平移后 （stonex, stoney, stonez）可以代表陨石的中心坐标
+        model = glm::translate(model, -aabbCenter);
+       model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+       model = glm::translate(model, glm::vec3(Stonex/0.1f, Stoney/0.1f, Stonez/0.1f));
+    
+
+        // model = glm::rotate(model, glm::radians(theta1), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model = glm::rotate(model, glm::radians(theta2), glm::vec3(1.0f, 0.0f, 0.0f));
+        
+        glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(Plane::theta1), glm::vec3(0.0f, 1.0f, 0.0f));
+        rotationMatrix = glm::rotate(rotationMatrix, glm::radians(Plane::theta2), glm::vec3(1.0f, 0.0f, 0.0f));
+        // 将方向向量旋转
+        Plane::direction = glm::vec3(rotationMatrix * glm::vec4(0.0f, 0.0f, -1.0f, 0.0f));
+       
+        
+        spaceShader.setMat4("projection", projection); 
+        spaceShader.setMat4("view", view);
+        spaceShader.setMat4("model", model);
+        spaceShader.setInt("lightNum", 1);
+        spaceShader.setVec3("PointPos[0]", glm::vec3(Sun::xsun, Sun::ysun, Sun::zsun));
+
+        // 设置点光源衰减的因子
+        spaceShader.setFloat("LightInfo.constant", 1.0f);
+        spaceShader.setFloat("LightInfo.linear", 0.19f);
+        spaceShader.setFloat("LightInfo.quadratic", 0.032f);
+
+        obj.Draw();
+
+
+        // 绘制 AABB 包围盒
+        AABBShader.use();
+        // 绘制线框立方体
+        glm::mat4 modelAABB = glm::mat4(1.0f);
+      
+   
+       // modelAABB = glm::scale(modelAABB, glm::vec3(0.1f,0.1f,0.1f));
+        modelAABB = glm::translate(modelAABB, glm::vec3(Stonex, Stoney, Stonez));
+        // modelAABB = glm::rotate(modelAABB, glm::radians(theta1), glm::vec3(0.0f, 1.0f, 0.0f));
+        // modelAABB = glm::rotate(modelAABB, glm::radians(theta2), glm::vec3(1.0f, 0.0f, 0.0f));
+        modelAABB = glm::translate(modelAABB, aabbCenter);  // 注意生成的球体的中心坐标是 （0，0，0）在计算 obj 的坐标时有 aabbCenter 的偏移
+        modelAABB = glm::scale(modelAABB, aabbSize);
+        //modelAABB = glm::rotate(modelAABB,glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
+        
+        
+
+        
+        AABBShader.setMat4("projection", projection);
+        AABBShader.setMat4("view", view);
+        AABBShader.setMat4("model", modelAABB);
+
+        // 记录包围盒顶点信息
+        vertices[0] = modelAABB * glm::vec4(obj.minCoords.x, obj.minCoords.y, obj.minCoords.z, 1.0f);
+        vertices[1] = modelAABB * glm::vec4(obj.maxCoords.x, obj.minCoords.y, obj.minCoords.z, 1.0f);
+        vertices[2] = modelAABB * glm::vec4(obj.maxCoords.x, obj.maxCoords.y, obj.minCoords.z, 1.0f);
+        vertices[3] = modelAABB * glm::vec4(obj.minCoords.x, obj.maxCoords.y, obj.minCoords.z, 1.0f);
+        vertices[4] = modelAABB * glm::vec4(obj.minCoords.x, obj.minCoords.y, obj.maxCoords.z, 1.0f);
+        vertices[5] = modelAABB * glm::vec4(obj.maxCoords.x, obj.minCoords.y, obj.maxCoords.z, 1.0f);
+        vertices[6] = modelAABB * glm::vec4(obj.maxCoords.x, obj.maxCoords.y, obj.maxCoords.z, 1.0f);
+        vertices[7] = modelAABB * glm::vec4(obj.minCoords.x, obj.maxCoords.y, obj.maxCoords.z, 1.0f);
+
+
+        glEnable(GL_DEPTH_TEST);
+        glBindVertexArray(cubeVAO);
+        glDrawElements(GL_LINES, 24, GL_UNSIGNED_INT, 0);
+        //glBindVertexArray(0);
+
+
+
+    }
+
+
+    
+    
+
+};
+
+// 对多个陨石进行管理
+// 陨石被击中则将其删除不再显示
+class StoneManager {
+public:
+    int num;    // 陨石总数
+    std::vector<Stone> Stones;
+
+    StoneManager() {
+        num = 4;
+
+        for(int i=0; i<4; ++i) {
+            Stone newStone;
+            // 对陨石生成不同的位置
+            std::cout << "stone :" << i << std::endl;
+            
+            newStone.Stonex = -2.0f + (rand()%2) - 1.0f;
+            newStone.Stoney = 0.0f + (rand()%2) - 1.0f;
+            newStone.Stonez = -8.0f + (rand()%2) - 1.0f;
+
+            // 陨石初始的运动方向指向当前地球的位置
+            // 随着地球的移动后续会对方向进行调整
+            glm::vec3 pos = glm::vec3(newStone.Stonex, newStone.Stoney, newStone.Stonez);
+            glm::vec3 earthPos = glm::vec3(Earth::xearth, Earth::yearth, Earth::zearth);
+            glm::vec3 direction = earthPos - pos;
+            newStone.direction = direction;
+            
+
+            Stones.push_back(newStone);
+        }
+
+
+
+    }
+
+    void Draw() {
+        for(int i=0; i<Stones.size(); ++i) {
+            // 每次绘制时将陨石按照响应的方向进行移动
+            // 每间隔一段时间对方向进行调整
+            glm::vec3 pos = glm::vec3(Stones[i].Stonex, Stones[i].Stoney, Stones[i].Stonez);
+            
+            // 地球的坐标是 (x, y, z-2)
+           glm::vec3 earthPos = glm::vec3(Earth::xearth, Earth::yearth, Earth::zearth-2.0f);
+           
+            glm::vec3 direction = glm::normalize(earthPos - pos);
+            Stones[i].direction = direction;
+           //glm::vec3 pos = glm::vec3(Stones[i].Stonex, Stones[i].Stoney, Stones[i].Stonez);
+            pos += 0.005f*Stones[i].direction;
+            Stones[i].Stonex = pos.x;
+            Stones[i].Stoney = pos.y;
+            Stones[i].Stonez = pos.z;
+        
+
+            Stones[i].Draw();
+        }
+    }
+
+
+
+};
+
+
+
 
 
 class SkyBox {
@@ -959,6 +1221,7 @@ void mainLoop(GLFWwindow* window ) {
    
     SpaceStation space;
     Plane plane;
+    StoneManager stones;
     
     while (!glfwWindowShouldClose(window))
     {
@@ -982,6 +1245,7 @@ void mainLoop(GLFWwindow* window ) {
             sun.Draw();
             moon.Draw();
             earth.Draw();
+            stones.Draw();
         
 
         } else {

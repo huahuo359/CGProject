@@ -30,10 +30,17 @@ uniform sampler2D texture_specular;
 uniform int lightNum;    // 点光源的个数
 
 
+// 返回经过位移的纹理坐标
+vec2 ParallaxMapping(vec2 texCoords, vec3 viewDir);
+
+
 
 void main()
 {
 	
+    vec3 viewDir = normalize(TangentViewPos - TangentFragPos);
+    vec2 disTexCoord = ParallaxMapping(TexCoord, viewDir);
+    
     vec4 NormMap = texture(texture_normal, TexCoord).rgba;
     vec4 DiffMap = texture(texture_diffuse, TexCoord).rgba;
     vec4 SpecMap = texture(texture_specular, TexCoord).rgba;
@@ -50,8 +57,6 @@ void main()
     // Speculat 强度
     float SpecularStrength = SpecMap.g * 0.5;
 
-
-    vec3 viewDir = normalize(TangentViewPos - TangentFragPos);
     vec3 Color = vec3(0., 0., 0.);
 
     for(int i = 0; i < lightNum; i++){
@@ -83,4 +88,12 @@ void main()
 
 	FragColor = vec4( Color, DiffMap.a);
    
+}
+
+// 返回经过位移的纹理坐标
+vec2 ParallaxMapping(vec2 texCoords, vec3 viewDir)
+{ 
+    float height =  texture(texture_specular, texCoords).r;    
+    vec2 p = viewDir.xy / viewDir.z * (height);
+    return texCoords - p;    
 }
