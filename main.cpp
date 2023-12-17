@@ -790,19 +790,24 @@ public:
         AABBShader.use();
         // 绘制线框立方体
         glm::mat4 modelAABB = glm::mat4(1.0f);
+        
+        
         glm::vec3 aabbSize = obj.maxCoords - obj.minCoords;
         glm::vec3 aabbCenter = (obj.maxCoords + obj.minCoords) * 0.5f;
         aabbSize *= 0.1f;
         aabbCenter *= 0.1f;
 
-       // modelAABB = glm::scale(modelAABB, glm::vec3(0.1f,0.1f,0.1f));
+   
         modelAABB = glm::translate(modelAABB, glm::vec3(Planex, Planey, Planez));
         modelAABB = glm::rotate(modelAABB, glm::radians(theta1), glm::vec3(0.0f, 1.0f, 0.0f));
         modelAABB = glm::rotate(modelAABB, glm::radians(theta2), glm::vec3(1.0f, 0.0f, 0.0f));
         modelAABB = glm::translate(modelAABB, aabbCenter);
         modelAABB = glm::scale(modelAABB, aabbSize);
-        //modelAABB = glm::rotate(modelAABB,glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
         
+
+        // 测试 sun 的准确坐标位置
+        // modelAABB = glm::translate(modelAABB, glm::vec3(0.0f, 0.0f, Sun::zsun-2.0f));
+        // modelAABB = glm::scale(modelAABB, glm::vec3(2.0f, 2.0f, 2.0f));  
         
 
         
@@ -1194,6 +1199,10 @@ public:
 };
 
 
+
+bool gameFlag = true;
+bool plane_flag = true; // 如果发生的碰撞，飞行器不可以向前移动    
+
 // 管理游戏场景中的各个部件
 // 管理天空场景
 class ObjectManager {
@@ -1225,10 +1234,85 @@ class ObjectManager {
             stones = StoneManager();
         }
 
+        // 进行碰撞检测
+        void ImpactCheck() {
+            
+            // 确定太阳的坐标信息
+            glm::vec3 sun_coord(Sun::xsun, Sun::ysun, Sun::zsun-2.0f);
+            GLfloat r_sun = 1.0f;
+
+            // 确定飞行器的 AABB 包围盒的坐标
+            glm::vec4 plane_vert[8];
+            for(int i=0; i<8; ++i) {
+                plane_vert[i] = plane.vertices[i];
+            }
+
+            bool check_sun = ImpactChecker1(sun_coord, r_sun, plane_vert);
+            
+            // 如果检测到了碰撞则不允许飞行器前向移动
+            if(check_sun) {
+                
+               
+                plane_flag = false;
+            } else {
+              
+                plane_flag = true;
+            }
+            
+        }
+
+        // 进行球体和 AABB 包围盒的碰撞检测
+        bool ImpactChecker1(glm::vec3 coord, GLfloat r, glm::vec4 vertices[8]) {
+
+            // 若球心不在 AABB 内部，首先求出球心到这 8 个点的最短距离
+            // 只有距离小于球体半径时才会发生碰撞
+            GLfloat mindis = 4*r*r;
+
+            for(int i=0; i<8; ++i) {
+                GLfloat distance = (coord.x-vertices[i].x) * (coord.x-vertices[i].x) +
+                                   (coord.y-vertices[i].y) * (coord.y-vertices[i].y) +
+                                   (coord.z-vertices[i].z) * (coord.z-vertices[i].z);
+
+                if(distance <= mindis) {
+                    mindis = distance;
+                }
+            }
+          //  std::cout << "distance: " << mindis << std::endl;
+            // 判定发生碰撞
+            if(mindis <= r*r) {
+               
+                return true;
+            }
+
+            
+
+            // 如果球心在 AABB 包围盒的内部也会判定发生碰撞
+            glm::vec3 minCoord = glm::vec3(vertices[0]);
+            glm::vec3 maxCoord = glm::vec3(vertices[0]);
+
+            for (int i = 1; i < 8; ++i) {
+                for (int j = 0; j < 3; ++j) {
+                    minCoord[j] = std::min(minCoord[j], vertices[i][j]);
+                    maxCoord[j] = std::max(maxCoord[j], vertices[i][j]);
+                }
+            }
+
+            // 如果球心在 AABB 包围盒的内部也会判定发生碰撞
+            return IsSphereInsideAABB(coord, minCoord, maxCoord);
+
+
+        }
+
+    bool IsSphereInsideAABB(glm::vec3 sphereCenter, glm::vec3 aabbMin, glm::vec3 aabbMax) {
+            return (sphereCenter.x >= aabbMin.x && sphereCenter.x <= aabbMax.x &&
+                    sphereCenter.y >= aabbMin.y && sphereCenter.y <= aabbMax.y &&
+                    sphereCenter.z >= aabbMin.z && sphereCenter.z <= aabbMax.z);
+        }
+
+
 
 };
 
-bool gameFlag = true;
 
 void mainLoop(GLFWwindow* window ) {
 
@@ -1247,10 +1331,11 @@ void mainLoop(GLFWwindow* window ) {
     
         glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        
+        gameObj.ImpactCheck();
 
         if(gameFlag) {
            
+            
             gameObj.skybox1.Draw();
          
             gameObj.plane.Draw();
@@ -1337,11 +1422,20 @@ void processInput(GLFWwindow *window)
     if(glfwGetKey(window, GLFW_KEY_I)) {
         // 向前移动
         glm::vec3 pos = glm::vec3(Plane::Planex, Plane::Planey, Plane::Planez);
-        pos += 0.01f * Plane::direction;
-        Plane::Planex = pos.x;
-        Plane::Planey = pos.y;
-        Plane::Planez = pos.z;
+       
+        if(plane_flag) {
+            pos += 0.01f * Plane::direction;
+            Plane::Planex = pos.x;
+            Plane::Planey = pos.y;
+            Plane::Planez = pos.z;
+        } else {
+            pos -= 0.08f * Plane::direction;
+            Plane::Planex = pos.x;
+            Plane::Planey = pos.y;
+            Plane::Planez = pos.z;
+        }
     }
+
 
     if(glfwGetKey(window, GLFW_KEY_K)) {
         // 向后移动
