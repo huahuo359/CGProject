@@ -1150,6 +1150,8 @@ public:
          1.0f, -1.0f,  1.0f
     };
 
+    SkyBox():skyboxShader("shaders/skybox.vs", "shaders/skybox.fs") {};
+
     SkyBox(vector<const GLchar*> faces):skyboxShader("shaders/skybox.vs", "shaders/skybox.fs"),faces(faces) {
     
         // Setup skybox VAO
@@ -1191,37 +1193,47 @@ public:
 
 };
 
+
+// 管理游戏场景中的各个部件
+// 管理天空场景
+class ObjectManager {
+    public:
+        SkyBox skybox1;
+        Sun sun;
+        Earth earth;
+        Moon moon;
+        SpaceStation space;
+        Plane plane;
+        StoneManager stones;
+
+        ObjectManager() {
+            vector<const GLchar*> faces;
+
+            faces.push_back("image/skybox/1.png");
+            faces.push_back("image/skybox/2.png");
+            faces.push_back("image/skybox/4.png");
+            faces.push_back("image/skybox/3.png");
+            faces.push_back("image/skybox/5.png");
+            faces.push_back("image/skybox/6.png");
+
+            skybox1 = SkyBox(faces);
+            sun = Sun();
+            earth = Earth();
+            moon = Moon();
+            space = SpaceStation();
+            plane = Plane();
+            stones = StoneManager();
+        }
+
+
+};
+
+bool gameFlag = true;
+
 void mainLoop(GLFWwindow* window ) {
 
 
-    vector<const GLchar*> faces;
-
-    faces.push_back("image/skybox/1.png");
-    faces.push_back("image/skybox/2.png");
-    faces.push_back("image/skybox/4.png");
-    faces.push_back("image/skybox/3.png");
-    faces.push_back("image/skybox/5.png");
-    faces.push_back("image/skybox/6.png");
-   
-   
-   
-    SkyBox skybox1(faces);
-    // Obj planet;
-    // Car car;
-    // Planet sun("image/planet/sun.jpg", 2);
-    // Earth earth("image/planet/earth_diffuse.png", 1);
-    // Moon moon("image/planet/earth_diffuse.png", 1);
-    // Bezier bezier;
-    bool flag = true;
-    //bool flag = false;
-    Sun sun;
-    Earth earth;
-    Moon moon;
-
-   
-    SpaceStation space;
-    Plane plane;
-    StoneManager stones;
+    ObjectManager gameObj;
     
     while (!glfwWindowShouldClose(window))
     {
@@ -1237,21 +1249,21 @@ void mainLoop(GLFWwindow* window ) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
 
-        if(flag) {
+        if(gameFlag) {
            
-            skybox1.Draw();
+            gameObj.skybox1.Draw();
          
-            plane.Draw();
-            sun.Draw();
-            moon.Draw();
-            earth.Draw();
-            stones.Draw();
+            gameObj.plane.Draw();
+            gameObj.sun.Draw();
+            gameObj.moon.Draw();
+            gameObj.earth.Draw();
+            gameObj.stones.Draw();
         
 
         } else {
             // near shot
             //sun.Draw();
-            earth.Draw();
+           // earth.Draw();
             //moon.Draw();
         }
         
