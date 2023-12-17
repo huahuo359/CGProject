@@ -869,9 +869,13 @@ public:
     glm::vec3 aabbSize;
     glm::vec3 aabbCenter;
 
+    bool move_flag;
+
 
     Stone(): spaceShader("newshaders/plane.vs", "newshaders/plane.fs"), obj("stone/asteroid_05.obj"), 
     AABBShader("shaders/AABB.vs", "shaders/AABB.fs") {
+        move_flag = true;   // 根据碰撞检测的结果判定陨石是否可以继续移动
+        
         Stonex = -2.0f;
         Stoney = 0.0f;
         Stonez = -6.0f;
@@ -1053,14 +1057,14 @@ public:
             // 对陨石生成不同的位置
             std::cout << "stone :" << i << std::endl;
             
-            newStone.Stonex = -2.0f + (rand()%2) - 1.0f;
-            newStone.Stoney = 0.0f + (rand()%2) - 1.0f;
-            newStone.Stonez = -8.0f + (rand()%2) - 1.0f;
+            newStone.Stonex = -2.0f + (rand()%4) - 1.0f;
+            newStone.Stoney = 0.0f + (rand()%4) - 1.0f;
+            newStone.Stonez = -8.0f + (rand()%4) - 1.0f;
 
             // 陨石初始的运动方向指向当前地球的位置
             // 随着地球的移动后续会对方向进行调整
             glm::vec3 pos = glm::vec3(newStone.Stonex, newStone.Stoney, newStone.Stonez);
-            glm::vec3 earthPos = glm::vec3(Earth::xearth, Earth::yearth, Earth::zearth);
+            glm::vec3 earthPos = glm::vec3(Earth::xearth, Earth::yearth, Earth::zearth-2.0f);
             glm::vec3 direction = earthPos - pos;
             newStone.direction = direction;
             
@@ -1084,11 +1088,18 @@ public:
             glm::vec3 direction = glm::normalize(earthPos - pos);
             Stones[i].direction = direction;
            //glm::vec3 pos = glm::vec3(Stones[i].Stonex, Stones[i].Stoney, Stones[i].Stonez);
-            pos += 0.005f*Stones[i].direction;
-            Stones[i].Stonex = pos.x;
-            Stones[i].Stoney = pos.y;
-            Stones[i].Stonez = pos.z;
-        
+            if(Stones[i].move_flag) {
+                pos += 0.005f*Stones[i].direction;
+                Stones[i].Stonex = pos.x;
+                Stones[i].Stoney = pos.y;
+                Stones[i].Stonez = pos.z;
+            } else {
+                pos -= 0.005f*Stones[i].direction;
+                Stones[i].Stonex = pos.x;
+                Stones[i].Stoney = pos.y;
+                Stones[i].Stonez = pos.z;
+            }
+
 
             Stones[i].Draw();
         }
@@ -1241,6 +1252,14 @@ class ObjectManager {
             glm::vec3 sun_coord(Sun::xsun, Sun::ysun, Sun::zsun-2.0f);
             GLfloat r_sun = 1.0f;
 
+            // 确定地球的坐标信息
+            glm::vec3 earth_coord(Earth::xearth, Earth::yearth, Earth::zearth-2.0f);
+            GLfloat r_earth = 0.7f;
+            
+            // 确定月球的坐标信息
+            glm::vec3 moon_coord(Moon::xmoon, Moon::ymoon, Moon::zmoon-2.0f);
+            GLfloat r_moon = 0.3f;
+
             // 确定飞行器的 AABB 包围盒的坐标
             glm::vec4 plane_vert[8];
             for(int i=0; i<8; ++i) {
@@ -1248,16 +1267,39 @@ class ObjectManager {
             }
 
             bool check_sun = ImpactChecker1(sun_coord, r_sun, plane_vert);
-            
+            bool check_earth = ImpactChecker1(earth_coord, r_earth, plane_vert);
+            bool check_moon = ImpactChecker1(moon_coord, r_moon, plane_vert);
+
+
             // 如果检测到了碰撞则不允许飞行器前向移动
-            if(check_sun) {
-                
-               
+            if(check_sun || check_earth || check_moon) {
                 plane_flag = false;
             } else {
               
                 plane_flag = true;
             }
+
+
+            // 进行陨石和地球的碰撞检测
+            // 依然是 AABB 与球体的碰撞检测
+            for(int i=0; i<stones.Stones.size(); ++i) {
+                // 获取第 i 个陨石块的 AABB 坐标信息
+                glm::vec4 stone_vert[8];
+                for(int j=0; j<8; ++j) {
+                    stone_vert[i] = stones.Stones[i].vertices[i];
+                }
+
+                bool check_stone = ImpactChecker1(earth_coord, r_earth, stone_vert);
+
+                if(check_stone) {
+                    std::cout << "stone " << i << " check impact" << std::endl;
+                    stones.Stones[i].move_flag = false;
+                } else {
+                    stones.Stones[i].move_flag = true;
+                }
+
+            }
+
             
         }
 
@@ -1277,7 +1319,7 @@ class ObjectManager {
                     mindis = distance;
                 }
             }
-          //  std::cout << "distance: " << mindis << std::endl;
+            std::cout << "distance: " << mindis << std::endl;
             // 判定发生碰撞
             if(mindis <= r*r) {
                
@@ -1297,8 +1339,10 @@ class ObjectManager {
                 }
             }
 
+            return false;
+
             // 如果球心在 AABB 包围盒的内部也会判定发生碰撞
-            return IsSphereInsideAABB(coord, minCoord, maxCoord);
+            //return IsSphereInsideAABB(coord, minCoord, maxCoord);
 
 
         }
