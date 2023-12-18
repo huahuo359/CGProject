@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main"
-  "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main.pdb"
+  "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main"
+  "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main.pdb"
   "CMakeFiles/main.dir/Window.cpp.o"
   "CMakeFiles/main.dir/Window.cpp.o.d"
   "CMakeFiles/main.dir/entity/Camera.cpp.o"
@@ -45,6 +45,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/main.dir/renders/WaterRenderer.cpp.o.d"
   "CMakeFiles/main.dir/renders/particleRenderer.cpp.o"
   "CMakeFiles/main.dir/renders/particleRenderer.cpp.o.d"
+  "CMakeFiles/main.dir/shaders/AABBShader.cpp.o"
+  "CMakeFiles/main.dir/shaders/AABBShader.cpp.o.d"
   "CMakeFiles/main.dir/shaders/EntityShader.cpp.o"
   "CMakeFiles/main.dir/shaders/EntityShader.cpp.o.d"
   "CMakeFiles/main.dir/shaders/ShaderProgram.cpp.o"

@@ -8,48 +8,48 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug"/>
+				<Option working_dir="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="main">
-				<Option output="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ"/>
+				<Option output="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/dependencies/include"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/learnopengl"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/tiny_obj_loader.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/MY_Model.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Entity.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Loader.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Terrain.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/constants.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Player.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/GameTime.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Camera.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/InputState.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/EntityRenderer.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/RenderManager.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/SkyboxRenderer.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/TerrainRenderer.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/FrameBuffer.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/WaterRenderer.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/ShadowMap.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/ShaderProgram.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/TerrainShader.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/EntityShader.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/SkyboxShader.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/WaterShader.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/Window.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/dependencies/include"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/learnopengl"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/tiny_obj_loader.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/MY_Model.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Entity.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Loader.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Terrain.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/constants.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Player.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/GameTime.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Camera.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/InputState.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/EntityRenderer.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/RenderManager.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/SkyboxRenderer.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/TerrainRenderer.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/FrameBuffer.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/WaterRenderer.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/ShadowMap.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/ShaderProgram.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/TerrainShader.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/EntityShader.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/SkyboxShader.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/WaterShader.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/Window.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
@@ -57,45 +57,45 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 main"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 main"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="main/fast">
-				<Option output="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ"/>
+				<Option output="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/dependencies/include"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/learnopengl"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/tiny_obj_loader.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/MY_Model.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Entity.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Loader.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Terrain.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/constants.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Player.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/GameTime.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Camera.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/InputState.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/EntityRenderer.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/RenderManager.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/SkyboxRenderer.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/TerrainRenderer.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/FrameBuffer.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/WaterRenderer.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/ShadowMap.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/ShaderProgram.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/TerrainShader.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/EntityShader.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/SkyboxShader.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/WaterShader.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/Window.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/dependencies/include"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/learnopengl"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/tiny_obj_loader.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/MY_Model.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Entity.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Loader.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Terrain.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/constants.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Player.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/GameTime.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Camera.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/InputState.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/EntityRenderer.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/RenderManager.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/SkyboxRenderer.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/TerrainRenderer.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/FrameBuffer.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/WaterRenderer.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/ShadowMap.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/ShaderProgram.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/TerrainShader.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/EntityShader.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/SkyboxShader.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/WaterShader.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/Window.h"/>
+					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
@@ -103,239 +103,245 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 main/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 main/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Experimental">
-				<Option working_dir="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug"/>
+				<Option working_dir="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 Experimental"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 Experimental"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Nightly">
-				<Option working_dir="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug"/>
+				<Option working_dir="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 Nightly"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 Nightly"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Continuous">
-				<Option working_dir="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug"/>
+				<Option working_dir="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 Continuous"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 Continuous"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="test">
-				<Option working_dir="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug"/>
+				<Option working_dir="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 test"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 test"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug"/>
+				<Option working_dir="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug"/>
+				<Option working_dir="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/Window.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/Window.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/Window.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/Window.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Camera.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Camera.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Camera.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Camera.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Entity.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Entity.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Entity.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Entity.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/GameTime.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/GameTime.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/GameTime.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/GameTime.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Loader.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Loader.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Loader.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Loader.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/MY_Model.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/MY_Model.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/MY_Model.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/MY_Model.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Player.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Player.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Player.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Player.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Terrain.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Terrain.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Terrain.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Terrain.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/tiny_obj_loader.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/tiny_obj_loader.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/tiny_obj_loader.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/tiny_obj_loader.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/glad.c">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/glad.c">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/particles/ParticleSystem.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/particles/ParticleSystem.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/particles/ParticleSystem.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/particles/ParticleSystem.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/particles/particle.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/particles/particle.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/particles/particle.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/particles/particle.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/particles/particleSystem.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/particles/particleSystem.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/EntityRenderer.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/EntityRenderer.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/EntityRenderer.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/EntityRenderer.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/FrameBuffer.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/FrameBuffer.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/FrameBuffer.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/FrameBuffer.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/ParticleManager.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/ParticleManager.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/ParticleManager.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/ParticleManager.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/RenderManager.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/RenderManager.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/RenderManager.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/RenderManager.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/ShadowMap.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/ShadowMap.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/ShadowMap.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/ShadowMap.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/SkyboxRenderer.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/SkyboxRenderer.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/SkyboxRenderer.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/SkyboxRenderer.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/TerrainRenderer.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/TerrainRenderer.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/TerrainRenderer.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/TerrainRenderer.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/WaterRenderer.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/WaterRenderer.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/WaterRenderer.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/WaterRenderer.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/particleRenderer.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/particleRenderer.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/particleRenderer.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/particleRenderer.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/EntityShader.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/AABBShader.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/EntityShader.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/AABBShader.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/ShaderProgram.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/EntityShader.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/ShaderProgram.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/EntityShader.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/SkyboxShader.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/ShaderProgram.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/SkyboxShader.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/ShaderProgram.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/TerrainShader.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/SkyboxShader.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/TerrainShader.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/SkyboxShader.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/WaterShader.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/TerrainShader.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/WaterShader.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/TerrainShader.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/particleShader.cpp">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/WaterShader.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/particleShader.h">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/WaterShader.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/CMakeLists.txt">
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/particleShader.cpp">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/particleShader.h">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

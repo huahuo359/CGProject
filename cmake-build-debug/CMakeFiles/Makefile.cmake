@@ -38,7 +38,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.25/Modules/Platform/UnixPaths.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.25/Modules/ProcessorCount.cmake"
   "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.25/Templates/CPackConfig.cmake.in"
-  "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/CMakeLists.txt"
+  "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/CMakeLists.txt"
   "CMakeFiles/3.25.2/CMakeCCompiler.cmake"
   "CMakeFiles/3.25.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.25.2/CMakeSystem.cmake"
@@ -53,8 +53,8 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "DartConfiguration.tcl"
-  "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/CPackConfig.cmake"
-  "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/CPackSourceConfig.cmake"
+  "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/CPackConfig.cmake"
+  "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/CPackSourceConfig.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 

@@ -5,7 +5,7 @@
 using namespace std;
 
 // Constructor accepts a model defining vertex, colour and index data for this entity.
-Entity::Entity(const MY_Model* model) {
+Entity::Entity(MY_Model* model) {
     this->m_model = model;
 
     m_position = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -64,7 +64,25 @@ glm::vec3 Entity::calculateDirectionVector() const {
 }
 
 void Entity::setPosition(const glm::vec3& inputPosition) {
+//    glm::vec3 dp;
+//    dp = inputPosition - this->m_position;
+
     this->m_position = inputPosition;
+
+//    if(this->m_model) {
+//        std::vector<float> new_range;
+//
+//        new_range.push_back(this->m_model->maxRanges[0] + dp.x);
+//        new_range.push_back(this->m_model->maxRanges[1] + dp.x);
+//
+//        new_range.push_back(this->m_model->maxRanges[2] + dp.y);
+//        new_range.push_back(this->m_model->maxRanges[3] + dp.y);
+//
+//        new_range.push_back(this->m_model->maxRanges[4] + dp.z);
+//        new_range.push_back(this->m_model->maxRanges[5] + dp.z);
+//
+//        this->m_model->maxRanges = new_range;
+//    }
 }
 
 void Entity::placeBottomEdge(float surfaceY) {
@@ -75,6 +93,22 @@ void Entity::placeBottomEdge(float surfaceY) {
 
 void Entity::setScale(const glm::vec3& scale) {
     this->m_scale = scale;
+
+    if(this->m_model) {
+        std::vector<float> new_range;
+
+        new_range.push_back(this->m_model->maxRanges[0] * scale.x);
+        new_range.push_back(this->m_model->maxRanges[1] * scale.x);
+
+        new_range.push_back(this->m_model->maxRanges[2] * scale.y);
+        new_range.push_back(this->m_model->maxRanges[3] * scale.y);
+
+        new_range.push_back(this->m_model->maxRanges[4] * scale.z);
+        new_range.push_back(this->m_model->maxRanges[5] * scale.z);
+
+        this->m_model->maxRanges = new_range;
+    }
+
 }
 
 void Entity::setRotationX(float rot) {
@@ -103,6 +137,20 @@ void Entity::rotateZ(float rot) {
 
 void Entity::move(const glm::vec3& movement) {
     m_position = m_position + movement;
+//    if(this->m_model) {
+//        std::vector<float> new_range;
+//
+//        new_range.push_back(this->m_model->maxRanges[0] + movement.x);
+//        new_range.push_back(this->m_model->maxRanges[1] + movement.x);
+//
+//        new_range.push_back(this->m_model->maxRanges[2] + movement.y);
+//        new_range.push_back(this->m_model->maxRanges[3] + movement.y);
+//
+//        new_range.push_back(this->m_model->maxRanges[4] + movement.z);
+//        new_range.push_back(this->m_model->maxRanges[5] + movement.z);
+//
+//        this->m_model->maxRanges = new_range;
+//    }
 }
 
 glm::mat4 Entity::calculateModelMatrix(

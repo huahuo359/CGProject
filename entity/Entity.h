@@ -12,7 +12,7 @@
 
 class Entity {
   protected:
-    const MY_Model* m_model;
+    MY_Model* m_model;
 
     glm::vec3 m_position;
     glm::vec3 m_scale;
@@ -21,7 +21,7 @@ class Entity {
     float m_z_rot;
 
   public:
-    Entity(const MY_Model* model);
+    Entity(MY_Model* model);
     Entity();
 
     virtual ~Entity() = default;

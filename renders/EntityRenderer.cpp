@@ -19,6 +19,12 @@ void EntityRenderer::render(const std::vector<Entity*>& entities, const std::vec
     }
 
     m_shader.disable();
+
+    for (const auto& entity : entities) {
+        if (entity->getModel() != nullptr) {
+            renderBound(*entity, view, proj);
+        }
+    }
 }
 
 void EntityRenderer::render(const std::vector<Entity*>& entities, const std::vector<Light*>& lights,
@@ -48,6 +54,18 @@ void EntityRenderer::render(const std::vector<Entity*>& entities, const std::vec
     }
 
     m_shader.disable();
+
+
+    AABBShader.enable();
+    AABBShader.loadProjection(proj);
+    AABBShader.loadView(view);
+
+    for (const auto& entity : entities) {
+        if (entity->getModel() != nullptr) {
+            renderBound(*entity, view, proj);
+        }
+    }
+    AABBShader.disable();
 }
 
 void EntityRenderer::renderModel(const MY_Model* model) {
@@ -72,4 +90,76 @@ void EntityRenderer::renderModel(const MY_Model* model) {
         glDisableVertexAttribArray(2);
         glBindVertexArray(0);
     }
+}
+
+void EntityRenderer::renderBound(Entity& entity, const glm::mat4& view, const glm::mat4& proj) {
+    unsigned int cubeVAO, cubeVBO, cubeEBO;
+
+    GLfloat cubeVertices[] = {
+            -0.5f, -0.5f, -0.5f,
+            0.5f, -0.5f, -0.5f,
+            0.5f,  0.5f, -0.5f,
+            -0.5f,  0.5f, -0.5f,
+            -0.5f, -0.5f,  0.5f,
+            0.5f, -0.5f,  0.5f,
+            0.5f,  0.5f,  0.5f,
+            -0.5f,  0.5f,  0.5f,
+    };
+
+    GLuint cubeIndices[] = {
+            0, 1, 1, 2, 2, 3, 3, 0,
+            4, 5, 5, 6, 6, 7, 7, 4,
+            0, 4, 1, 5, 2, 6, 3, 7
+    };
+
+    glGenVertexArrays(1, &cubeVAO);
+    glGenBuffers(1, &cubeVBO);
+    glGenBuffers(1, &cubeEBO);
+
+    glBindVertexArray(cubeVAO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVertices), cubeVertices, GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cubeEBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(cubeIndices), cubeIndices, GL_STATIC_DRAW);
+
+    // 位置属性
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
+    glEnableVertexAttribArray(0);
+
+    // 解绑VAO
+    glBindVertexArray(0);
+
+
+    glm::mat4 modelAABB = glm::mat4(1.0f);
+
+    glm::vec3 aabbSize = glm::vec3 (entity.getModel()->getRangeInDim(0).second - entity.getModel()->getRangeInDim(0).first,
+    + entity.getModel()->getRangeInDim(1).second - entity.getModel()->getRangeInDim(1).first,
+            + entity.getModel()->getRangeInDim(2).second - entity.getModel()->getRangeInDim(2).first);
+    glm::vec3 aabbCenter = glm::vec3 (+ entity.getModel()->getRangeInDim(0).second + entity.getModel()->getRangeInDim(0).first,
+                                      + entity.getModel()->getRangeInDim(1).second + entity.getModel()->getRangeInDim(1).first,
+                                      + entity.getModel()->getRangeInDim(2).second + entity.getModel()->getRangeInDim(2).first)*0.5f;
+    aabbSize *= 1.0f;
+    aabbCenter *= 1.0f;
+
+    modelAABB = glm::translate(modelAABB, entity.getPosition());
+    modelAABB = glm::translate(modelAABB, aabbCenter);
+    modelAABB = glm::scale(modelAABB, aabbSize);
+
+    AABBShader.loadModel(modelAABB);
+
+//        vertices[0] = entity.getModel()AABB * glm::vec4(+ entity.getModel()->getRangeInDim(0).first, + entity.getModel()->getRangeInDim(1).first, + entity.getModel()->getRangeInDim(2).first, 1.0f);
+//        vertices[1] = entity.getModel()AABB * glm::vec4(+ entity.getModel()->getRangeInDim(0).second, + entity.getModel()->getRangeInDim(1).first, + entity.getModel()->getRangeInDim(2).first, 1.0f);
+//        vertices[2] = entity.getModel()AABB * glm::vec4(+ entity.getModel()->getRangeInDim(0).second, + entity.getModel()->getRangeInDim(1).second, + entity.getModel()->getRangeInDim(2).first, 1.0f);
+//        vertices[3] = entity.getModel()AABB * glm::vec4(+ entity.getModel()->getRangeInDim(0).first, + entity.getModel()->getRangeInDim(1).second, + entity.getModel()->getRangeInDim(2).first, 1.0f);
+//        vertices[4] = entity.getModel()AABB * glm::vec4(+ entity.getModel()->getRangeInDim(0).first, + entity.getModel()->getRangeInDim(1).first, + entity.getModel()->getRangeInDim(2).second, 1.0f);
+//        vertices[5] = entity.getModel()AABB * glm::vec4(+ entity.getModel()->getRangeInDim(0).second, + entity.getModel()->getRangeInDim(1).first, + entity.getModel()->getRangeInDim(2).second, 1.0f);
+//        vertices[6] = entity.getModel()AABB * glm::vec4(+ entity.getModel()->getRangeInDim(0).second, + entity.getModel()->getRangeInDim(1).second, + entity.getModel()->getRangeInDim(2).second, 1.0f);
+//        vertices[7] = entity.getModel()AABB * glm::vec4(+ entity.getModel()->getRangeInDim(0).first, + entity.getModel()->getRangeInDim(1).second, + entity.getModel()->getRangeInDim(2).second, 1.0f);
+
+    glEnable(GL_DEPTH_TEST);
+    glBindVertexArray(cubeVAO);
+    glDrawElements(GL_LINES, 24, GL_UNSIGNED_INT, 0);
+    glBindVertexArray(0);
 }

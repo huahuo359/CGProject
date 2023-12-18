@@ -46,7 +46,7 @@ glm::mat4 MY_Camera::getInverted(float pivotPoint) {
 
 PlayerCamera::PlayerCamera(Player* player) {
     m_player = player;
-    m_distance = 35.0f;
+    m_distance = 20.0f;
     m_pitch = constants::PI / 5.f;
     m_angle_around = 0.0f;
 }
@@ -92,7 +92,7 @@ void PlayerCamera::update(InputState& input) {
     float offsetZ = hDist * glm::cos(angle);
 
     m_focal_point = m_player->getPosition();
-    m_position = glm::vec3(-offsetX, vDist/10, -offsetZ) + m_focal_point;
+    m_position = glm::vec3(-offsetX, vDist/8, -offsetZ) + m_focal_point;
 
     look(m_focal_point);
 }

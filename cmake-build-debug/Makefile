@@ -57,10 +57,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ
+CMAKE_SOURCE_DIR = /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -97,9 +97,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -1031,6 +1031,30 @@ renders/particleRenderer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/renders/particleRenderer.cpp.s
 .PHONY : renders/particleRenderer.cpp.s
 
+shaders/AABBShader.o: shaders/AABBShader.cpp.o
+.PHONY : shaders/AABBShader.o
+
+# target to build an object file
+shaders/AABBShader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/shaders/AABBShader.cpp.o
+.PHONY : shaders/AABBShader.cpp.o
+
+shaders/AABBShader.i: shaders/AABBShader.cpp.i
+.PHONY : shaders/AABBShader.i
+
+# target to preprocess a source file
+shaders/AABBShader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/shaders/AABBShader.cpp.i
+.PHONY : shaders/AABBShader.cpp.i
+
+shaders/AABBShader.s: shaders/AABBShader.cpp.s
+.PHONY : shaders/AABBShader.s
+
+# target to generate assembly for a file
+shaders/AABBShader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/shaders/AABBShader.cpp.s
+.PHONY : shaders/AABBShader.cpp.s
+
 shaders/EntityShader.o: shaders/EntityShader.cpp.o
 .PHONY : shaders/EntityShader.o
 
@@ -1279,6 +1303,9 @@ help:
 	@echo "... renders/particleRenderer.o"
 	@echo "... renders/particleRenderer.i"
 	@echo "... renders/particleRenderer.s"
+	@echo "... shaders/AABBShader.o"
+	@echo "... shaders/AABBShader.i"
+	@echo "... shaders/AABBShader.s"
 	@echo "... shaders/EntityShader.o"
 	@echo "... shaders/EntityShader.i"
 	@echo "... shaders/EntityShader.s"

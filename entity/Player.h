@@ -3,6 +3,7 @@
 #include "Entity.h"
 #include "Terrain.h"
 #include "MY_Model.h"
+#include "../tools/shader.h"
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -12,7 +13,6 @@ class Player : public Entity {
     const float MOVE_SPEED = 10.0f;
     float ROTATION_SPEED;
 
-    // Extra parameters if physics mode is being used
     glm::vec2 velocity;
     glm::vec2 velocity_c;
     glm::vec2 accel;
@@ -20,7 +20,6 @@ class Player : public Entity {
 
     float yawRate;
 
-    // Input parameters
     float steerAngle;
     float steerChange;
     float throttle_input;
@@ -28,6 +27,8 @@ class Player : public Entity {
     float ebrake_input;
 
     Terrain* terrain;
+
+    glm::vec4 vertices[8];
 
     // True to use basic controls, false to use physics model
     bool basic_controls;
@@ -40,6 +41,7 @@ class Player : public Entity {
     float getThrottle() const;
     float getBrake() const;
     float getSteer() const;
+    bool updateBound();
     float absVel;
 
     void handleKeyboardEvents(GLFWwindow* window, int key, int scancode, int action, int mods);

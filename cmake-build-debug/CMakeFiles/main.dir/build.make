@@ -53,10 +53,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ
+CMAKE_SOURCE_DIR = /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/main.dir/depend.make
@@ -70,396 +70,410 @@ include CMakeFiles/main.dir/progress.make
 include CMakeFiles/main.dir/flags.make
 
 CMakeFiles/main.dir/main.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/main.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main.cpp
+CMakeFiles/main.dir/main.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main.cpp
 CMakeFiles/main.dir/main.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main.cpp.o -MF CMakeFiles/main.dir/main.cpp.o.d -o CMakeFiles/main.dir/main.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/main.dir/main.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/main.cpp.o -MF CMakeFiles/main.dir/main.cpp.o.d -o CMakeFiles/main.dir/main.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main.cpp
 
 CMakeFiles/main.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main.cpp > CMakeFiles/main.dir/main.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main.cpp > CMakeFiles/main.dir/main.cpp.i
 
 CMakeFiles/main.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main.cpp -o CMakeFiles/main.dir/main.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main.cpp -o CMakeFiles/main.dir/main.cpp.s
 
 CMakeFiles/main.dir/glad.c.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/glad.c.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/glad.c
+CMakeFiles/main.dir/glad.c.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/glad.c
 CMakeFiles/main.dir/glad.c.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/main.dir/glad.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/glad.c.o -MF CMakeFiles/main.dir/glad.c.o.d -o CMakeFiles/main.dir/glad.c.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/glad.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/main.dir/glad.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/main.dir/glad.c.o -MF CMakeFiles/main.dir/glad.c.o.d -o CMakeFiles/main.dir/glad.c.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/glad.c
 
 CMakeFiles/main.dir/glad.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/main.dir/glad.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/glad.c > CMakeFiles/main.dir/glad.c.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/glad.c > CMakeFiles/main.dir/glad.c.i
 
 CMakeFiles/main.dir/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/main.dir/glad.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/glad.c -o CMakeFiles/main.dir/glad.c.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/glad.c -o CMakeFiles/main.dir/glad.c.s
 
 CMakeFiles/main.dir/entity/MY_Model.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/entity/MY_Model.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/MY_Model.cpp
+CMakeFiles/main.dir/entity/MY_Model.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/MY_Model.cpp
 CMakeFiles/main.dir/entity/MY_Model.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/entity/MY_Model.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/entity/MY_Model.cpp.o -MF CMakeFiles/main.dir/entity/MY_Model.cpp.o.d -o CMakeFiles/main.dir/entity/MY_Model.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/MY_Model.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/entity/MY_Model.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/entity/MY_Model.cpp.o -MF CMakeFiles/main.dir/entity/MY_Model.cpp.o.d -o CMakeFiles/main.dir/entity/MY_Model.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/MY_Model.cpp
 
 CMakeFiles/main.dir/entity/MY_Model.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/entity/MY_Model.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/MY_Model.cpp > CMakeFiles/main.dir/entity/MY_Model.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/MY_Model.cpp > CMakeFiles/main.dir/entity/MY_Model.cpp.i
 
 CMakeFiles/main.dir/entity/MY_Model.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/entity/MY_Model.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/MY_Model.cpp -o CMakeFiles/main.dir/entity/MY_Model.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/MY_Model.cpp -o CMakeFiles/main.dir/entity/MY_Model.cpp.s
 
 CMakeFiles/main.dir/entity/Entity.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/entity/Entity.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Entity.cpp
+CMakeFiles/main.dir/entity/Entity.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Entity.cpp
 CMakeFiles/main.dir/entity/Entity.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/entity/Entity.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/entity/Entity.cpp.o -MF CMakeFiles/main.dir/entity/Entity.cpp.o.d -o CMakeFiles/main.dir/entity/Entity.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Entity.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/entity/Entity.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/entity/Entity.cpp.o -MF CMakeFiles/main.dir/entity/Entity.cpp.o.d -o CMakeFiles/main.dir/entity/Entity.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Entity.cpp
 
 CMakeFiles/main.dir/entity/Entity.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/entity/Entity.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Entity.cpp > CMakeFiles/main.dir/entity/Entity.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Entity.cpp > CMakeFiles/main.dir/entity/Entity.cpp.i
 
 CMakeFiles/main.dir/entity/Entity.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/entity/Entity.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Entity.cpp -o CMakeFiles/main.dir/entity/Entity.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Entity.cpp -o CMakeFiles/main.dir/entity/Entity.cpp.s
 
 CMakeFiles/main.dir/entity/Loader.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/entity/Loader.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Loader.cpp
+CMakeFiles/main.dir/entity/Loader.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Loader.cpp
 CMakeFiles/main.dir/entity/Loader.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/entity/Loader.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/entity/Loader.cpp.o -MF CMakeFiles/main.dir/entity/Loader.cpp.o.d -o CMakeFiles/main.dir/entity/Loader.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Loader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/entity/Loader.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/entity/Loader.cpp.o -MF CMakeFiles/main.dir/entity/Loader.cpp.o.d -o CMakeFiles/main.dir/entity/Loader.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Loader.cpp
 
 CMakeFiles/main.dir/entity/Loader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/entity/Loader.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Loader.cpp > CMakeFiles/main.dir/entity/Loader.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Loader.cpp > CMakeFiles/main.dir/entity/Loader.cpp.i
 
 CMakeFiles/main.dir/entity/Loader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/entity/Loader.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Loader.cpp -o CMakeFiles/main.dir/entity/Loader.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Loader.cpp -o CMakeFiles/main.dir/entity/Loader.cpp.s
 
 CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/tiny_obj_loader.cpp
+CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/tiny_obj_loader.cpp
 CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.o -MF CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.o.d -o CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/tiny_obj_loader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.o -MF CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.o.d -o CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/tiny_obj_loader.cpp
 
 CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/tiny_obj_loader.cpp > CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/tiny_obj_loader.cpp > CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.i
 
 CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/tiny_obj_loader.cpp -o CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/tiny_obj_loader.cpp -o CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.s
 
 CMakeFiles/main.dir/entity/Terrain.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/entity/Terrain.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Terrain.cpp
+CMakeFiles/main.dir/entity/Terrain.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Terrain.cpp
 CMakeFiles/main.dir/entity/Terrain.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/main.dir/entity/Terrain.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/entity/Terrain.cpp.o -MF CMakeFiles/main.dir/entity/Terrain.cpp.o.d -o CMakeFiles/main.dir/entity/Terrain.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Terrain.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/main.dir/entity/Terrain.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/entity/Terrain.cpp.o -MF CMakeFiles/main.dir/entity/Terrain.cpp.o.d -o CMakeFiles/main.dir/entity/Terrain.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Terrain.cpp
 
 CMakeFiles/main.dir/entity/Terrain.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/entity/Terrain.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Terrain.cpp > CMakeFiles/main.dir/entity/Terrain.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Terrain.cpp > CMakeFiles/main.dir/entity/Terrain.cpp.i
 
 CMakeFiles/main.dir/entity/Terrain.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/entity/Terrain.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Terrain.cpp -o CMakeFiles/main.dir/entity/Terrain.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Terrain.cpp -o CMakeFiles/main.dir/entity/Terrain.cpp.s
 
 CMakeFiles/main.dir/entity/Player.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/entity/Player.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Player.cpp
+CMakeFiles/main.dir/entity/Player.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Player.cpp
 CMakeFiles/main.dir/entity/Player.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/main.dir/entity/Player.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/entity/Player.cpp.o -MF CMakeFiles/main.dir/entity/Player.cpp.o.d -o CMakeFiles/main.dir/entity/Player.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Player.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/main.dir/entity/Player.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/entity/Player.cpp.o -MF CMakeFiles/main.dir/entity/Player.cpp.o.d -o CMakeFiles/main.dir/entity/Player.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Player.cpp
 
 CMakeFiles/main.dir/entity/Player.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/entity/Player.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Player.cpp > CMakeFiles/main.dir/entity/Player.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Player.cpp > CMakeFiles/main.dir/entity/Player.cpp.i
 
 CMakeFiles/main.dir/entity/Player.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/entity/Player.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Player.cpp -o CMakeFiles/main.dir/entity/Player.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Player.cpp -o CMakeFiles/main.dir/entity/Player.cpp.s
 
 CMakeFiles/main.dir/entity/GameTime.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/entity/GameTime.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/GameTime.cpp
+CMakeFiles/main.dir/entity/GameTime.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/GameTime.cpp
 CMakeFiles/main.dir/entity/GameTime.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/main.dir/entity/GameTime.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/entity/GameTime.cpp.o -MF CMakeFiles/main.dir/entity/GameTime.cpp.o.d -o CMakeFiles/main.dir/entity/GameTime.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/GameTime.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/main.dir/entity/GameTime.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/entity/GameTime.cpp.o -MF CMakeFiles/main.dir/entity/GameTime.cpp.o.d -o CMakeFiles/main.dir/entity/GameTime.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/GameTime.cpp
 
 CMakeFiles/main.dir/entity/GameTime.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/entity/GameTime.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/GameTime.cpp > CMakeFiles/main.dir/entity/GameTime.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/GameTime.cpp > CMakeFiles/main.dir/entity/GameTime.cpp.i
 
 CMakeFiles/main.dir/entity/GameTime.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/entity/GameTime.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/GameTime.cpp -o CMakeFiles/main.dir/entity/GameTime.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/GameTime.cpp -o CMakeFiles/main.dir/entity/GameTime.cpp.s
 
 CMakeFiles/main.dir/entity/Camera.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/entity/Camera.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Camera.cpp
+CMakeFiles/main.dir/entity/Camera.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Camera.cpp
 CMakeFiles/main.dir/entity/Camera.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/main.dir/entity/Camera.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/entity/Camera.cpp.o -MF CMakeFiles/main.dir/entity/Camera.cpp.o.d -o CMakeFiles/main.dir/entity/Camera.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Camera.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/main.dir/entity/Camera.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/entity/Camera.cpp.o -MF CMakeFiles/main.dir/entity/Camera.cpp.o.d -o CMakeFiles/main.dir/entity/Camera.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Camera.cpp
 
 CMakeFiles/main.dir/entity/Camera.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/entity/Camera.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Camera.cpp > CMakeFiles/main.dir/entity/Camera.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Camera.cpp > CMakeFiles/main.dir/entity/Camera.cpp.i
 
 CMakeFiles/main.dir/entity/Camera.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/entity/Camera.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/entity/Camera.cpp -o CMakeFiles/main.dir/entity/Camera.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Camera.cpp -o CMakeFiles/main.dir/entity/Camera.cpp.s
 
 CMakeFiles/main.dir/renders/EntityRenderer.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/renders/EntityRenderer.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/EntityRenderer.cpp
+CMakeFiles/main.dir/renders/EntityRenderer.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/EntityRenderer.cpp
 CMakeFiles/main.dir/renders/EntityRenderer.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/main.dir/renders/EntityRenderer.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/renders/EntityRenderer.cpp.o -MF CMakeFiles/main.dir/renders/EntityRenderer.cpp.o.d -o CMakeFiles/main.dir/renders/EntityRenderer.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/EntityRenderer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/main.dir/renders/EntityRenderer.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/renders/EntityRenderer.cpp.o -MF CMakeFiles/main.dir/renders/EntityRenderer.cpp.o.d -o CMakeFiles/main.dir/renders/EntityRenderer.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/EntityRenderer.cpp
 
 CMakeFiles/main.dir/renders/EntityRenderer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/renders/EntityRenderer.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/EntityRenderer.cpp > CMakeFiles/main.dir/renders/EntityRenderer.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/EntityRenderer.cpp > CMakeFiles/main.dir/renders/EntityRenderer.cpp.i
 
 CMakeFiles/main.dir/renders/EntityRenderer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/renders/EntityRenderer.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/EntityRenderer.cpp -o CMakeFiles/main.dir/renders/EntityRenderer.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/EntityRenderer.cpp -o CMakeFiles/main.dir/renders/EntityRenderer.cpp.s
 
 CMakeFiles/main.dir/renders/RenderManager.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/renders/RenderManager.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/RenderManager.cpp
+CMakeFiles/main.dir/renders/RenderManager.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/RenderManager.cpp
 CMakeFiles/main.dir/renders/RenderManager.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/main.dir/renders/RenderManager.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/renders/RenderManager.cpp.o -MF CMakeFiles/main.dir/renders/RenderManager.cpp.o.d -o CMakeFiles/main.dir/renders/RenderManager.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/RenderManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/main.dir/renders/RenderManager.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/renders/RenderManager.cpp.o -MF CMakeFiles/main.dir/renders/RenderManager.cpp.o.d -o CMakeFiles/main.dir/renders/RenderManager.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/RenderManager.cpp
 
 CMakeFiles/main.dir/renders/RenderManager.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/renders/RenderManager.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/RenderManager.cpp > CMakeFiles/main.dir/renders/RenderManager.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/RenderManager.cpp > CMakeFiles/main.dir/renders/RenderManager.cpp.i
 
 CMakeFiles/main.dir/renders/RenderManager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/renders/RenderManager.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/RenderManager.cpp -o CMakeFiles/main.dir/renders/RenderManager.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/RenderManager.cpp -o CMakeFiles/main.dir/renders/RenderManager.cpp.s
 
 CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/SkyboxRenderer.cpp
+CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/SkyboxRenderer.cpp
 CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.o -MF CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.o.d -o CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/SkyboxRenderer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.o -MF CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.o.d -o CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/SkyboxRenderer.cpp
 
 CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/SkyboxRenderer.cpp > CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/SkyboxRenderer.cpp > CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.i
 
 CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/SkyboxRenderer.cpp -o CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/SkyboxRenderer.cpp -o CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.s
 
 CMakeFiles/main.dir/renders/TerrainRenderer.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/renders/TerrainRenderer.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/TerrainRenderer.cpp
+CMakeFiles/main.dir/renders/TerrainRenderer.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/TerrainRenderer.cpp
 CMakeFiles/main.dir/renders/TerrainRenderer.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/main.dir/renders/TerrainRenderer.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/renders/TerrainRenderer.cpp.o -MF CMakeFiles/main.dir/renders/TerrainRenderer.cpp.o.d -o CMakeFiles/main.dir/renders/TerrainRenderer.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/TerrainRenderer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/main.dir/renders/TerrainRenderer.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/renders/TerrainRenderer.cpp.o -MF CMakeFiles/main.dir/renders/TerrainRenderer.cpp.o.d -o CMakeFiles/main.dir/renders/TerrainRenderer.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/TerrainRenderer.cpp
 
 CMakeFiles/main.dir/renders/TerrainRenderer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/renders/TerrainRenderer.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/TerrainRenderer.cpp > CMakeFiles/main.dir/renders/TerrainRenderer.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/TerrainRenderer.cpp > CMakeFiles/main.dir/renders/TerrainRenderer.cpp.i
 
 CMakeFiles/main.dir/renders/TerrainRenderer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/renders/TerrainRenderer.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/TerrainRenderer.cpp -o CMakeFiles/main.dir/renders/TerrainRenderer.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/TerrainRenderer.cpp -o CMakeFiles/main.dir/renders/TerrainRenderer.cpp.s
 
 CMakeFiles/main.dir/renders/FrameBuffer.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/renders/FrameBuffer.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/FrameBuffer.cpp
+CMakeFiles/main.dir/renders/FrameBuffer.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/FrameBuffer.cpp
 CMakeFiles/main.dir/renders/FrameBuffer.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/main.dir/renders/FrameBuffer.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/renders/FrameBuffer.cpp.o -MF CMakeFiles/main.dir/renders/FrameBuffer.cpp.o.d -o CMakeFiles/main.dir/renders/FrameBuffer.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/FrameBuffer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/main.dir/renders/FrameBuffer.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/renders/FrameBuffer.cpp.o -MF CMakeFiles/main.dir/renders/FrameBuffer.cpp.o.d -o CMakeFiles/main.dir/renders/FrameBuffer.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/FrameBuffer.cpp
 
 CMakeFiles/main.dir/renders/FrameBuffer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/renders/FrameBuffer.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/FrameBuffer.cpp > CMakeFiles/main.dir/renders/FrameBuffer.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/FrameBuffer.cpp > CMakeFiles/main.dir/renders/FrameBuffer.cpp.i
 
 CMakeFiles/main.dir/renders/FrameBuffer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/renders/FrameBuffer.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/FrameBuffer.cpp -o CMakeFiles/main.dir/renders/FrameBuffer.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/FrameBuffer.cpp -o CMakeFiles/main.dir/renders/FrameBuffer.cpp.s
 
 CMakeFiles/main.dir/renders/WaterRenderer.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/renders/WaterRenderer.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/WaterRenderer.cpp
+CMakeFiles/main.dir/renders/WaterRenderer.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/WaterRenderer.cpp
 CMakeFiles/main.dir/renders/WaterRenderer.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/main.dir/renders/WaterRenderer.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/renders/WaterRenderer.cpp.o -MF CMakeFiles/main.dir/renders/WaterRenderer.cpp.o.d -o CMakeFiles/main.dir/renders/WaterRenderer.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/WaterRenderer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/main.dir/renders/WaterRenderer.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/renders/WaterRenderer.cpp.o -MF CMakeFiles/main.dir/renders/WaterRenderer.cpp.o.d -o CMakeFiles/main.dir/renders/WaterRenderer.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/WaterRenderer.cpp
 
 CMakeFiles/main.dir/renders/WaterRenderer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/renders/WaterRenderer.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/WaterRenderer.cpp > CMakeFiles/main.dir/renders/WaterRenderer.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/WaterRenderer.cpp > CMakeFiles/main.dir/renders/WaterRenderer.cpp.i
 
 CMakeFiles/main.dir/renders/WaterRenderer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/renders/WaterRenderer.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/WaterRenderer.cpp -o CMakeFiles/main.dir/renders/WaterRenderer.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/WaterRenderer.cpp -o CMakeFiles/main.dir/renders/WaterRenderer.cpp.s
 
 CMakeFiles/main.dir/renders/ShadowMap.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/renders/ShadowMap.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/ShadowMap.cpp
+CMakeFiles/main.dir/renders/ShadowMap.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/ShadowMap.cpp
 CMakeFiles/main.dir/renders/ShadowMap.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/main.dir/renders/ShadowMap.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/renders/ShadowMap.cpp.o -MF CMakeFiles/main.dir/renders/ShadowMap.cpp.o.d -o CMakeFiles/main.dir/renders/ShadowMap.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/ShadowMap.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/main.dir/renders/ShadowMap.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/renders/ShadowMap.cpp.o -MF CMakeFiles/main.dir/renders/ShadowMap.cpp.o.d -o CMakeFiles/main.dir/renders/ShadowMap.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/ShadowMap.cpp
 
 CMakeFiles/main.dir/renders/ShadowMap.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/renders/ShadowMap.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/ShadowMap.cpp > CMakeFiles/main.dir/renders/ShadowMap.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/ShadowMap.cpp > CMakeFiles/main.dir/renders/ShadowMap.cpp.i
 
 CMakeFiles/main.dir/renders/ShadowMap.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/renders/ShadowMap.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/ShadowMap.cpp -o CMakeFiles/main.dir/renders/ShadowMap.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/ShadowMap.cpp -o CMakeFiles/main.dir/renders/ShadowMap.cpp.s
 
 CMakeFiles/main.dir/shaders/ShaderProgram.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/shaders/ShaderProgram.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/ShaderProgram.cpp
+CMakeFiles/main.dir/shaders/ShaderProgram.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/ShaderProgram.cpp
 CMakeFiles/main.dir/shaders/ShaderProgram.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/main.dir/shaders/ShaderProgram.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/shaders/ShaderProgram.cpp.o -MF CMakeFiles/main.dir/shaders/ShaderProgram.cpp.o.d -o CMakeFiles/main.dir/shaders/ShaderProgram.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/ShaderProgram.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/main.dir/shaders/ShaderProgram.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/shaders/ShaderProgram.cpp.o -MF CMakeFiles/main.dir/shaders/ShaderProgram.cpp.o.d -o CMakeFiles/main.dir/shaders/ShaderProgram.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/ShaderProgram.cpp
 
 CMakeFiles/main.dir/shaders/ShaderProgram.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/shaders/ShaderProgram.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/ShaderProgram.cpp > CMakeFiles/main.dir/shaders/ShaderProgram.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/ShaderProgram.cpp > CMakeFiles/main.dir/shaders/ShaderProgram.cpp.i
 
 CMakeFiles/main.dir/shaders/ShaderProgram.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/shaders/ShaderProgram.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/ShaderProgram.cpp -o CMakeFiles/main.dir/shaders/ShaderProgram.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/ShaderProgram.cpp -o CMakeFiles/main.dir/shaders/ShaderProgram.cpp.s
 
 CMakeFiles/main.dir/shaders/TerrainShader.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/shaders/TerrainShader.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/TerrainShader.cpp
+CMakeFiles/main.dir/shaders/TerrainShader.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/TerrainShader.cpp
 CMakeFiles/main.dir/shaders/TerrainShader.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/main.dir/shaders/TerrainShader.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/shaders/TerrainShader.cpp.o -MF CMakeFiles/main.dir/shaders/TerrainShader.cpp.o.d -o CMakeFiles/main.dir/shaders/TerrainShader.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/TerrainShader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/main.dir/shaders/TerrainShader.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/shaders/TerrainShader.cpp.o -MF CMakeFiles/main.dir/shaders/TerrainShader.cpp.o.d -o CMakeFiles/main.dir/shaders/TerrainShader.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/TerrainShader.cpp
 
 CMakeFiles/main.dir/shaders/TerrainShader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/shaders/TerrainShader.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/TerrainShader.cpp > CMakeFiles/main.dir/shaders/TerrainShader.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/TerrainShader.cpp > CMakeFiles/main.dir/shaders/TerrainShader.cpp.i
 
 CMakeFiles/main.dir/shaders/TerrainShader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/shaders/TerrainShader.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/TerrainShader.cpp -o CMakeFiles/main.dir/shaders/TerrainShader.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/TerrainShader.cpp -o CMakeFiles/main.dir/shaders/TerrainShader.cpp.s
 
 CMakeFiles/main.dir/shaders/EntityShader.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/shaders/EntityShader.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/EntityShader.cpp
+CMakeFiles/main.dir/shaders/EntityShader.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/EntityShader.cpp
 CMakeFiles/main.dir/shaders/EntityShader.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/main.dir/shaders/EntityShader.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/shaders/EntityShader.cpp.o -MF CMakeFiles/main.dir/shaders/EntityShader.cpp.o.d -o CMakeFiles/main.dir/shaders/EntityShader.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/EntityShader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/main.dir/shaders/EntityShader.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/shaders/EntityShader.cpp.o -MF CMakeFiles/main.dir/shaders/EntityShader.cpp.o.d -o CMakeFiles/main.dir/shaders/EntityShader.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/EntityShader.cpp
 
 CMakeFiles/main.dir/shaders/EntityShader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/shaders/EntityShader.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/EntityShader.cpp > CMakeFiles/main.dir/shaders/EntityShader.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/EntityShader.cpp > CMakeFiles/main.dir/shaders/EntityShader.cpp.i
 
 CMakeFiles/main.dir/shaders/EntityShader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/shaders/EntityShader.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/EntityShader.cpp -o CMakeFiles/main.dir/shaders/EntityShader.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/EntityShader.cpp -o CMakeFiles/main.dir/shaders/EntityShader.cpp.s
 
 CMakeFiles/main.dir/shaders/SkyboxShader.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/shaders/SkyboxShader.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/SkyboxShader.cpp
+CMakeFiles/main.dir/shaders/SkyboxShader.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/SkyboxShader.cpp
 CMakeFiles/main.dir/shaders/SkyboxShader.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/main.dir/shaders/SkyboxShader.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/shaders/SkyboxShader.cpp.o -MF CMakeFiles/main.dir/shaders/SkyboxShader.cpp.o.d -o CMakeFiles/main.dir/shaders/SkyboxShader.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/SkyboxShader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/main.dir/shaders/SkyboxShader.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/shaders/SkyboxShader.cpp.o -MF CMakeFiles/main.dir/shaders/SkyboxShader.cpp.o.d -o CMakeFiles/main.dir/shaders/SkyboxShader.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/SkyboxShader.cpp
 
 CMakeFiles/main.dir/shaders/SkyboxShader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/shaders/SkyboxShader.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/SkyboxShader.cpp > CMakeFiles/main.dir/shaders/SkyboxShader.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/SkyboxShader.cpp > CMakeFiles/main.dir/shaders/SkyboxShader.cpp.i
 
 CMakeFiles/main.dir/shaders/SkyboxShader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/shaders/SkyboxShader.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/SkyboxShader.cpp -o CMakeFiles/main.dir/shaders/SkyboxShader.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/SkyboxShader.cpp -o CMakeFiles/main.dir/shaders/SkyboxShader.cpp.s
 
 CMakeFiles/main.dir/shaders/WaterShader.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/shaders/WaterShader.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/WaterShader.cpp
+CMakeFiles/main.dir/shaders/WaterShader.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/WaterShader.cpp
 CMakeFiles/main.dir/shaders/WaterShader.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/main.dir/shaders/WaterShader.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/shaders/WaterShader.cpp.o -MF CMakeFiles/main.dir/shaders/WaterShader.cpp.o.d -o CMakeFiles/main.dir/shaders/WaterShader.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/WaterShader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/main.dir/shaders/WaterShader.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/shaders/WaterShader.cpp.o -MF CMakeFiles/main.dir/shaders/WaterShader.cpp.o.d -o CMakeFiles/main.dir/shaders/WaterShader.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/WaterShader.cpp
 
 CMakeFiles/main.dir/shaders/WaterShader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/shaders/WaterShader.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/WaterShader.cpp > CMakeFiles/main.dir/shaders/WaterShader.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/WaterShader.cpp > CMakeFiles/main.dir/shaders/WaterShader.cpp.i
 
 CMakeFiles/main.dir/shaders/WaterShader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/shaders/WaterShader.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/WaterShader.cpp -o CMakeFiles/main.dir/shaders/WaterShader.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/WaterShader.cpp -o CMakeFiles/main.dir/shaders/WaterShader.cpp.s
 
 CMakeFiles/main.dir/Window.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/Window.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/Window.cpp
+CMakeFiles/main.dir/Window.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/Window.cpp
 CMakeFiles/main.dir/Window.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/main.dir/Window.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/Window.cpp.o -MF CMakeFiles/main.dir/Window.cpp.o.d -o CMakeFiles/main.dir/Window.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/Window.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/main.dir/Window.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/Window.cpp.o -MF CMakeFiles/main.dir/Window.cpp.o.d -o CMakeFiles/main.dir/Window.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/Window.cpp
 
 CMakeFiles/main.dir/Window.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/Window.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/Window.cpp > CMakeFiles/main.dir/Window.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/Window.cpp > CMakeFiles/main.dir/Window.cpp.i
 
 CMakeFiles/main.dir/Window.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/Window.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/Window.cpp -o CMakeFiles/main.dir/Window.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/Window.cpp -o CMakeFiles/main.dir/Window.cpp.s
 
 CMakeFiles/main.dir/particles/particle.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/particles/particle.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/particles/particle.cpp
+CMakeFiles/main.dir/particles/particle.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/particles/particle.cpp
 CMakeFiles/main.dir/particles/particle.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/main.dir/particles/particle.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/particles/particle.cpp.o -MF CMakeFiles/main.dir/particles/particle.cpp.o.d -o CMakeFiles/main.dir/particles/particle.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/particles/particle.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/main.dir/particles/particle.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/particles/particle.cpp.o -MF CMakeFiles/main.dir/particles/particle.cpp.o.d -o CMakeFiles/main.dir/particles/particle.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/particles/particle.cpp
 
 CMakeFiles/main.dir/particles/particle.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/particles/particle.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/particles/particle.cpp > CMakeFiles/main.dir/particles/particle.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/particles/particle.cpp > CMakeFiles/main.dir/particles/particle.cpp.i
 
 CMakeFiles/main.dir/particles/particle.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/particles/particle.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/particles/particle.cpp -o CMakeFiles/main.dir/particles/particle.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/particles/particle.cpp -o CMakeFiles/main.dir/particles/particle.cpp.s
 
 CMakeFiles/main.dir/shaders/particleShader.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/shaders/particleShader.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/particleShader.cpp
+CMakeFiles/main.dir/shaders/particleShader.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/particleShader.cpp
 CMakeFiles/main.dir/shaders/particleShader.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/main.dir/shaders/particleShader.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/shaders/particleShader.cpp.o -MF CMakeFiles/main.dir/shaders/particleShader.cpp.o.d -o CMakeFiles/main.dir/shaders/particleShader.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/particleShader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/main.dir/shaders/particleShader.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/shaders/particleShader.cpp.o -MF CMakeFiles/main.dir/shaders/particleShader.cpp.o.d -o CMakeFiles/main.dir/shaders/particleShader.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/particleShader.cpp
 
 CMakeFiles/main.dir/shaders/particleShader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/shaders/particleShader.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/particleShader.cpp > CMakeFiles/main.dir/shaders/particleShader.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/particleShader.cpp > CMakeFiles/main.dir/shaders/particleShader.cpp.i
 
 CMakeFiles/main.dir/shaders/particleShader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/shaders/particleShader.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/shaders/particleShader.cpp -o CMakeFiles/main.dir/shaders/particleShader.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/particleShader.cpp -o CMakeFiles/main.dir/shaders/particleShader.cpp.s
 
 CMakeFiles/main.dir/renders/particleRenderer.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/renders/particleRenderer.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/particleRenderer.cpp
+CMakeFiles/main.dir/renders/particleRenderer.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/particleRenderer.cpp
 CMakeFiles/main.dir/renders/particleRenderer.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/main.dir/renders/particleRenderer.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/renders/particleRenderer.cpp.o -MF CMakeFiles/main.dir/renders/particleRenderer.cpp.o.d -o CMakeFiles/main.dir/renders/particleRenderer.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/particleRenderer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/main.dir/renders/particleRenderer.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/renders/particleRenderer.cpp.o -MF CMakeFiles/main.dir/renders/particleRenderer.cpp.o.d -o CMakeFiles/main.dir/renders/particleRenderer.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/particleRenderer.cpp
 
 CMakeFiles/main.dir/renders/particleRenderer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/renders/particleRenderer.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/particleRenderer.cpp > CMakeFiles/main.dir/renders/particleRenderer.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/particleRenderer.cpp > CMakeFiles/main.dir/renders/particleRenderer.cpp.i
 
 CMakeFiles/main.dir/renders/particleRenderer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/renders/particleRenderer.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/particleRenderer.cpp -o CMakeFiles/main.dir/renders/particleRenderer.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/particleRenderer.cpp -o CMakeFiles/main.dir/renders/particleRenderer.cpp.s
 
 CMakeFiles/main.dir/renders/ParticleManager.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/renders/ParticleManager.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/ParticleManager.cpp
+CMakeFiles/main.dir/renders/ParticleManager.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/ParticleManager.cpp
 CMakeFiles/main.dir/renders/ParticleManager.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/main.dir/renders/ParticleManager.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/renders/ParticleManager.cpp.o -MF CMakeFiles/main.dir/renders/ParticleManager.cpp.o.d -o CMakeFiles/main.dir/renders/ParticleManager.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/ParticleManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/main.dir/renders/ParticleManager.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/renders/ParticleManager.cpp.o -MF CMakeFiles/main.dir/renders/ParticleManager.cpp.o.d -o CMakeFiles/main.dir/renders/ParticleManager.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/ParticleManager.cpp
 
 CMakeFiles/main.dir/renders/ParticleManager.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/renders/ParticleManager.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/ParticleManager.cpp > CMakeFiles/main.dir/renders/ParticleManager.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/ParticleManager.cpp > CMakeFiles/main.dir/renders/ParticleManager.cpp.i
 
 CMakeFiles/main.dir/renders/ParticleManager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/renders/ParticleManager.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/renders/ParticleManager.cpp -o CMakeFiles/main.dir/renders/ParticleManager.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/ParticleManager.cpp -o CMakeFiles/main.dir/renders/ParticleManager.cpp.s
 
 CMakeFiles/main.dir/particles/ParticleSystem.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/particles/ParticleSystem.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/particles/ParticleSystem.cpp
+CMakeFiles/main.dir/particles/ParticleSystem.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/particles/ParticleSystem.cpp
 CMakeFiles/main.dir/particles/ParticleSystem.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/main.dir/particles/ParticleSystem.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/particles/ParticleSystem.cpp.o -MF CMakeFiles/main.dir/particles/ParticleSystem.cpp.o.d -o CMakeFiles/main.dir/particles/ParticleSystem.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/particles/ParticleSystem.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/main.dir/particles/ParticleSystem.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/particles/ParticleSystem.cpp.o -MF CMakeFiles/main.dir/particles/ParticleSystem.cpp.o.d -o CMakeFiles/main.dir/particles/ParticleSystem.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/particles/ParticleSystem.cpp
 
 CMakeFiles/main.dir/particles/ParticleSystem.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/particles/ParticleSystem.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/particles/ParticleSystem.cpp > CMakeFiles/main.dir/particles/ParticleSystem.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/particles/ParticleSystem.cpp > CMakeFiles/main.dir/particles/ParticleSystem.cpp.i
 
 CMakeFiles/main.dir/particles/ParticleSystem.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/particles/ParticleSystem.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/particles/ParticleSystem.cpp -o CMakeFiles/main.dir/particles/ParticleSystem.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/particles/ParticleSystem.cpp -o CMakeFiles/main.dir/particles/ParticleSystem.cpp.s
+
+CMakeFiles/main.dir/shaders/AABBShader.cpp.o: CMakeFiles/main.dir/flags.make
+CMakeFiles/main.dir/shaders/AABBShader.cpp.o: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/AABBShader.cpp
+CMakeFiles/main.dir/shaders/AABBShader.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/main.dir/shaders/AABBShader.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/shaders/AABBShader.cpp.o -MF CMakeFiles/main.dir/shaders/AABBShader.cpp.o.d -o CMakeFiles/main.dir/shaders/AABBShader.cpp.o -c /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/AABBShader.cpp
+
+CMakeFiles/main.dir/shaders/AABBShader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/main.dir/shaders/AABBShader.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/AABBShader.cpp > CMakeFiles/main.dir/shaders/AABBShader.cpp.i
+
+CMakeFiles/main.dir/shaders/AABBShader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/main.dir/shaders/AABBShader.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/AABBShader.cpp -o CMakeFiles/main.dir/shaders/AABBShader.cpp.s
 
 # Object files for target main
 main_OBJECTS = \
@@ -490,52 +504,54 @@ main_OBJECTS = \
 "CMakeFiles/main.dir/shaders/particleShader.cpp.o" \
 "CMakeFiles/main.dir/renders/particleRenderer.cpp.o" \
 "CMakeFiles/main.dir/renders/ParticleManager.cpp.o" \
-"CMakeFiles/main.dir/particles/ParticleSystem.cpp.o"
+"CMakeFiles/main.dir/particles/ParticleSystem.cpp.o" \
+"CMakeFiles/main.dir/shaders/AABBShader.cpp.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/main.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/glad.c.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/entity/MY_Model.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/entity/Entity.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/entity/Loader.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/entity/Terrain.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/entity/Player.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/entity/GameTime.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/entity/Camera.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/renders/EntityRenderer.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/renders/RenderManager.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/renders/TerrainRenderer.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/renders/FrameBuffer.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/renders/WaterRenderer.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/renders/ShadowMap.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/shaders/ShaderProgram.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/shaders/TerrainShader.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/shaders/EntityShader.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/shaders/SkyboxShader.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/shaders/WaterShader.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/Window.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/particles/particle.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/shaders/particleShader.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/renders/particleRenderer.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/renders/ParticleManager.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/particles/ParticleSystem.cpp.o
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/build.make
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/dependencies/library/libglfw.3.3.dylib
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/dependencies/library/libassimp.dylib
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/dependencies/library/libzlibstatic.a
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/dependencies/include/fmt/build/libfmt.a
-/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Linking CXX executable /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main"
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/main.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/glad.c.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/entity/MY_Model.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/entity/Entity.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/entity/Loader.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/entity/tiny_obj_loader.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/entity/Terrain.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/entity/Player.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/entity/GameTime.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/entity/Camera.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/renders/EntityRenderer.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/renders/RenderManager.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/renders/TerrainRenderer.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/renders/FrameBuffer.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/renders/WaterRenderer.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/renders/ShadowMap.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/shaders/ShaderProgram.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/shaders/TerrainShader.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/shaders/EntityShader.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/shaders/SkyboxShader.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/shaders/WaterShader.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/Window.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/particles/particle.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/shaders/particleShader.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/renders/particleRenderer.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/renders/ParticleManager.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/particles/ParticleSystem.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/shaders/AABBShader.cpp.o
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/build.make
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/dependencies/library/libglfw.3.3.dylib
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/dependencies/library/libassimp.dylib
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/dependencies/library/libzlibstatic.a
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/dependencies/include/fmt/build/libfmt.a
+/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main: CMakeFiles/main.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Linking CXX executable /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Copy resources to build tree"
-	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E copy_directory /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/image /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/image
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E copy_directory /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/image /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/image
 
 # Rule to build all files generated by this target.
-CMakeFiles/main.dir/build: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/main
+CMakeFiles/main.dir/build: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/main
 .PHONY : CMakeFiles/main.dir/build
 
 CMakeFiles/main.dir/clean:
@@ -543,6 +559,6 @@ CMakeFiles/main.dir/clean:
 .PHONY : CMakeFiles/main.dir/clean
 
 CMakeFiles/main.dir/depend:
-	cd /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug/CMakeFiles/main.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug/CMakeFiles/main.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/main.dir/depend
 

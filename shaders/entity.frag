@@ -64,17 +64,12 @@ vec2 poissonDisk[16] = vec2[](
    vec2( 0.14383161, -0.14100790 ) 
 );
 
-
-// Returns a random number based on a vec3 and an int.
 float random(vec3 seed, int i){
     vec4 seed4 = vec4(seed,i);
     float dot_product = dot(seed4, vec4(12.9898,78.233,45.164,94.673));
     return fract(sin(dot_product) * 43758.5453);
 }
 
-
-// Multiple lights code from
-// http://www.tomdalling.com/blog/modern-opengl/08-even-more-lighting-directional-lights-spotlights-multiple-lights
 vec3 ApplyLight(Light light, vec3 surfaceColor, vec3 normal, vec4 vertex_world, vec4 vertex_view) {
     vec3 light_surface_dir;
     float attenuation = 1.0;
@@ -154,6 +149,6 @@ void main(void) {
     }
 
     lit_colour = lit_colour * visibility;
-    lit_colour = applyFog(lit_colour,-vertex_view.z);
+//    lit_colour = applyFog(lit_colour,-vertex_view.z);
     fragColour = vec4(lit_colour, texture_alpha);
 }

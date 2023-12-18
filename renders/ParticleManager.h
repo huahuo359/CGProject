@@ -21,7 +21,7 @@ public:
     static ParticleManager* getParticleManager();
 
     // Should be called once per frame
-    void update();
+    void update(Terrain* terrain);
 
     void addParticle(Particle*);
     void render(const glm::mat4& view, const glm::mat4& proj);

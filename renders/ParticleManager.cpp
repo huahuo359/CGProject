@@ -14,10 +14,10 @@ ParticleManager* ParticleManager::getParticleManager() {
     return particleManager;
 }
 
-void ParticleManager::update() {
+void ParticleManager::update(Terrain* terrain) {
     // Update and kill particles
     for (auto particles_it = particles.begin(); particles_it != particles.end(); particles_it++) {
-        if (!(*particles_it)->update()) {
+        if (!(*particles_it)->update(terrain)) {
             delete *particles_it;
             particles_it = particles.erase(particles_it);
 

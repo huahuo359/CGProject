@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ
-BuildDirectory: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ/cmake-build-debug
+SourceDirectory: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot
+BuildDirectory: /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/cmake-build-debug
 
 # Where to place the cost data store
 CostDataFile: 
@@ -27,7 +27,7 @@ SubmitInactivityTimeout:
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake" "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/CG_PROJ"
+ConfigureCommand: "/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake" "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot"
 MakeCommand: /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 
@@ -64,7 +64,7 @@ UpdateType: git
 
 # Compiler info
 Compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++
-CompilerVersion: 15.0.0.15000040
+CompilerVersion: 15.0.0.15000100
 
 # Dynamic analysis (MemCheck)
 PurifyCommand: 

@@ -3,9 +3,12 @@
 #include "constants.h"
 #include "GameTime.h"
 #include "Terrain.h"
+#include "../tools/camera.h"
 
 #include <algorithm>
 #include <cmath>
+
+#include <glm/glm.hpp>
 
 using namespace std;
 using namespace glm;
@@ -46,6 +49,10 @@ constexpr float wheelBase = cgToFrontAxle + cgToRearAxle;         // set from ax
 constexpr float axleWeightRatioFront = cgToRearAxle / wheelBase;  // % car weight on the front axle
 constexpr float axleWeightRatioRear = cgToFrontAxle / wheelBase;  // % car weight on the rear axle
 
+extern Camera camera;
+const unsigned int SCR_WIDTH=1600;
+const unsigned int SCR_HEIGHT=1200;
+
 Player::Player(MY_Model* model, Terrain* terrain, bool basic_controls) : Entity(model) {
     this->terrain = terrain;
     this->absVel = 0.0f;
@@ -60,6 +67,7 @@ Player::Player(MY_Model* model, Terrain* terrain, bool basic_controls) : Entity(
     this->velocity_c = {0.f, 0.f};
     this->accel = {0.f, 0.f};
     this->accel_c = {0.f, 0.f};
+
     if (basic_controls) {
         ROTATION_SPEED = constants::PI;
     } else {

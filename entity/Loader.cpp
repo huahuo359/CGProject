@@ -135,8 +135,6 @@ ModelComponent Loader::loadModelComponent(
     size_t numIndices = shape.mesh.indices.size();
 //    std::cout<<"Enter load model component"<<std::endl;
 
-    // TODO - revisit this. Likely a result of the file not loading on windows requiring this, meaning no textures can
-    // load.
     tinyobj::material_t material;
     initMaterial(material);
     if (!shape.mesh.material_ids.empty() && shape.mesh.material_ids[0] != -1) {

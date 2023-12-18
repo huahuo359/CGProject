@@ -86,8 +86,15 @@ void MY_Model::addRange(const std::vector<float>& vertices) {
 
 // [xMin, xMax, yMin, yMax, zMin, zMax]
 void MY_Model::setRange(
-    const std::tuple<float, float, float>& /*minXYZ*/, const std::tuple<float, float, float>& /*maxXYZ*/) {
-    throw std::runtime_error("Not implemented");
+    const std::tuple<float, float, float>& minXYZ, const std::tuple<float, float, float>& maxXYZ) {
+
+    maxRanges.push_back(get<0>(minXYZ));
+    maxRanges.push_back(get<0>(maxXYZ));
+    maxRanges.push_back(get<1>(minXYZ));
+    maxRanges.push_back(get<1>(maxXYZ));
+    maxRanges.push_back(get<2>(minXYZ));
+    maxRanges.push_back(get<2>(maxXYZ));
+
 }
 
 std::pair<float, float> MY_Model::getRangeInDim(int dim) const {
