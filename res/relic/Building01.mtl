@@ -1,0 +1,39 @@
+# Blender MTL File: 'Building01.blend'
+# Material Count: 3
+
+newmtl Concrete
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump white_plaster_rough_02_NOR_2k.png
+map_Kd white_plaster_rough_02_diff_2k.png
+map_Ns white_plaster_rough_02_Rough_2k.png
+
+newmtl Metal
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump Metal025_2K_Normal.png
+map_Kd Metal025_2K_Color.png
+map_Ns Metal025_2K_Roughness.png
+refl Metal025_2K_Metalness.png
+
+newmtl windows
+Ns 650.250014
+Ka 0.090909 0.090909 0.090909
+Kd 0.635814 0.587185 0.501066
+Ks 0.450000 0.450000 0.450000
+Ke 0.000000 0.000000 0.000000
+Ni 1.300000
+d 1.000000
+illum 3

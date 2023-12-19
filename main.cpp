@@ -27,6 +27,8 @@
 
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+bool IsCollide(vector<Entity*> entities);
+bool VertexInRange(glm::vec4 entityRange[], glm::vec4 player_vertice);
 
 // settings
 const unsigned int SCR_WIDTH = 1600;
@@ -61,12 +63,27 @@ void mainLoop() {
     player->setRotationY((GLfloat)5.0f * constants::PI / 8.0f);
     entities.push_back(player);
 
-//    MY_Model engine = Loader::getLoader()->loadModel("res/engine/Engine.obj");
-//    Entity* engine_entity = new Entity(&engine);
-//    engine_entity->setScale(glm::vec3(10.0f,10.0f,10.0f));
-//    engine_entity->setPosition(terrain->getPositionFromPixel(200,500));
-//    engine_entity->setRotationX(90);
-//    entities.push_back(engine_entity);
+    MY_Model engine = Loader::getLoader()->loadModel("res/engine/Engine.obj");
+    Entity* engine_entity = new Entity(&engine);
+    engine_entity->setScale(glm::vec3(10.0f,10.0f,10.0f));
+    engine_entity->setPosition(terrain->getPositionFromPixel(600,500));
+    engine_entity->setBoundSize(0.8f);
+    engine_entity->rotateX(constants::PI/2);
+    entities.push_back(engine_entity);
+
+//    MY_Model relic = Loader::getLoader()->loadModel("res/relic/Building01.obj");
+//    Entity* relic_entity = new Entity(&relic);
+//    relic_entity->setScale(glm::vec3(5.0f,5.0f,5.0f));
+//    relic_entity->setPosition(terrain->getPositionFromPixel(800,400));
+//    relic_entity->setBoundSize(1.0f);
+//    entities.push_back(relic_entity);
+
+    MY_Model highway = Loader::getLoader()->loadModel("res/highway/TheBridge.obj");
+    Entity* highway_entity = new Entity(&highway);
+    highway_entity->setScale(glm::vec3(10.0f,10.0f,10.0f));
+    highway_entity->setPosition(terrain->getPositionFromPixel(800,400));
+    highway_entity->setBoundSize(1.0f);
+    entities.push_back(highway_entity);
 
     new_window.set_key_callback([&](GLFWwindow* window, int key, int scancode, int action, int mods) {
         // Terminate program if escape is pressed
@@ -120,20 +137,29 @@ void mainLoop() {
 
     // Create light sources
     auto* sunny = new Light();
-    sunny->position = glm::vec4(-1.25 * 200.0f / 10, 2.5 * 200.0f / 10, 3 * 200.0f / 10, 0.0f);  // w = 0 - directional
+    sunny->position = glm::vec4(-1.25 * 200.0f / 10, 2.5 * 200.0f / 10, 3 * 200.0f / 10, 0.0f);
     sunny->specular = glm::vec3(1.0f, 1.0f, 1.0f);
     sunny->diffuse = glm::vec3(0.7f, 0.7f, 0.7f);
     sunny->ambient = glm::vec3(0.1f, 0.1f, 0.1f);
     lights.push_back(sunny);
 
     auto* headlight = new Light();
-    headlight->position = glm::vec4(2.0f, 8.0f, 0.0f, 1.0f);
+    headlight->position = glm::vec4(4.0f, 8.0f, 0.0f, 1.0f);
     headlight->specular = glm::vec3(0.8f, 0.8f, 0.4f);
     headlight->diffuse = glm::vec3(0.8f, 0.8f, 0.4f);
     headlight->coneDirection = glm::vec3(0.0f, -1.0f, 0.0f);
     headlight->coneAngle = constants::PI / 4.f;
     headlight->radius = 10.0f;
     lights.push_back(headlight);
+
+    auto* headlight2 = new Light();
+    headlight2->position = glm::vec4 (0.0f,8.0f,0.0f,1.0f);
+    headlight2->specular = glm::vec3 (0.8f,0.8f,0.4f);
+    headlight2->diffuse = glm::vec3(0.8f, 0.8f, 0.4f);
+    headlight2->coneDirection = glm::vec3(0.0f, -1.0f, 0.0f);
+    headlight2->coneAngle = constants::PI / 4.f;
+    headlight2->radius = 10.0f;
+    lights.push_back(headlight2);
 
     for(auto it : entities) {
         it->placeBottomEdge(terrain->getHeight(it->getPosition().x, it->getPosition().z));
@@ -165,19 +191,23 @@ void mainLoop() {
             ParticleManager::getParticleManager()->update(terrain);
 
             for(auto it : entities) {
-                it->update();
+                if(!it->getIsPlayer())
+                    it->update();
+                else {
+                    Player* temp = dynamic_cast<Player*>(it);
+                    temp->update(entities);
+                }
             }
-            headlight->position = glm::vec4(player->getPosition() + glm::vec3(0.0f, 0.1f, 0.0f), 1.0f);
+            headlight->position = glm::vec4(player->getPosition() + glm::vec3(0.0f, 1.0f, 0.0f), 1.0f);
+            headlight2->position = glm::vec4 (player->getPosition() + glm::vec3(0.0f,1.0f,0.0f),1.0f);
             headlight->coneDirection = player->calculateDirectionVector();
+            headlight2->coneDirection = player->calculateDirectionVector();
 
             if (player->absVel > 5.0f || player->getThrottle() > 0.1f || (1 && player->getBrake() > 0.1f)) {
                 particleSystem.generateParticles(player->getPosition() - player->calculateDirectionVector(), *terrain);
             }
 
             snowSystem.generateParticles(player->getPosition()+glm::vec3(0.0f,20.0f,0.0f), *terrain);
-
-//            skybox1.Draw();
-//            planet.Draw();
 
         } else {
             // near shot
@@ -198,9 +228,6 @@ void mainLoop() {
 
 int main()
 {
-   
-//    GLFWwindow* window = Init();
-   
     mainLoop();
 
     glfwTerminate();

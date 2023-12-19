@@ -26,7 +26,8 @@ Entity::Entity() {
 }
 
 bool Entity::update() {
-    return false;
+    updateBound();
+    return true;
 }
 
 const MY_Model* Entity::getModel() const {
@@ -64,25 +65,7 @@ glm::vec3 Entity::calculateDirectionVector() const {
 }
 
 void Entity::setPosition(const glm::vec3& inputPosition) {
-//    glm::vec3 dp;
-//    dp = inputPosition - this->m_position;
-
     this->m_position = inputPosition;
-
-//    if(this->m_model) {
-//        std::vector<float> new_range;
-//
-//        new_range.push_back(this->m_model->maxRanges[0] + dp.x);
-//        new_range.push_back(this->m_model->maxRanges[1] + dp.x);
-//
-//        new_range.push_back(this->m_model->maxRanges[2] + dp.y);
-//        new_range.push_back(this->m_model->maxRanges[3] + dp.y);
-//
-//        new_range.push_back(this->m_model->maxRanges[4] + dp.z);
-//        new_range.push_back(this->m_model->maxRanges[5] + dp.z);
-//
-//        this->m_model->maxRanges = new_range;
-//    }
 }
 
 void Entity::placeBottomEdge(float surfaceY) {
@@ -93,22 +76,6 @@ void Entity::placeBottomEdge(float surfaceY) {
 
 void Entity::setScale(const glm::vec3& scale) {
     this->m_scale = scale;
-
-    if(this->m_model) {
-        std::vector<float> new_range;
-
-        new_range.push_back(this->m_model->maxRanges[0] * scale.x);
-        new_range.push_back(this->m_model->maxRanges[1] * scale.x);
-
-        new_range.push_back(this->m_model->maxRanges[2] * scale.y);
-        new_range.push_back(this->m_model->maxRanges[3] * scale.y);
-
-        new_range.push_back(this->m_model->maxRanges[4] * scale.z);
-        new_range.push_back(this->m_model->maxRanges[5] * scale.z);
-
-        this->m_model->maxRanges = new_range;
-    }
-
 }
 
 void Entity::setRotationX(float rot) {
@@ -137,20 +104,6 @@ void Entity::rotateZ(float rot) {
 
 void Entity::move(const glm::vec3& movement) {
     m_position = m_position + movement;
-//    if(this->m_model) {
-//        std::vector<float> new_range;
-//
-//        new_range.push_back(this->m_model->maxRanges[0] + movement.x);
-//        new_range.push_back(this->m_model->maxRanges[1] + movement.x);
-//
-//        new_range.push_back(this->m_model->maxRanges[2] + movement.y);
-//        new_range.push_back(this->m_model->maxRanges[3] + movement.y);
-//
-//        new_range.push_back(this->m_model->maxRanges[4] + movement.z);
-//        new_range.push_back(this->m_model->maxRanges[5] + movement.z);
-//
-//        this->m_model->maxRanges = new_range;
-//    }
 }
 
 glm::mat4 Entity::calculateModelMatrix(
@@ -173,4 +126,34 @@ glm::mat4 Entity::calculateRotationMatrix(float xRot, float yRot, float zRot) {
     rotation = glm::rotate(rotation, zRot, glm::vec3(0.0f, 0.0f, 1.0f));
 
     return rotation;
+}
+
+bool Entity::updateBound() {
+    glm::mat4 modelAABB = glm::mat4(1.0f);
+    const MY_Model* model = this->getModel();
+
+    glm::vec3 aabbSize = glm::vec3 (this->getModel()->getRangeInDim(0).second - this->getModel()->getRangeInDim(0).first,
+                                    this->getModel()->getRangeInDim(1).second - this->getModel()->getRangeInDim(1).first,
+                                    this->getModel()->getRangeInDim(2).second - this->getModel()->getRangeInDim(2).first);
+    glm::vec3 aabbCenter = glm::vec3 (this->getModel()->getRangeInDim(0).second + this->getModel()->getRangeInDim(0).first,
+                                      this->getModel()->getRangeInDim(1).second + this->getModel()->getRangeInDim(1).first,
+                                      this->getModel()->getRangeInDim(2).second + this->getModel()->getRangeInDim(2).first)*0.5f;
+    aabbSize *= this->getScale();
+    aabbCenter *= 1.0f;
+
+    modelAABB = glm::translate(modelAABB, this->getPosition());
+    modelAABB = glm::translate(modelAABB, aabbCenter);
+    modelAABB = glm::rotate(modelAABB, this->getRotationX(), glm::vec3(1.0f,0.0f,0.0f));
+    modelAABB = glm::rotate(modelAABB, this->getRotationY(), glm::vec3(0.0f,1.0f,0.0f));
+    modelAABB = glm::rotate(modelAABB, this->getRotationZ(), glm::vec3(0.0f,0.0f,1.0f));
+    modelAABB = glm::scale(modelAABB, aabbSize);
+
+    vertices[0] = modelAABB * glm::vec4(model->getRangeInDim(0).first, model->getRangeInDim(1).first, model->getRangeInDim(2).first, 1.0f);
+    vertices[1] = modelAABB * glm::vec4(model->getRangeInDim(0).second, model->getRangeInDim(1).first, model->getRangeInDim(2).first, 1.0f);
+    vertices[2] = modelAABB * glm::vec4(model->getRangeInDim(0).second, model->getRangeInDim(1).second, model->getRangeInDim(2).first, 1.0f);
+    vertices[3] = modelAABB * glm::vec4(model->getRangeInDim(0).first, model->getRangeInDim(1).second, model->getRangeInDim(2).first, 1.0f);
+    vertices[4] = modelAABB * glm::vec4(model->getRangeInDim(0).first, model->getRangeInDim(1).first, model->getRangeInDim(2).second, 1.0f);
+    vertices[5] = modelAABB * glm::vec4(model->getRangeInDim(0).second, model->getRangeInDim(1).first, model->getRangeInDim(2).second, 1.0f);
+    vertices[6] = modelAABB * glm::vec4(model->getRangeInDim(0).second, model->getRangeInDim(1).second, model->getRangeInDim(2).second, 1.0f);
+    vertices[7] = modelAABB * glm::vec4(model->getRangeInDim(0).first, model->getRangeInDim(1).second, model->getRangeInDim(2).second, 1.0f);
 }

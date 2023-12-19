@@ -135,28 +135,22 @@ void EntityRenderer::renderBound(Entity& entity, const glm::mat4& view, const gl
     glm::mat4 modelAABB = glm::mat4(1.0f);
 
     glm::vec3 aabbSize = glm::vec3 (entity.getModel()->getRangeInDim(0).second - entity.getModel()->getRangeInDim(0).first,
-    + entity.getModel()->getRangeInDim(1).second - entity.getModel()->getRangeInDim(1).first,
-            + entity.getModel()->getRangeInDim(2).second - entity.getModel()->getRangeInDim(2).first);
-    glm::vec3 aabbCenter = glm::vec3 (+ entity.getModel()->getRangeInDim(0).second + entity.getModel()->getRangeInDim(0).first,
-                                      + entity.getModel()->getRangeInDim(1).second + entity.getModel()->getRangeInDim(1).first,
-                                      + entity.getModel()->getRangeInDim(2).second + entity.getModel()->getRangeInDim(2).first)*0.5f;
-    aabbSize *= 1.0f;
+                                    entity.getModel()->getRangeInDim(1).second - entity.getModel()->getRangeInDim(1).first,
+                                    entity.getModel()->getRangeInDim(2).second - entity.getModel()->getRangeInDim(2).first);
+    glm::vec3 aabbCenter = glm::vec3 (entity.getModel()->getRangeInDim(0).second + entity.getModel()->getRangeInDim(0).first,
+                                      entity.getModel()->getRangeInDim(1).second + entity.getModel()->getRangeInDim(1).first,
+                                      entity.getModel()->getRangeInDim(2).second + entity.getModel()->getRangeInDim(2).first)*0.5f;
+    aabbSize *= entity.getScale();
     aabbCenter *= 1.0f;
 
     modelAABB = glm::translate(modelAABB, entity.getPosition());
     modelAABB = glm::translate(modelAABB, aabbCenter);
+    modelAABB = glm::rotate(modelAABB, entity.getRotationX(), glm::vec3(1.0f,0.0f,0.0f));
+    modelAABB = glm::rotate(modelAABB, entity.getRotationY(), glm::vec3(0.0f,1.0f,0.0f));
+    modelAABB = glm::rotate(modelAABB, entity.getRotationZ(), glm::vec3(0.0f,0.0f,1.0f));
     modelAABB = glm::scale(modelAABB, aabbSize);
 
     AABBShader.loadModel(modelAABB);
-
-//        vertices[0] = entity.getModel()AABB * glm::vec4(+ entity.getModel()->getRangeInDim(0).first, + entity.getModel()->getRangeInDim(1).first, + entity.getModel()->getRangeInDim(2).first, 1.0f);
-//        vertices[1] = entity.getModel()AABB * glm::vec4(+ entity.getModel()->getRangeInDim(0).second, + entity.getModel()->getRangeInDim(1).first, + entity.getModel()->getRangeInDim(2).first, 1.0f);
-//        vertices[2] = entity.getModel()AABB * glm::vec4(+ entity.getModel()->getRangeInDim(0).second, + entity.getModel()->getRangeInDim(1).second, + entity.getModel()->getRangeInDim(2).first, 1.0f);
-//        vertices[3] = entity.getModel()AABB * glm::vec4(+ entity.getModel()->getRangeInDim(0).first, + entity.getModel()->getRangeInDim(1).second, + entity.getModel()->getRangeInDim(2).first, 1.0f);
-//        vertices[4] = entity.getModel()AABB * glm::vec4(+ entity.getModel()->getRangeInDim(0).first, + entity.getModel()->getRangeInDim(1).first, + entity.getModel()->getRangeInDim(2).second, 1.0f);
-//        vertices[5] = entity.getModel()AABB * glm::vec4(+ entity.getModel()->getRangeInDim(0).second, + entity.getModel()->getRangeInDim(1).first, + entity.getModel()->getRangeInDim(2).second, 1.0f);
-//        vertices[6] = entity.getModel()AABB * glm::vec4(+ entity.getModel()->getRangeInDim(0).second, + entity.getModel()->getRangeInDim(1).second, + entity.getModel()->getRangeInDim(2).second, 1.0f);
-//        vertices[7] = entity.getModel()AABB * glm::vec4(+ entity.getModel()->getRangeInDim(0).first, + entity.getModel()->getRangeInDim(1).second, + entity.getModel()->getRangeInDim(2).second, 1.0f);
 
     glEnable(GL_DEPTH_TEST);
     glBindVertexArray(cubeVAO);

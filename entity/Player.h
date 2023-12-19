@@ -28,7 +28,7 @@ class Player : public Entity {
 
     Terrain* terrain;
 
-    glm::vec4 vertices[8];
+    bool isCollide = false;
 
     // True to use basic controls, false to use physics model
     bool basic_controls;
@@ -37,11 +37,19 @@ class Player : public Entity {
 
   public:
     Player(MY_Model* model, Terrain* terrain, bool basic_controls);
-    bool update() override;
+    bool update(std::vector<Entity*> entities);
     float getThrottle() const;
     float getBrake() const;
     float getSteer() const;
-    bool updateBound();
+    inline void setCollide(bool c) { isCollide = c; }
+    bool VertexInRange(glm::vec4 entityRange[], glm::vec4 player_vertice) {
+        if((player_vertice.x > fmin(entityRange[0].x,entityRange[1].x) && player_vertice.x < entityRange[0].x
+            && player_vertice.z > entityRange[1].z && player_vertice.z < fmax(entityRange[0].z,entityRange[1].z))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     float absVel;
 
     void handleKeyboardEvents(GLFWwindow* window, int key, int scancode, int action, int mods);

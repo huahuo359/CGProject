@@ -30,7 +30,7 @@ constexpr float cgToFront = 1.5f;       // Centre of gravity to front of chassis
 constexpr float cgToRear = 1.5f;        // Centre of gravity to rear of chassis
 constexpr float cgToFrontAxle = 1.25f;  // Centre gravity to front axle
 constexpr float cgToRearAxle = 1.25f;   // Centre gravity to rear axle
-constexpr float cgHeight = 0.55f;       // Centre gravity height
+constexpr float cgHeight = 0.45f;       // Centre gravity height
 constexpr float wheelRadius = 0.3f;     // Includes tire (also represents height of axle)
 constexpr float wheelWidth = 0.2f;      // Used for render only
 constexpr float tireGrip = 3.0f;        // How much grip tires have
@@ -68,10 +68,11 @@ Player::Player(MY_Model* model, Terrain* terrain, bool basic_controls) : Entity(
     this->accel = {0.f, 0.f};
     this->accel_c = {0.f, 0.f};
 
+    this->is_player = true;
     if (basic_controls) {
         ROTATION_SPEED = constants::PI;
     } else {
-        ROTATION_SPEED = 0.6f;
+        ROTATION_SPEED = 0.3f;
     }
 }
 
@@ -92,7 +93,7 @@ float Player::getSteer() const {
     return steerAngle;
 }
 
-bool Player::update() {
+bool Player::update(std::vector<Entity*> entities) {
     steerAngle = smoothSteering(steerChange);
     float dt = GameTime::getGameTime()->getDt();
     float dx = 0.0f;
@@ -214,13 +215,43 @@ bool Player::update() {
     float player_length_x = player_length * glm::sin(m_y_rot);
     float player_length_z = player_length * glm::cos(m_y_rot);
 
-    // Currently, acceleration and velocity are maintained on collision with edge.
-    // TODO zero velocity and acceleration on FIRST collision in incident, so as to allow escaping the wall
-    if (terrain->isOnTerrain(m_position.x + dx + player_length_x, m_position.z + dz + player_length_z)) {
+
+    glm::vec4 player_ver[8];
+    for(int i=0; i<8; ++i) {
+        player_ver[i] = this->getVertices(i);
+    }
+
+    bool _isCollide=false;
+    for(auto it : entities) {
+        if(!it->getIsPlayer()) {
+            glm::vec4 temp_vertice[8];
+
+            for(int i=0; i<8; ++i) {
+                temp_vertice[0] = glm::vec4 (it->getPosition()+it->getScale()*glm::vec3 (it->getBoundSize(),it->getBoundSize(),it->getBoundSize()), 1.0f);
+                temp_vertice[1] = glm::vec4 (it->getPosition()+it->getScale()*glm::vec3 (-it->getBoundSize(),it->getBoundSize(),-it->getBoundSize()), 1.0f);
+                temp_vertice[2] = glm::vec4 (it->getPosition()+it->getScale()*glm::vec3 (-it->getBoundSize(),it->getBoundSize(),it->getBoundSize()), 1.0f);
+                temp_vertice[3] = glm::vec4 (it->getPosition()+it->getScale()*glm::vec3 (it->getBoundSize(),it->getBoundSize(),-it->getBoundSize()), 1.0f);
+
+                if(VertexInRange(temp_vertice, player_ver[i]+glm::vec4(player_length_x+dx,0.0f,player_length_z+dz,1.0f))) {
+                    _isCollide = true;
+                    break;
+                }
+            }
+        }
+
+        if(_isCollide) {
+            this->setCollide(true);
+        }
+    }
+    if(!_isCollide)
+        this->setCollide(false);
+
+    if (terrain->isOnTerrain(m_position.x + dx + player_length_x, m_position.z + dz + player_length_z) && !isCollide) {
         move(glm::vec3(dx, 0, dz));
         placeBottomEdge(terrain->getHeight(getPosition().x, getPosition().z));
         setRotationX(terrain->getAngleX(getPosition().x, getPosition().z, getRotationY()));
         setRotationZ(terrain->getAngleZ(getPosition().x, getPosition().z, getRotationY()));
+        updateBound();
         return true;
     }
     return false;

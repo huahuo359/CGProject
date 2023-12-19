@@ -20,6 +20,10 @@ class Entity {
     float m_y_rot;
     float m_z_rot;
 
+    glm::vec4 vertices[8];
+    bool is_player = false;
+    float boundsize;
+
   public:
     Entity(MY_Model* model);
     Entity();
@@ -27,6 +31,7 @@ class Entity {
     virtual ~Entity() = default;
 
     virtual bool update();
+    bool updateBound();
 
     [[nodiscard]] const MY_Model* getModel() const;
     [[nodiscard]] glm::mat4 calculateModelMatrix() const;
@@ -35,6 +40,9 @@ class Entity {
     [[nodiscard]] float getRotationX() const;
     [[nodiscard]] float getRotationY() const;
     [[nodiscard]] float getRotationZ() const;
+    inline bool getIsPlayer() const { return is_player; }
+    inline glm::vec4 getVertices(int index) const { return vertices[index]; }
+    inline float getBoundSize() const { return boundsize; }
 
     [[nodiscard]] glm::vec3 calculateDirectionVector() const;
 
@@ -46,6 +54,7 @@ class Entity {
     virtual void setRotationX(float);
     virtual void setRotationY(float);
     virtual void setRotationZ(float);
+    inline void setBoundSize(float sz) { boundsize = sz; }
 
     // Set the value of rotation or position relatively (Takes into account current value)
     virtual void rotateX(float);
