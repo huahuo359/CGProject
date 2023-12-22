@@ -14,9 +14,10 @@ uniform float time;
 
 vec4 explode(vec4 position, vec3 normal)
 {
-    float magnitude = 3.5;
+    float magnitude = 1.5;
+
     vec3 direction = normal * ((sin(time) + 1.0) / 2.0) * magnitude; 
-    return position - vec4(direction, 0.0);
+    return position + vec4(direction, 0.0);
 }
 
 vec3 GetNormal()
@@ -41,5 +42,8 @@ void main() {
     TexCoord = gs_in[2].texCoords;
     FragPos = gs_in[2].FragPosition;
     EmitVertex();
+    EmitVertex();
     EndPrimitive();
 }
+
+
