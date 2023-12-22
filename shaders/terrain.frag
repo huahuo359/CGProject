@@ -67,8 +67,6 @@ float random(vec3 seed, int i){
     return fract(sin(dot_product) * 43758.5453);
 }
 
-// Multiple lights code from
-// http://www.tomdalling.com/blog/modern-opengl/08-even-more-lighting-directional-lights-spotlights-multiple-lights
 vec3 applyLight(Light light, vec3 surfaceColor, vec3 normal, vec3 surface_pos) {
     vec3 light_dir;
     float attenuation = 1.0;
@@ -125,7 +123,6 @@ void main(void) {
     float visibility = 1.0;
     int num_passes = 8;
     for (int i=0;i<8;i++){
-        // int index = int(16.0*random(floor(vertex.xyz*1000.0), i))%16;
         vec3 current = vec3(shadowCoord.xy + poissonDisk[i]/2000.0, shadowCoord.z);
         if ( texture(shadowMap, current) < 0.5 ){
             visibility -= 0.5/num_passes;

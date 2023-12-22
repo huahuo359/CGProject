@@ -49,7 +49,7 @@ void mainLoop() {
     std::vector<std::string> terrain_img;
     terrain_img.push_back("image/terrin/blendMap.png");
     terrain_img.push_back("image/terrin/dirt.png");
-    terrain_img.push_back("image/terrin/grass.jpg");
+    terrain_img.push_back("image/terrin/snow.png");
     terrain_img.push_back("image/terrin/mud.jpg");
     terrain_img.push_back("image/terrin/road.jpg");
 
@@ -67,22 +67,27 @@ void mainLoop() {
     Entity* engine_entity = new Entity(&engine);
     engine_entity->setScale(glm::vec3(10.0f,10.0f,10.0f));
     engine_entity->setPosition(terrain->getPositionFromPixel(600,500));
-    engine_entity->setBoundSize(0.8f);
+    engine_entity->setBoundSize(0.2f);
     engine_entity->rotateX(constants::PI/2);
     entities.push_back(engine_entity);
 
-//    MY_Model relic = Loader::getLoader()->loadModel("res/relic/Building01.obj");
-//    Entity* relic_entity = new Entity(&relic);
-//    relic_entity->setScale(glm::vec3(5.0f,5.0f,5.0f));
-//    relic_entity->setPosition(terrain->getPositionFromPixel(800,400));
-//    relic_entity->setBoundSize(1.0f);
-//    entities.push_back(relic_entity);
+    MY_Model relic = Loader::getLoader()->loadModel("res/relic/Building01.obj");
+    float sz[3] = {1.8f,2.0f,2.2f};
+    for(int y = 0; y <= 600; y+=80) {
+        Entity* relic_entity = new Entity(&relic);
+        relic_entity->rotateY(-constants::PI/2);
+        int sz_idx = y % 3;
+        relic_entity->setScale(glm::vec3(sz[sz_idx],sz[sz_idx],sz[sz_idx]));
+        relic_entity->setPosition(terrain->getPositionFromPixel(880,y));
+        relic_entity->setBoundSize(1.0f);
+        entities.push_back(relic_entity);
+    }
 
     MY_Model highway = Loader::getLoader()->loadModel("res/highway/TheBridge.obj");
     Entity* highway_entity = new Entity(&highway);
     highway_entity->setScale(glm::vec3(10.0f,10.0f,10.0f));
     highway_entity->setPosition(terrain->getPositionFromPixel(800,400));
-    highway_entity->setBoundSize(1.0f);
+    highway_entity->setBoundSize(0.6f);
     entities.push_back(highway_entity);
 
     new_window.set_key_callback([&](GLFWwindow* window, int key, int scancode, int action, int mods) {
@@ -177,7 +182,7 @@ void mainLoop() {
     GLuint dust_texture = Loader::getLoader()->loadTexture("image/dust_single.png");
     ParticleSystem particleSystem(30.0f, 3.0f, 0.2f, 0.5f, dust_texture);
 
-    GLuint snow_texture = Loader::getLoader()->loadTexture("image/snow4.png");
+    GLuint snow_texture = Loader::getLoader()->loadTexture("image/snow_particle.png");
     ParticleSystem snowSystem(150.0f, 0.2f, 0.02f, 10.0f, snow_texture);
 
     while (!glfwWindowShouldClose(new_window.get_window()))
@@ -198,8 +203,8 @@ void mainLoop() {
                     temp->update(entities);
                 }
             }
-            headlight->position = glm::vec4(player->getPosition() + glm::vec3(0.0f, 1.0f, 0.0f), 1.0f);
-            headlight2->position = glm::vec4 (player->getPosition() + glm::vec3(0.0f,1.0f,0.0f),1.0f);
+            headlight->position = glm::vec4(player->getPosition() + glm::vec3(0.0f, 1.0f, 0.0f) + player->calculateDirectionVector()*2.0f, 1.0f);
+            headlight2->position = glm::vec4 (player->getPosition() + glm::vec3(0.0f,1.0f,0.0f) + player->calculateDirectionVector()*2.0f,1.0f);
             headlight->coneDirection = player->calculateDirectionVector();
             headlight2->coneDirection = player->calculateDirectionVector();
 

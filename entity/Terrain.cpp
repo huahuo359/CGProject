@@ -5,10 +5,9 @@
 
 using namespace std;
 
-const float Terrain::TERRAIN_SIZE = 301.43f;  // Set so that the fences fit better
+const float Terrain::TERRAIN_SIZE = 301.43f;
 const float Terrain::TERRAIN_MAX_HEIGHT = 10.0f;
 
-// Constructor accepts a model defining vertex, colour and index data for this Terrain.
 Terrain::Terrain(MY_Model* model, const vector<GLuint>& textures, Image heightMap)
     : Entity(model), textures(textures), heightMap(std::move(heightMap)) {
 }
