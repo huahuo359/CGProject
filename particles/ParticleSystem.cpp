@@ -18,16 +18,16 @@ ParticleSystem::ParticleSystem(float particlesPerSecond, float particleSpeed,
     this->renderQueue = 0.0f;
 }
 
-void ParticleSystem::generateParticles(glm::vec3 emissionPoint, Terrain& terrin) {
+void ParticleSystem::generateParticles(glm::vec3 emissionPoint, float sz, float vel_y) {
     renderQueue += particlesPerSecond * GameTime::getGameTime()->getDt();
     while (renderQueue > 1.0f) {
-        glm::vec3 velo((rand() % 100) / 50.f - 1.0f, 1.0f, (rand() % 100) / 50.f - 1.0f);
+        glm::vec3 velo((rand() % 100) / 50.f - 1.0f, vel_y, (rand() % 100) / 50.f - 1.0f);
         velo = glm::normalize(velo);
         velo *= particleSpeed;
-        glm::vec3 position((rand()%200 - 100)*1.0f + emissionPoint.x, (rand()%200 - 100)*1.0f+emissionPoint.y, (-1*rand()%50)*1.0f+emissionPoint.z);
-        auto* p = new Particle(position, velo, gravityFactor, lifeDuration, textureid);
+//        glm::vec3 position((rand()%200 - 100)*1.0f + emissionPoint.x, (rand()%200 - 100)*1.0f+emissionPoint.y, (-1*rand()%50)*1.0f+emissionPoint.z);
+        auto* p = new Particle(emissionPoint, velo, gravityFactor, lifeDuration, textureid);
         float scaleVal = (rand() % 100);
-        p->setScale(glm::vec3(0.1f, 0.1f, 0.1f));
+        p->setScale(glm::vec3(sz,sz,sz));
 
         ParticleManager::getParticleManager()->addParticle(p);
         renderQueue -= 1.0f;

@@ -53,4 +53,5 @@ class Player : public Entity {
     float absVel;
 
     void handleKeyboardEvents(GLFWwindow* window, int key, int scancode, int action, int mods);
+    bool ImpactChecker1(glm::vec3 coord, GLfloat r, glm::vec4 vertices[8]);
 };

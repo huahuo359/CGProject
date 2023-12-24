@@ -34,10 +34,9 @@ void ParticleShader::loadParticle(const Particle *particle, const glm::mat4& vie
     // 保存模型矩阵的旋转和缩放部分
     // glm::mat4 rotationAndScale = modelmtx;
     // loadUniformValue(location_model, rotationAndScale);
+    modelmtx = glm::scale(modelmtx, particle->getScale());
 
     loadUniformValue(location_model, modelmtx);
-
-
 }
 
 void ParticleShader::loadProjection(const glm::mat4& proj) {

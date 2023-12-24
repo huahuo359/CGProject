@@ -22,7 +22,7 @@ public:
     ParticleSystem(
             float particlesPerSecond, float particleSpeed, float gravityFactor, float lifeDuration, GLuint textureid);
 
-    void generateParticles(glm::vec3 emissionPoint, Terrain& terrin);
+    void generateParticles(glm::vec3 emissionPoint, float sz, float vel_y);
 };
 
 

@@ -11,10 +11,10 @@ ParticleRenderer::ParticleRenderer() {
     // clang-format off
     // Create a square mesh encompassing the viewport
     std::vector<float> vertices = {
-            -0.05f, 0.05f, 0.0f,
-            -0.05f, -0.05f, 0.0f,
-            0.05f, -0.05f, 0.0f,
-            0.05f, 0.05f, 0.0f,
+            -1.0f, 1.0f, 0.0f,
+            -1.0f, -1.0f, 0.0f,
+            1.0f, -1.0f, 0.0f,
+            1.0f, 1.0f, 0.0f,
     };
 
     std::vector<float> texcoords = {

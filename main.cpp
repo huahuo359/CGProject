@@ -65,11 +65,13 @@ void mainLoop() {
 
     MY_Model engine = Loader::getLoader()->loadModel("res/engine/Engine.obj");
     Entity* engine_entity = new Entity(&engine);
-    engine_entity->setScale(glm::vec3(10.0f,10.0f,10.0f));
+    engine_entity->setScale(glm::vec3(5.0f,5.0f,5.0f));
     engine_entity->setPosition(terrain->getPositionFromPixel(600,500));
     engine_entity->setBoundSize(0.2f);
     engine_entity->rotateX(constants::PI/2);
     entities.push_back(engine_entity);
+
+    glm::vec3 firepos = engine_entity->getPosition();
 
     MY_Model relic = Loader::getLoader()->loadModel("res/relic/Building01.obj");
     float sz[3] = {1.8f,2.0f,2.2f};
@@ -182,8 +184,11 @@ void mainLoop() {
     GLuint dust_texture = Loader::getLoader()->loadTexture("image/dust_single.png");
     ParticleSystem particleSystem(30.0f, 3.0f, 0.2f, 0.5f, dust_texture);
 
-    GLuint snow_texture = Loader::getLoader()->loadTexture("image/snow_particle.png");
-    ParticleSystem snowSystem(150.0f, 0.2f, 0.02f, 10.0f, snow_texture);
+    GLuint snow_texture = Loader::getLoader()->loadTexture("image/snowflake.png");
+    ParticleSystem snowSystem(50.0f, 2.0f, 0.02f, 50.0f, snow_texture);
+
+    GLuint fire_texture = Loader::getLoader()->loadTexture("image/fire.png");
+    ParticleSystem fireSystem(500.0f, 10.0f, 0.01f, 1.0f, fire_texture);
 
     while (!glfwWindowShouldClose(new_window.get_window()))
     {
@@ -209,11 +214,13 @@ void mainLoop() {
             headlight2->coneDirection = player->calculateDirectionVector();
 
             if (player->absVel > 5.0f || player->getThrottle() > 0.1f || (1 && player->getBrake() > 0.1f)) {
-                particleSystem.generateParticles(player->getPosition() - player->calculateDirectionVector(), *terrain);
+                particleSystem.generateParticles(player->getPosition()+glm::vec3 (0.0f,-1.0f,0.0f)- player->calculateDirectionVector(), 1.0f, 1.0f);
             }
 
-            snowSystem.generateParticles(player->getPosition()+glm::vec3(0.0f,20.0f,0.0f), *terrain);
+            snowSystem.generateParticles(player->getPosition()+glm::vec3(0.0f,20.0f,0.0f), 0.1f,1.0f);
 
+            fireSystem.generateParticles(firepos+glm::vec3(0.0f,25.0f,0.0f), 1.0f,20.f);
+            fireSystem.generateParticles(firepos+glm::vec3(1.0f,25.0f,1.0f),1.0f,10.f);
         } else {
             // near shot
 

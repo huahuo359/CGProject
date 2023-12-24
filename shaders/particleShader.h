@@ -13,6 +13,7 @@
 #include <vector>
 
 #include <glm/glm.hpp>
+#include <glm/ext.hpp>
 #include <glad/glad.h>
 
 const std::string PARTICLE_VERTEX_SHADER = "shaders/particle.vert";

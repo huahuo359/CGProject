@@ -13,33 +13,22 @@
 using namespace std;
 using namespace glm;
 
-/*
-Car physics calculation has been modified from
-    #1 https://github.com/spacejack/carphysics2d
-which is an adaptation of
-    http://www.asawicki.info/Mirror/Car%20Physics%20for%20Games/Car%20Physics%20for%20Games.html
-I didnt make many changes since it is a complete equation, but I did add code to stop when there is no throttle.
-*/
-
 // Static variables used for car physics
 constexpr float gravity = 9.81f;        // m/s^2
 constexpr float mass = 2000.0f;         // kg
 constexpr float inertiaScale = 1.0f;    // Multiply by mass for inertia
-constexpr float halfWidth = 0.8f;       // Centre to side of chassis (metres)
-constexpr float cgToFront = 1.5f;       // Centre of gravity to front of chassis (metres)
-constexpr float cgToRear = 1.5f;        // Centre of gravity to rear of chassis
+
 constexpr float cgToFrontAxle = 1.25f;  // Centre gravity to front axle
 constexpr float cgToRearAxle = 1.25f;   // Centre gravity to rear axle
 constexpr float cgHeight = 0.45f;       // Centre gravity height
-constexpr float wheelRadius = 0.3f;     // Includes tire (also represents height of axle)
-constexpr float wheelWidth = 0.2f;      // Used for render only
+
 constexpr float tireGrip = 3.0f;        // How much grip tires have
 constexpr float lockGrip = 0.8f;        // % of grip available when wheel is locked
 constexpr float engineForce = 8000.0f;
 constexpr float brakeForce = 12000.0f;
 constexpr float eBrakeForce = brakeForce / 2.5f;
 constexpr float weightTransfer = 0.2f;  // How much weight is transferred during acceleration/braking
-constexpr float maxSteer = 0.6f;        // Maximum steering angle in radians
+
 constexpr float cornerStiffnessFront = 5.0f;
 constexpr float cornerStiffnessRear = 5.2f;
 constexpr float airResist = 3.0f;  // air resistance (* vel)
@@ -225,22 +214,26 @@ bool Player::update(std::vector<Entity*> entities) {
     for(auto it : entities) {
         if(!it->getIsPlayer()) {
             glm::vec4 temp_vertice[8];
-
-            for(int i=0; i<8; ++i) {
-                temp_vertice[0] = glm::vec4 (it->getPosition()+it->getScale()*glm::vec3 (it->getBoundSize(),it->getBoundSize(),it->getBoundSize()), 1.0f);
-                temp_vertice[1] = glm::vec4 (it->getPosition()+it->getScale()*glm::vec3 (-it->getBoundSize(),it->getBoundSize(),-it->getBoundSize()), 1.0f);
-                temp_vertice[2] = glm::vec4 (it->getPosition()+it->getScale()*glm::vec3 (-it->getBoundSize(),it->getBoundSize(),it->getBoundSize()), 1.0f);
-                temp_vertice[3] = glm::vec4 (it->getPosition()+it->getScale()*glm::vec3 (it->getBoundSize(),it->getBoundSize(),-it->getBoundSize()), 1.0f);
-
-                if(VertexInRange(temp_vertice, player_ver[i]+glm::vec4(player_length_x+dx,0.0f,player_length_z+dz,1.0f))) {
-                    _isCollide = true;
-                    break;
-                }
+            for(int i = 0; i<8; ++i) {
+                temp_vertice[i] = it->getVertices(i);
             }
+            _isCollide = ImpactChecker1(this->getPosition()+glm::vec3(player_length_x+dx,0.0f,player_length_z+dz), this->getScale().x/10, temp_vertice);
+//            temp_vertice[0] = glm::vec4 (it->getPosition()+it->getScale()*glm::vec3 (it->getBoundSize(),it->getBoundSize(),it->getBoundSize()), 1.0f);
+//            temp_vertice[1] = glm::vec4 (it->getPosition()+it->getScale()*glm::vec3 (-it->getBoundSize(),it->getBoundSize(),-it->getBoundSize()), 1.0f);
+//            temp_vertice[2] = glm::vec4 (it->getPosition()+it->getScale()*glm::vec3 (-it->getBoundSize(),it->getBoundSize(),it->getBoundSize()), 1.0f);
+//            temp_vertice[3] = glm::vec4 (it->getPosition()+it->getScale()*glm::vec3 (it->getBoundSize(),it->getBoundSize(),-it->getBoundSize()), 1.0f);
+
+//            for(int i=0; i<8; ++i) {
+//                if(VertexInRange(temp_vertice, player_ver[i]+glm::vec4(player_length_x+dx,0.0f,player_length_z+dz,1.0f))) {
+//                    _isCollide = true;
+//                    break;
+//                }
+//            }
         }
 
         if(_isCollide) {
             this->setCollide(true);
+            break;
         }
     }
     if(!_isCollide)
@@ -314,4 +307,44 @@ void Player::handleKeyboardEvents(GLFWwindow* /*window*/, int key, int /*scancod
             steerChange = 0.0f;
         }
     }
+}
+
+bool Player::ImpactChecker1(glm::vec3 coord, GLfloat r, glm::vec4 vertices[8]) {
+
+
+    glm::vec3 minCoord = glm::vec3(vertices[0]);
+    glm::vec3 maxCoord = glm::vec3(vertices[0]);
+
+    for (int i = 1; i < 8; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            minCoord[j] = std::min(minCoord[j], vertices[i][j]);
+            maxCoord[j] = std::max(maxCoord[j], vertices[i][j]);
+        }
+    }
+
+    // 找到 AABB 中与球心最近的一个点
+    GLfloat x_near = coord.x;
+    x_near = x_near > maxCoord.x ? maxCoord.x : x_near;
+    x_near = x_near < minCoord.x ? minCoord.x : x_near;
+
+    GLfloat y_near = coord.y;
+    y_near = y_near > maxCoord.y ? maxCoord.y : y_near;
+    y_near = y_near < minCoord.y ? minCoord.y : y_near;
+
+    GLfloat z_near = coord.z;
+    z_near = z_near > maxCoord.z ? maxCoord.z : z_near;
+    z_near = z_near < minCoord.z ? minCoord.z : z_near;
+
+    GLfloat distance = (coord.x-x_near) * (coord.x-x_near) +
+                       (coord.y-y_near) * (coord.y-y_near) +
+                       (coord.z-z_near) * (coord.z-z_near);
+
+    if(distance <= r*r ) {
+        //std::cout << "bump dis: " << distance << std::endl;
+        return true;
+    } else {
+        //std::cout << "normal dis: " << distance << std::endl;
+        return false;
+    }
+
 }
