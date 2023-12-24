@@ -20,6 +20,7 @@
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void processInput(GLFWwindow *window);
 GLuint loadTexture(GLchar* path, int imagecase); // case 1 for png, case 2 for jpg
@@ -744,6 +745,9 @@ public:
     std::vector<Bullet> bullets;
 
     void Draw() {
+         bullets.erase(std::remove_if(bullets.begin(), bullets.end(), [](const Bullet& b) {
+            return !b.flag;
+        }), bullets.end());
         for(int i=0; i<bullets.size(); i++) {
             glm::vec3 pos = glm::vec3(bullets[i].x, bullets[i].y, bullets[i].z);
             pos += 0.005f * bullets[i].direction;
@@ -874,7 +878,7 @@ public:
         model = glm::translate(model, glm::vec3(Planex, Planey, Planez));
         model = glm::rotate(model, glm::radians(theta1), glm::vec3(0.0f, 1.0f, 0.0f));
         model = glm::rotate(model, glm::radians(theta2), glm::vec3(1.0f, 0.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
+        model = glm::scale(model, glm::vec3(0.15f, 0.15f, 0.15f));
 
         glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(Plane::theta1), glm::vec3(0.0f, 1.0f, 0.0f));
         rotationMatrix = glm::rotate(rotationMatrix, glm::radians(Plane::theta2), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -904,8 +908,8 @@ public:
         
         glm::vec3 aabbSize = obj.maxCoords - obj.minCoords;
         glm::vec3 aabbCenter = (obj.maxCoords + obj.minCoords) * 0.5f;
-        aabbSize *= 0.3f;
-        aabbCenter *= 0.3f;
+        aabbSize *= 0.15f;
+        aabbCenter *= 0.15f;
 
    
         modelAABB = glm::translate(modelAABB, glm::vec3(Planex, Planey, Planez));
@@ -1045,10 +1049,15 @@ class UFO {
     glm::vec3 aabbCenter;
 
     bool move_flag;
+    GShader spaceGShader;
+    float timer;
+    bool die;
 
 
     UFO(): spaceShader("newshaders/plane.vs", "newshaders/plane.fs"), obj("UFO/UFO.obj"), 
-    AABBShader("shaders/AABB.vs", "shaders/AABB.fs") {
+    AABBShader("shaders/AABB.vs", "shaders/AABB.fs"), spaceGShader("shaders/moon.vs","shaders/moon.fs","shaders/moon.gs")  {
+        timer = 0.0f;
+        die = false;
         move_flag = true;   // 根据碰撞检测的结果判定 UFO 是否可以继续移动
         
         Stonex = -2.0f;
@@ -1061,8 +1070,8 @@ class UFO {
         aabbSize = obj.maxCoords - obj.minCoords;
         aabbCenter = (obj.maxCoords + obj.minCoords) * 0.5f;
         // 对于不同的 scale 需要进行调整
-        aabbSize *= 0.01f;
-        aabbCenter *= 0.01f;
+        aabbSize *= 0.005f;
+        aabbCenter *= 0.005f;
       
 
 
@@ -1137,267 +1146,8 @@ class UFO {
         // 先把 obj model 的中心平移到 （0，0，0）
         // 经过平移后 （stonex, stoney, stonez）可以代表陨石的中心坐标
         model = glm::translate(model, -aabbCenter);
-       model = glm::scale(model, glm::vec3(0.01f, 0.01f, 0.01f));
-       model = glm::translate(model, glm::vec3(Stonex/0.01f, Stoney/0.01f, Stonez/0.01f));
-    
-
-        // model = glm::rotate(model, glm::radians(theta1), glm::vec3(0.0f, 1.0f, 0.0f));
-        // model = glm::rotate(model, glm::radians(theta2), glm::vec3(1.0f, 0.0f, 0.0f));
-        
-        glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(Plane::theta1), glm::vec3(0.0f, 1.0f, 0.0f));
-        rotationMatrix = glm::rotate(rotationMatrix, glm::radians(Plane::theta2), glm::vec3(1.0f, 0.0f, 0.0f));
-        // 将方向向量旋转
-        Plane::direction = glm::vec3(rotationMatrix * glm::vec4(0.0f, 0.0f, -1.0f, 0.0f));
-       
-        
-        spaceShader.setMat4("projection", projection); 
-        spaceShader.setMat4("view", view);
-        spaceShader.setMat4("model", model);
-        spaceShader.setInt("lightNum", 1);
-        spaceShader.setVec3("PointPos[0]", glm::vec3(Sun::xsun, Sun::ysun, Sun::zsun));
-
-        // 设置点光源衰减的因子
-        spaceShader.setFloat("LightInfo.constant", 1.0f);
-        spaceShader.setFloat("LightInfo.linear", 0.19f);
-        spaceShader.setFloat("LightInfo.quadratic", 0.032f);
-
-        obj.Draw();
-
-
-        // 绘制 AABB 包围盒
-        AABBShader.use();
-        // 绘制线框立方体
-        glm::mat4 modelAABB = glm::mat4(1.0f);
-      
-   
-       // modelAABB = glm::scale(modelAABB, glm::vec3(0.1f,0.1f,0.1f));
-        modelAABB = glm::translate(modelAABB, glm::vec3(Stonex, Stoney, Stonez));
-        // modelAABB = glm::rotate(modelAABB, glm::radians(theta1), glm::vec3(0.0f, 1.0f, 0.0f));
-        // modelAABB = glm::rotate(modelAABB, glm::radians(theta2), glm::vec3(1.0f, 0.0f, 0.0f));
-        modelAABB = glm::translate(modelAABB, aabbCenter);  // 注意生成的球体的中心坐标是 （0，0，0）在计算 obj 的坐标时有 aabbCenter 的偏移
-        modelAABB = glm::scale(modelAABB, aabbSize);
-        //modelAABB = glm::rotate(modelAABB,glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
-        
-        
-
-        
-        AABBShader.setMat4("projection", projection);
-        AABBShader.setMat4("view", view);
-        AABBShader.setMat4("model", modelAABB);
-
-        // 记录包围盒顶点信息
-        vertices[0] = modelAABB * glm::vec4(obj.minCoords.x, obj.minCoords.y, obj.minCoords.z, 1.0f);
-        vertices[1] = modelAABB * glm::vec4(obj.maxCoords.x, obj.minCoords.y, obj.minCoords.z, 1.0f);
-        vertices[2] = modelAABB * glm::vec4(obj.maxCoords.x, obj.maxCoords.y, obj.minCoords.z, 1.0f);
-        vertices[3] = modelAABB * glm::vec4(obj.minCoords.x, obj.maxCoords.y, obj.minCoords.z, 1.0f);
-        vertices[4] = modelAABB * glm::vec4(obj.minCoords.x, obj.minCoords.y, obj.maxCoords.z, 1.0f);
-        vertices[5] = modelAABB * glm::vec4(obj.maxCoords.x, obj.minCoords.y, obj.maxCoords.z, 1.0f);
-        vertices[6] = modelAABB * glm::vec4(obj.maxCoords.x, obj.maxCoords.y, obj.maxCoords.z, 1.0f);
-        vertices[7] = modelAABB * glm::vec4(obj.minCoords.x, obj.maxCoords.y, obj.maxCoords.z, 1.0f);
-
-
-        glEnable(GL_DEPTH_TEST);
-        glBindVertexArray(cubeVAO);
-        glDrawElements(GL_LINES, 24, GL_UNSIGNED_INT, 0);
-        //glBindVertexArray(0);
-
-
-
-    }
-
-
-
-};
-
-
-class UFOManager {
-public:
-    int num;    // 陨石总数
-    std::vector<UFO> UFOs;
-
-    UFOManager() {
-        num = 4;
-
-        for(int i=0; i<num; ++i) {
-            UFO ufo;
-
-            
-            ufo.Stonex = 2.0f + (rand()%10);
-            ufo.Stoney = 2.0f + (rand()%10);
-            ufo.Stonez = -3.0f + (rand()%10);
-
-            glm::vec3 pos = glm::vec3(ufo.Stonex, ufo.Stoney, ufo.Stonez);
-            glm::vec3 direction = pos - pos;    // 初始化为静止的状态，绘制的过程中持续向玩家飞行器进行移动
-            ufo.direction = direction;
-        
-            UFOs.push_back(ufo);
-        }
-
-
-
-    }
-
-    void Draw() {
-        for(int i=0; i<UFOs.size(); ++i) {
-         
-            glm::vec3 pos = glm::vec3(UFOs[i].Stonex, UFOs[i].Stoney, UFOs[i].Stonez);
-        
-           glm::vec3 plane_pos = glm::vec3(Plane::Planex, Plane::Planey, Plane::Planez);
-           
-            glm::vec3 direction = glm::normalize(plane_pos - pos);
-            UFOs[i].direction = direction;
-           //glm::vec3 pos = glm::vec3(Stones[i].Stonex, Stones[i].Stoney, Stones[i].Stonez);
-            if(UFOs[i].move_flag) {
-                pos += 0.005f*UFOs[i].direction;
-                UFOs[i].Stonex = pos.x;
-                UFOs[i].Stoney = pos.y;
-                UFOs[i].Stonez = pos.z;
-            } else {
-                pos -= 0.005f*UFOs[i].direction;
-                UFOs[i].Stonex = pos.x;
-                UFOs[i].Stoney = pos.y;
-                UFOs[i].Stonez = pos.z;
-            }
-
-
-            UFOs[i].Draw();
-        }
-    }
-
-
-
-};
-
-
-
-
-class Stone {
-    /* load 陨石的模型 */
-public:
-    Shader spaceShader;
-    Shader AABBShader;
-    GLuint TextureDiffuse;
-    GLuint TextureNormal;
-    GLuint TextureSpecular;
-    ObjLoader obj;
-    GLuint cubeVAO, cubeVBO, cubeEBO;
-    glm::vec4 vertices[8];  // 记录 AABBB 包围盒的坐标信息  
-    GLfloat Stonex;
-    GLfloat Stoney;
-    GLfloat Stonez;
-    glm::vec3 direction;    // 陨石移动的方向
-
-    glm::vec3 aabbSize;
-    glm::vec3 aabbCenter;
-
-    bool move_flag;
-    GShader spaceGShader;
-
-    bool die;
-    float timer;  // 显示爆炸效果的计数器
-
-
-    Stone(): spaceShader("newshaders/plane.vs", "newshaders/plane.fs"), obj("stone/asteroid_05.obj"), 
-    AABBShader("shaders/AABB.vs", "shaders/AABB.fs"), spaceGShader("shaders/moon.vs","shaders/moon.fs","shaders/moon.gs") {
-        move_flag = true;   // 根据碰撞检测的结果判定陨石是否可以继续移动
-        
-        timer = 0.0f;
-        die = false;
-
-        Stonex = -2.0f;
-        Stoney = 0.0f;
-        Stonez = -6.0f;
-        TextureDiffuse = loadDDS("stone/asteroid_01_diffuse.dds");
-        TextureNormal = loadDDS("stone/asteroid_01_normal.dds");
-        TextureSpecular = loadDDS("stone/asteroid_01_specular.dds");
-
-        aabbSize = obj.maxCoords - obj.minCoords;
-        aabbCenter = (obj.maxCoords + obj.minCoords) * 0.5f;
-        // 对于不同的 scale 需要进行调整
-        aabbSize *= 0.1f;
-        aabbCenter *= 0.1f;
-        std::cout << "Center: " << aabbCenter.x << "," << aabbCenter.y << "," << aabbCenter.z << std::endl; 
-
-
-
-        GLfloat cubeVertices[] = {
-        -0.5f, -0.5f, -0.5f,
-         0.5f, -0.5f, -0.5f,
-         0.5f,  0.5f, -0.5f,
-        -0.5f,  0.5f, -0.5f,
-        -0.5f, -0.5f,  0.5f,
-         0.5f, -0.5f,  0.5f,
-         0.5f,  0.5f,  0.5f,
-        -0.5f,  0.5f,  0.5f,
-        };
-
-        GLuint cubeIndices[] = {
-            0, 1, 1, 2, 2, 3, 3, 0,
-            4, 5, 5, 6, 6, 7, 7, 4,
-            0, 4, 1, 5, 2, 6, 3, 7
-        };
-
-        glGenVertexArrays(1, &cubeVAO);
-        glGenBuffers(1, &cubeVBO);
-        glGenBuffers(1, &cubeEBO);
-
-        glBindVertexArray(cubeVAO);
-
-        glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVertices), cubeVertices, GL_STATIC_DRAW);
-
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cubeEBO);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(cubeIndices), cubeIndices, GL_STATIC_DRAW);
-
-        // 位置属性
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
-        glEnableVertexAttribArray(0);
-
-        // 解绑VAO
-        glBindVertexArray(0);
-
-
-
-
-        std::cout << "load is ok" << endl;
-
-    }
-
-    void Draw() {
-        spaceShader.use();
-        spaceShader.setVec3("LightInfo.ambient", glm::vec3(0.55f, 0.55f, 0.55f)); 
-        spaceShader.setVec3("LightInfo.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
-        spaceShader.setVec3("LightInfo.specular", glm::vec3(0.5f, 0.5f, 0.5f));
-        // spaceShader.setVec3("light.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
-        spaceShader.setVec3("viewPos", camera.Position);;
-
-        // set textures
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, TextureDiffuse);
-        spaceShader.setInt("texture_diffuse", 0);
-
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, TextureNormal);
-        spaceShader.setInt("texture_normal", 1);
-
-        glActiveTexture(GL_TEXTURE2);
-        glBindTexture(GL_TEXTURE_2D, TextureSpecular);
-        spaceShader.setInt("texture_specular", 2);
-
-        glm::mat4 view;
-        view = glm::lookAt(camera.Position, camera.Position + camera.Front, camera.Up);
-        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -2.0f));
-        glm::mat4 model = glm::mat4(1.0f);
-
-        
-        float angle = (GLfloat)glfwGetTime() * 3.5f;
-
-        // 先把 obj model 的中心平移到 （0，0，0）
-        // 经过平移后 （stonex, stoney, stonez）可以代表陨石的中心坐标
-        model = glm::translate(model, -aabbCenter);
-       model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
-       model = glm::translate(model, glm::vec3(Stonex/0.1f, Stoney/0.1f, Stonez/0.1f));
+       model = glm::scale(model, glm::vec3(0.005f, 0.005f, 0.005f));
+       model = glm::translate(model, glm::vec3(Stonex/0.005f, Stoney/0.005f, Stonez/0.005f));
     
 
         // model = glm::rotate(model, glm::radians(theta1), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -1497,8 +1247,8 @@ public:
         // 先把 obj model 的中心平移到 （0，0，0）
         // 经过平移后 （stonex, stoney, stonez）可以代表陨石的中心坐标
         model = glm::translate(model, -aabbCenter);
-       model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
-       model = glm::translate(model, glm::vec3(Stonex/0.1f, Stoney/0.1f, Stonez/0.1f));
+       model = glm::scale(model, glm::vec3(0.005, 0.005, 0.005));
+       model = glm::translate(model, glm::vec3(Stonex/0.005, Stoney/0.005, Stonez/0.005));
     
 
         // model = glm::rotate(model, glm::radians(theta1), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -1510,13 +1260,15 @@ public:
         Plane::direction = glm::vec3(rotationMatrix * glm::vec4(0.0f, 0.0f, -1.0f, 0.0f));
        
         
-        if(timer >= 1.5f) {
+        if(timer >= 2.5f) {
             die = true;
         } else {
             timer += 0.003f;
         }
 
-        spaceGShader.setFloat("time", (GLfloat)timer);
+        float res = timer >= 1.5f? 1.5f:timer;
+
+        spaceGShader.setFloat("time", (GLfloat)res);
 
         spaceGShader.setMat4("projection", projection); 
         spaceGShader.setMat4("view", view);
@@ -1527,6 +1279,366 @@ public:
         obj.Draw();
 
 
+
+    }
+
+
+
+};
+
+
+class UFOManager {
+public:
+    int num;    // 陨石总数
+    std::vector<UFO> UFOs;
+
+    UFOManager() {
+        num = 2;
+
+        for(int i=0; i<num; ++i) {
+            UFO ufo;
+
+            
+            ufo.Stonex = 2.0f + (rand()%10);
+            ufo.Stoney = 2.0f + (rand()%10);
+            ufo.Stonez = -3.0f + (rand()%10);
+
+            glm::vec3 pos = glm::vec3(ufo.Stonex, ufo.Stoney, ufo.Stonez);
+            glm::vec3 direction = pos - pos;    // 初始化为静止的状态，绘制的过程中持续向玩家飞行器进行移动
+            ufo.direction = direction;
+        
+            UFOs.push_back(ufo);
+        }
+
+
+
+    }
+
+    void Draw() {
+        // UFOs.erase(std::remove_if(UFOs.begin(), UFOs.end(), [](const UFO& ufo) {
+        //     return ufo.die;
+        // }), UFOs.end());
+
+        // if(UFOs.size() < num) {
+        //     UFO ufo;
+        //     ufo.Stonex = 2.0f + (rand()%10);
+        //     ufo.Stoney = 2.0f + (rand()%10);
+        //     ufo.Stonez = -3.0f + (rand()%10);
+
+        //     glm::vec3 pos = glm::vec3(ufo.Stonex, ufo.Stoney, ufo.Stonez);
+        //     glm::vec3 direction = pos - pos;    // 初始化为静止的状态，绘制的过程中持续向玩家飞行器进行移动
+        //     ufo.direction = direction;
+        
+        //     UFOs.push_back(ufo);
+
+        // }
+        for(int i=0; i<UFOs.size(); ++i) {
+            if(UFOs[i].die == true) {
+                UFOs[i].Stonex = 2.0f + (rand()%20) - 10.0f;
+                UFOs[i].Stoney = 2.0f + (rand()%20) - 10.0f;
+                UFOs[i].Stonez = -3.0f + (rand()%20) - 10.0f;
+
+                glm::vec3 pos = glm::vec3(UFOs[i].Stonex, UFOs[i].Stoney, UFOs[i].Stonez);
+                glm::vec3 direction = pos - pos;    // 初始化为静止的状态，绘制的过程中持续向玩家飞行器进行移动
+                UFOs[i].direction = direction;
+                UFOs[i].timer = 0.0f;
+                UFOs[i].die = false;
+                UFOs[i].move_flag = true;
+            }
+        }
+
+        for(int i=0; i<UFOs.size(); ++i) {
+         
+            glm::vec3 pos = glm::vec3(UFOs[i].Stonex, UFOs[i].Stoney, UFOs[i].Stonez);
+        
+           glm::vec3 plane_pos = glm::vec3(Plane::Planex, Plane::Planey, Plane::Planez);
+           
+            glm::vec3 direction = glm::normalize(plane_pos - pos);
+            UFOs[i].direction = direction;
+           //glm::vec3 pos = glm::vec3(Stones[i].Stonex, Stones[i].Stoney, Stones[i].Stonez);
+            if(UFOs[i].move_flag) {
+                pos += 0.005f*UFOs[i].direction;
+                UFOs[i].Stonex = pos.x;
+                UFOs[i].Stoney = pos.y;
+                UFOs[i].Stonez = pos.z;
+                UFOs[i].Draw();
+            } else {
+                //pos -= 0.005f*UFOs[i].direction;
+                UFOs[i].Stonex = pos.x;
+                UFOs[i].Stoney = pos.y;
+                UFOs[i].Stonez = pos.z;
+                UFOs[i].Draw2();
+            }
+
+
+            
+        }
+    }
+
+
+
+};
+
+
+
+
+class Stone {
+    /* load 陨石的模型 */
+public:
+    Shader spaceShader;
+    Shader AABBShader;
+    GLuint TextureDiffuse;
+    GLuint TextureNormal;
+    GLuint TextureSpecular;
+    ObjLoader obj;
+    GLuint cubeVAO, cubeVBO, cubeEBO;
+    glm::vec4 vertices[8];  // 记录 AABBB 包围盒的坐标信息  
+    GLfloat Stonex;
+    GLfloat Stoney;
+    GLfloat Stonez;
+    glm::vec3 direction;    // 陨石移动的方向
+
+    glm::vec3 aabbSize;
+    glm::vec3 aabbCenter;
+
+    bool move_flag;
+    GShader spaceGShader;
+
+    bool die;
+    float timer;  // 显示爆炸效果的计数器
+
+
+    Stone(): spaceShader("newshaders/plane.vs", "newshaders/plane.fs"), obj("stone/asteroid_05.obj"), 
+    AABBShader("shaders/AABB.vs", "shaders/AABB.fs"), spaceGShader("shaders/moon.vs","shaders/moon.fs","shaders/moon.gs") {
+        move_flag = true;   // 根据碰撞检测的结果判定陨石是否可以继续移动
+        
+        timer = 0.0f;
+        die = false;
+
+        Stonex = -2.0f;
+        Stoney = 0.0f;
+        Stonez = -6.0f;
+        TextureDiffuse = loadDDS("stone/asteroid_01_diffuse.dds");
+        TextureNormal = loadDDS("stone/asteroid_01_normal.dds");
+        TextureSpecular = loadDDS("stone/asteroid_01_specular.dds");
+
+        aabbSize = obj.maxCoords - obj.minCoords;
+        aabbCenter = (obj.maxCoords + obj.minCoords) * 0.5f;
+        // 对于不同的 scale 需要进行调整
+        aabbSize *= 0.15f;
+        aabbCenter *= 0.15f;
+        std::cout << "Center: " << aabbCenter.x << "," << aabbCenter.y << "," << aabbCenter.z << std::endl; 
+
+
+
+        GLfloat cubeVertices[] = {
+        -0.5f, -0.5f, -0.5f,
+         0.5f, -0.5f, -0.5f,
+         0.5f,  0.5f, -0.5f,
+        -0.5f,  0.5f, -0.5f,
+        -0.5f, -0.5f,  0.5f,
+         0.5f, -0.5f,  0.5f,
+         0.5f,  0.5f,  0.5f,
+        -0.5f,  0.5f,  0.5f,
+        };
+
+        GLuint cubeIndices[] = {
+            0, 1, 1, 2, 2, 3, 3, 0,
+            4, 5, 5, 6, 6, 7, 7, 4,
+            0, 4, 1, 5, 2, 6, 3, 7
+        };
+
+        glGenVertexArrays(1, &cubeVAO);
+        glGenBuffers(1, &cubeVBO);
+        glGenBuffers(1, &cubeEBO);
+
+        glBindVertexArray(cubeVAO);
+
+        glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVertices), cubeVertices, GL_STATIC_DRAW);
+
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, cubeEBO);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(cubeIndices), cubeIndices, GL_STATIC_DRAW);
+
+        // 位置属性
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
+        glEnableVertexAttribArray(0);
+
+        // 解绑VAO
+        glBindVertexArray(0);
+
+
+
+
+        std::cout << "load is ok" << endl;
+
+    }
+
+    void Draw() {
+        spaceShader.use();
+        spaceShader.setVec3("LightInfo.ambient", glm::vec3(0.55f, 0.55f, 0.55f)); 
+        spaceShader.setVec3("LightInfo.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+        spaceShader.setVec3("LightInfo.specular", glm::vec3(0.5f, 0.5f, 0.5f));
+        // spaceShader.setVec3("light.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
+        spaceShader.setVec3("viewPos", camera.Position);;
+
+        // set textures
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, TextureDiffuse);
+        spaceShader.setInt("texture_diffuse", 0);
+
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, TextureNormal);
+        spaceShader.setInt("texture_normal", 1);
+
+        glActiveTexture(GL_TEXTURE2);
+        glBindTexture(GL_TEXTURE_2D, TextureSpecular);
+        spaceShader.setInt("texture_specular", 2);
+
+        glm::mat4 view;
+        view = glm::lookAt(camera.Position, camera.Position + camera.Front, camera.Up);
+        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -2.0f));
+        glm::mat4 model = glm::mat4(1.0f);
+
+        
+        float angle = (GLfloat)glfwGetTime() * 3.5f;
+
+        // 先把 obj model 的中心平移到 （0，0，0）
+        // 经过平移后 （stonex, stoney, stonez）可以代表陨石的中心坐标
+        model = glm::translate(model, -aabbCenter);
+       model = glm::scale(model, glm::vec3(0.15f, 0.15f, 0.15f));
+       model = glm::translate(model, glm::vec3(Stonex/0.15f, Stoney/0.15f, Stonez/0.15f));
+    
+
+        // model = glm::rotate(model, glm::radians(theta1), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model = glm::rotate(model, glm::radians(theta2), glm::vec3(1.0f, 0.0f, 0.0f));
+        
+        glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(Plane::theta1), glm::vec3(0.0f, 1.0f, 0.0f));
+        rotationMatrix = glm::rotate(rotationMatrix, glm::radians(Plane::theta2), glm::vec3(1.0f, 0.0f, 0.0f));
+        // 将方向向量旋转
+        Plane::direction = glm::vec3(rotationMatrix * glm::vec4(0.0f, 0.0f, -1.0f, 0.0f));
+       
+        
+        spaceShader.setMat4("projection", projection); 
+        spaceShader.setMat4("view", view);
+        spaceShader.setMat4("model", model);
+        spaceShader.setInt("lightNum", 1);
+        spaceShader.setVec3("PointPos[0]", glm::vec3(Sun::xsun, Sun::ysun, Sun::zsun));
+
+        // 设置点光源衰减的因子
+        spaceShader.setFloat("LightInfo.constant", 1.0f);
+        spaceShader.setFloat("LightInfo.linear", 0.19f);
+        spaceShader.setFloat("LightInfo.quadratic", 0.032f);
+
+        obj.Draw();
+
+
+        // 绘制 AABB 包围盒
+        AABBShader.use();
+        // 绘制线框立方体
+        glm::mat4 modelAABB = glm::mat4(1.0f);
+      
+   
+       // modelAABB = glm::scale(modelAABB, glm::vec3(0.1f,0.1f,0.1f));
+        modelAABB = glm::translate(modelAABB, glm::vec3(Stonex, Stoney, Stonez));
+        // modelAABB = glm::rotate(modelAABB, glm::radians(theta1), glm::vec3(0.0f, 1.0f, 0.0f));
+        // modelAABB = glm::rotate(modelAABB, glm::radians(theta2), glm::vec3(1.0f, 0.0f, 0.0f));
+        modelAABB = glm::translate(modelAABB, aabbCenter);  // 注意生成的球体的中心坐标是 （0，0，0）在计算 obj 的坐标时有 aabbCenter 的偏移
+        modelAABB = glm::scale(modelAABB, aabbSize);
+        //modelAABB = glm::rotate(modelAABB,glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
+        
+        
+
+        
+        AABBShader.setMat4("projection", projection);
+        AABBShader.setMat4("view", view);
+        AABBShader.setMat4("model", modelAABB);
+
+        // 记录包围盒顶点信息
+        vertices[0] = modelAABB * glm::vec4(obj.minCoords.x, obj.minCoords.y, obj.minCoords.z, 1.0f);
+        vertices[1] = modelAABB * glm::vec4(obj.maxCoords.x, obj.minCoords.y, obj.minCoords.z, 1.0f);
+        vertices[2] = modelAABB * glm::vec4(obj.maxCoords.x, obj.maxCoords.y, obj.minCoords.z, 1.0f);
+        vertices[3] = modelAABB * glm::vec4(obj.minCoords.x, obj.maxCoords.y, obj.minCoords.z, 1.0f);
+        vertices[4] = modelAABB * glm::vec4(obj.minCoords.x, obj.minCoords.y, obj.maxCoords.z, 1.0f);
+        vertices[5] = modelAABB * glm::vec4(obj.maxCoords.x, obj.minCoords.y, obj.maxCoords.z, 1.0f);
+        vertices[6] = modelAABB * glm::vec4(obj.maxCoords.x, obj.maxCoords.y, obj.maxCoords.z, 1.0f);
+        vertices[7] = modelAABB * glm::vec4(obj.minCoords.x, obj.maxCoords.y, obj.maxCoords.z, 1.0f);
+
+
+        glEnable(GL_DEPTH_TEST);
+        glBindVertexArray(cubeVAO);
+        glDrawElements(GL_LINES, 24, GL_UNSIGNED_INT, 0);
+        //glBindVertexArray(0);
+
+
+
+    }
+
+    void Draw2() {
+
+        spaceGShader.use();
+        spaceGShader.setVec3("light.ambient", glm::vec3(1.0f, 1.0f, 1.0f)); 
+        spaceGShader.setVec3("light.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+        spaceGShader.setVec3("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
+        spaceGShader.setVec3("viewPos", camera.Position);
+
+        // set textures
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, TextureDiffuse);
+        spaceGShader.setInt("texture_diffuse", 0);
+
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, TextureNormal);
+        spaceGShader.setInt("texture_normal", 1);
+
+        glActiveTexture(GL_TEXTURE2);
+        glBindTexture(GL_TEXTURE_2D, TextureSpecular);
+        spaceGShader.setInt("texture_specular", 2);
+
+        glm::mat4 view;
+        view = glm::lookAt(camera.Position, camera.Position + camera.Front, camera.Up);
+        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -2.0f));
+        glm::mat4 model = glm::mat4(1.0f);
+
+        
+        float angle = (GLfloat)glfwGetTime() * 3.5f;
+
+        // 先把 obj model 的中心平移到 （0，0，0）
+        // 经过平移后 （stonex, stoney, stonez）可以代表陨石的中心坐标
+        model = glm::translate(model, -aabbCenter);
+       model = glm::scale(model, glm::vec3(0.15f, 0.15f, 0.15f));
+       model = glm::translate(model, glm::vec3(Stonex/0.15f, Stoney/0.15f, Stonez/0.15f));
+    
+
+        // model = glm::rotate(model, glm::radians(theta1), glm::vec3(0.0f, 1.0f, 0.0f));
+        // model = glm::rotate(model, glm::radians(theta2), glm::vec3(1.0f, 0.0f, 0.0f));
+        
+        glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(Plane::theta1), glm::vec3(0.0f, 1.0f, 0.0f));
+        rotationMatrix = glm::rotate(rotationMatrix, glm::radians(Plane::theta2), glm::vec3(1.0f, 0.0f, 0.0f));
+        // 将方向向量旋转
+        Plane::direction = glm::vec3(rotationMatrix * glm::vec4(0.0f, 0.0f, -1.0f, 0.0f));
+       
+        
+        if(timer >= 3.0f) {
+            die = true;
+        } else {
+            timer += 0.003f;
+        }
+
+        float res = timer>=1.5f? 1.5f: timer;
+        spaceGShader.setFloat("time", (GLfloat)res);
+
+        spaceGShader.setMat4("projection", projection); 
+        spaceGShader.setMat4("view", view);
+        spaceGShader.setMat4("model", model);
+
+        spaceGShader.setVec3("light.direction", glm::vec3(Earth::xearth-Stonex, Earth::yearth-Stoney, Earth::zearth-Stonez));
+
+        if(die == false) {
+            obj.Draw();
+        }
 
     }
 
@@ -1553,9 +1665,9 @@ public:
             // 对陨石生成不同的位置
             std::cout << "stone :" << i << std::endl;
             
-            newStone.Stonex = -2.0f + (rand()%4) - 1.0f;
-            newStone.Stoney = 0.0f + (rand()%4) - 1.0f;
-            newStone.Stonez = -8.0f + (rand()%4) - 1.0f;
+            newStone.Stonex = Earth::xearth + (rand()%16) - 8.0f;
+            newStone.Stoney = Earth::yearth + (rand()%16) - 8.0f;
+            newStone.Stonez = Earth::zearth + (rand()%16) - 8.0f;
 
             // 陨石初始的运动方向指向当前地球的位置
             // 随着地球的移动后续会对方向进行调整
@@ -1573,6 +1685,29 @@ public:
     }
 
     void Draw() {
+
+        Stones.erase(std::remove_if(Stones.begin(), Stones.end(), [](const Stone& s) {
+            return s.die;
+        }), Stones.end());
+
+        while(Stones.size() < 4) {
+            Stone newStone;
+            // 对陨石生成不同的位置
+            
+            newStone.Stonex = -2.0f + (rand()%8) - 4.0f;
+            newStone.Stoney = 0.0f + (rand()%4) - 1.0f;
+            newStone.Stonez = -8.0f + (rand()%8) - 4.0f;
+
+            // 陨石初始的运动方向指向当前地球的位置
+            // 随着地球的移动后续会对方向进行调整
+            glm::vec3 pos = glm::vec3(newStone.Stonex, newStone.Stoney, newStone.Stonez);
+            glm::vec3 earthPos = glm::vec3(Earth::xearth, Earth::yearth, Earth::zearth-2.0f);
+            glm::vec3 direction = earthPos - pos;
+            newStone.direction = direction;
+            Stones.push_back(newStone);
+
+        }
+
         for(int i=0; i<Stones.size(); ++i) {
             // 每次绘制时将陨石按照响应的方向进行移动
             // 每间隔一段时间对方向进行调整
@@ -1586,7 +1721,7 @@ public:
            //glm::vec3 pos = glm::vec3(Stones[i].Stonex, Stones[i].Stoney, Stones[i].Stonez);
             if(Stones[i].move_flag) {
                 // 未检测到碰撞可以向前移动
-                // pos += 0.005f*Stones[i].direction;
+                pos += 0.001f*Stones[i].direction;
                 Stones[i].Stonex = pos.x;
                 Stones[i].Stoney = pos.y;
                 Stones[i].Stonez = pos.z;
@@ -1727,7 +1862,7 @@ class ObjectManager {
         //SpaceStation space;
         Plane plane;
         StoneManager stones;
-        //UFOManager ufos;
+        UFOManager ufos;
 
         ObjectManager() {
             vector<const GLchar*> faces;
@@ -1740,13 +1875,13 @@ class ObjectManager {
             faces.push_back("image/skybox/6.png");
 
             skybox1 = SkyBox(faces);
-            sun = Sun();
-            earth = Earth();
-            moon = Moon();
+            // sun = Sun();
+            // earth = Earth();
+            // moon = Moon();
             //space = SpaceStation();
             //plane = Plane();
-            stones = StoneManager();
-            //ufos = UFOManager();
+            // stones = StoneManager();
+            // ufos = UFOManager();
         }
 
         // 进行碰撞检测
@@ -1783,6 +1918,36 @@ class ObjectManager {
                 plane_flag = true;
             }
 
+            // 判断 ufo 是否被子弹射中
+            for(int i=0; i<ufos.UFOs.size(); ++i) {
+                if(ufos.UFOs[i].move_flag == false) {
+                    continue;
+                }
+
+                glm::vec4 ufo_vert[8];
+                for(int j=0; j<8; ++j) {
+                    ufo_vert[j] = ufos.UFOs[i].vertices[j];
+                }
+
+                // 判断陨石是否和子弹碰撞
+                bool check_bullet = false;
+
+                for(int j=0; j<bullets.bullets.size(); j++) {
+                    bool check = CheckBullet2(ufo_vert, glm::vec3(bullets.bullets[j].x, bullets.bullets[j].y, bullets.bullets[j].z), bullets.bullets[j].direction);
+                    if(check == true && bullets.bullets[j].flag == true) {
+                        check_bullet = true;
+                        bullets.bullets[j].flag = false;
+                        break;
+                    }
+                }
+
+                if(check_bullet == true || ufos.UFOs[i].move_flag == false) {
+                    ufos.UFOs[i].move_flag = false;
+                } else {
+                    ufos.UFOs[i].move_flag = true;
+                }
+            }
+
 
             // 进行陨石和地球的碰撞检测
             // 依然是 AABB 与球体的碰撞检测
@@ -1804,8 +1969,10 @@ class ObjectManager {
                 for(int j=0; j<bullets.bullets.size(); j++) {
                   
                     bool check = CheckBullet(stone_vert, glm::vec3(bullets.bullets[j].x, bullets.bullets[j].y, bullets.bullets[j].z), bullets.bullets[j].direction); 
+                    std::cout << "bump num i = " << i << std::endl;
+                    //bool check = CheckBullet(stone_vert, glm::vec3(Plane::Planex, Plane::Planey, Plane::Planez), Plane::direction); 
                     if(check == true && bullets.bullets[j].flag == true) {
-                        std::cout << "bump num i = " << i << std::endl;
+                        
                         std::cout << "bullet j = " << j << std::endl;
                         check_bullet = true;
                         bullets.bullets[j].flag = false;
@@ -1832,24 +1999,6 @@ class ObjectManager {
 
         bool CheckBullet(glm::vec4 vertices[8], glm::vec3 coord, glm::vec3 direction) {
 
-            // int intersects = 0;
-
-            // // Check each face of the box
-            // for (int i = 0; i < 6; ++i) {
-            //     glm::vec3 v0 = glm::vec3(vertices[i * 2]);
-            //     glm::vec3 v1 = glm::vec3(vertices[i * 2 + 1]);
-
-            //     // Check if the point is on the same side of the face as its normal
-            //     glm::vec3 normal = glm::cross(v1 - v0, v0 - glm::vec3(coord));
-            //     glm::vec3 toPoint = coord - v0;
-
-            //     if (glm::dot(normal, toPoint) >= 0) {
-            //         intersects++;
-            //     }
-            // }
-
-            // // If the point is on the same side of all faces, it's inside the box
-            // return intersects == 6;
             glm::vec3 minCoord = glm::vec3(vertices[0]);
             glm::vec3 maxCoord = glm::vec3(vertices[0]);
 
@@ -1867,30 +2016,46 @@ class ObjectManager {
             float length1 = sqrt(shootdir[0]*shootdir[0] + shootdir[1]*shootdir[1] + shootdir[2]*shootdir[2]);
             float length2 = sqrt(direction[0]*direction[0] + direction[1]*direction[1] + direction[2]*direction[2]);
             
-            if(shootdir[0]*direction[0] + shootdir[1]*direction[1] + shootdir[1]*direction[1] / (length1*length2) >= 0.5) {
+            if((shootdir[0]*direction[0] + shootdir[1]*direction[1] + shootdir[2]*direction[2]) / (length1*length2) >= 0.08f) {
+                std::cout << "res: " << (shootdir[0]*direction[0] + shootdir[1]*direction[1] + shootdir[2]*direction[2]) / (length1*length2) << std::endl;
                 return true;
             } else {
+                std::cout << "res error: " << (shootdir[0]*direction[0] + shootdir[1]*direction[1] + shootdir[2]*direction[2]) / (length1*length2) << std::endl;
                 return false;
             }
 
+        
+        }
+
+
+        bool CheckBullet2(glm::vec4 vertices[8], glm::vec3 coord, glm::vec3 direction) {
+
+            glm::vec3 minCoord = glm::vec3(vertices[0]);
+            glm::vec3 maxCoord = glm::vec3(vertices[0]);
+
+            for (int i = 1; i < 8; ++i) {
+                for (int j = 0; j < 3; ++j) {
+                    minCoord[j] = std::min(minCoord[j], vertices[i][j]);
+                    maxCoord[j] = std::max(maxCoord[j], vertices[i][j]);
+                }
+            }
+
+            glm::vec3 avgCoord = glm::vec3((minCoord[0]+maxCoord[0])/2, (minCoord[1]+maxCoord[1])/2, (minCoord[2]+maxCoord[2])/2);
+
+            glm::vec3 shootdir = avgCoord - coord;
             
+            float length1 = sqrt(shootdir[0]*shootdir[0] + shootdir[1]*shootdir[1] + shootdir[2]*shootdir[2]);
+            float length2 = sqrt(direction[0]*direction[0] + direction[1]*direction[1] + direction[2]*direction[2]);
+            
+            if((shootdir[0]*direction[0] + shootdir[1]*direction[1] + shootdir[2]*direction[2]) / (length1*length2) >= 0.08f) {
+                std::cout << "res: " << (shootdir[0]*direction[0] + shootdir[1]*direction[1] + shootdir[2]*direction[2]) / (length1*length2) << std::endl;
+                return true;
+            } else {
+                std::cout << "res error: " << (shootdir[0]*direction[0] + shootdir[1]*direction[1] + shootdir[2]*direction[2]) / (length1*length2) << std::endl;
+                return false;
+            }
 
-            // if( coord.x >= minCoord.x && coord.x <= maxCoord.x ||
-            //     coord.y >= minCoord.y && coord.y <= maxCoord.y ||
-            //     coord.z >= minCoord.z && coord.z <= maxCoord.z) {
-            //         std::cout << "success" << std::endl;
-            //         std::cout << "Box1: " << minCoord.x << " " << minCoord.y << " " << minCoord.z << std::endl;
-            //         std::cout << "Box2: " << maxCoord.x << " " << maxCoord.y << " " << maxCoord.z << std::endl;
-            //         std::cout << "Bullet: " << coord.x << " " << coord.y << " " << coord.z << std::endl;
-            //         return true;
-            //     } else {
-            //         std::cout << "error" << std::endl;
-            //         std::cout << "Box1: " << minCoord.x << " " << minCoord.y << " " << minCoord.z << std::endl;
-            //         std::cout << "Box2: " << maxCoord.x << " " << maxCoord.y << " " << maxCoord.z << std::endl;
-            //         std::cout << "Bullet: " << coord.x << " " << coord.y << " " << coord.z << std::endl;
-            //         return false;
-            //     }
-
+        
         }
 
         // 进行球体和 AABB 包围盒的碰撞检测
@@ -2002,7 +2167,7 @@ void mainLoop(GLFWwindow* window ) {
             gameObj.moon.Draw();
             gameObj.earth.Draw();
             gameObj.stones.Draw();
-            //gameObj.ufos.Draw();
+            gameObj.ufos.Draw();
             bullets.Draw();
         
 
@@ -2030,6 +2195,12 @@ int main()
     glfwTerminate();
     return 0;
 }
+
+bool keyIsPressed = false;
+bool isShoot = false;
+int controlnum = 0;
+
+
 
 
 void processInput(GLFWwindow *window)
@@ -2108,9 +2279,17 @@ void processInput(GLFWwindow *window)
     }
 
     if(glfwGetKey(window, GLFW_KEY_1)) {
-        // 进行射击
-        std::cout << "hey " << std::endl;
-        Plane::Shoot();
+        if(controlnum < 1) {
+            controlnum++;
+            std::cout << "shoot " << std::endl;
+            Plane::Shoot();
+        } 
+    }
+
+    if(glfwGetKey(window, GLFW_KEY_2)) {
+        if(controlnum >= 1) {
+            controlnum--;
+        }
     }
 
 }
