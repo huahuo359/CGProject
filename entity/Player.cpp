@@ -39,6 +39,7 @@ constexpr float axleWeightRatioFront = cgToRearAxle / wheelBase;  // % car weigh
 constexpr float axleWeightRatioRear = cgToFrontAxle / wheelBase;  // % car weight on the rear axle
 
 extern Camera camera;
+extern bool is_fired;
 const unsigned int SCR_WIDTH=1600;
 const unsigned int SCR_HEIGHT=1200;
 
@@ -305,6 +306,10 @@ void Player::handleKeyboardEvents(GLFWwindow* /*window*/, int key, int /*scancod
 
         if ((key == GLFW_KEY_D || key == GLFW_KEY_RIGHT) && steerAngle < 0.0f) {
             steerChange = 0.0f;
+        }
+
+        if (key == GLFW_KEY_F) {
+            is_fired = true;
         }
     }
 }

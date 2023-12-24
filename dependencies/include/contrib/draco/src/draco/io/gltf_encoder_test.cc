@@ -1492,7 +1492,7 @@ TEST_F(GltfEncoderTest, EncodeLights) {
   EncodeSceneToGltfAndCompare(scene.get());
 }
 
-// Helper method for adding mesh group GPU instancing to the milk truck scene.
+// Helper method for adding mesh group GPU instancing to the milk trunk scene.
 draco::Status AddGpuInstancingToMilkTruck(draco::Scene *scene) {
   // Create an instance and set its transformation TRS vectors.
   draco::InstanceArray::Instance instance_0;
@@ -1523,7 +1523,7 @@ draco::Status AddGpuInstancingToMilkTruck(draco::Scene *scene) {
 // has no GPU instancing support, so we will compare encoded file to a golden
 // file.
 TEST_F(GltfEncoderTest, EncodeInstanceArrays) {
-  // Read the milk truck.
+  // Read the milk trunk.
   auto scene =
       draco::ReadSceneFromTestFile("CesiumMilkTruck/glTF/CesiumMilkTruck.gltf");
   ASSERT_NE(scene, nullptr);

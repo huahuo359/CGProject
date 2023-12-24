@@ -29,7 +29,7 @@ namespace {
 
 #ifdef DRACO_TRANSCODER_SUPPORTED
 
-// Helper method for adding mesh group GPU instancing to the milk truck scene.
+// Helper method for adding mesh group GPU instancing to the milk trunk scene.
 draco::Status AddGpuInstancingToMilkTruck(draco::Scene *scene) {
   // Create an instance and set its transformation TRS vectors.
   draco::InstanceArray::Instance instance_0;

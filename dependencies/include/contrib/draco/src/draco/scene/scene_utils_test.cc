@@ -430,7 +430,7 @@ TEST(SceneUtilsTest, TestCleanupEmptyMeshGroup) {
   ASSERT_EQ(scene->GetNode(draco::SceneNodeIndex(0))->GetMeshGroupIndex(),
             draco::MeshGroupIndex(0));
 
-  // Invalidate references to the three truck body parts in mesh group.
+  // Invalidate references to the three trunk body parts in mesh group.
   draco::MeshGroup &mesh_group = *scene->GetMeshGroup(draco::MeshGroupIndex(0));
   mesh_group.SetMeshInstance(0, {draco::kInvalidMeshIndex, 0});
   mesh_group.SetMeshInstance(1, {draco::kInvalidMeshIndex, 0});
@@ -455,7 +455,7 @@ TEST(SceneUtilsTest, TestCleanupUnreferencedMeshGroup) {
   ASSERT_EQ(scene->NumMeshGroups(), 2);
   ASSERT_EQ(draco::SceneUtils::ComputeAllInstances(*scene).size(), 5);
 
-  // Invalidate references to truck axle mesh group.
+  // Invalidate references to trunk axle mesh group.
   scene->GetNode(draco::SceneNodeIndex(2))
       ->SetMeshGroupIndex(draco::kInvalidMeshGroupIndex);
   scene->GetNode(draco::SceneNodeIndex(4))
@@ -480,7 +480,7 @@ TEST(SceneUtilsTest, TestCleanupInvalidMeshIndex) {
   ASSERT_EQ(scene->GetNode(draco::SceneNodeIndex(0))->GetMeshGroupIndex(),
             draco::MeshGroupIndex(0));
 
-  // Invalidate references to two truck body parts in mesh group.
+  // Invalidate references to two trunk body parts in mesh group.
   draco::MeshGroup &mesh_group = *scene->GetMeshGroup(draco::MeshGroupIndex(0));
   ASSERT_EQ(mesh_group.NumMeshInstances(), 3);
   mesh_group.SetMeshInstance(0, {draco::kInvalidMeshIndex, 0});

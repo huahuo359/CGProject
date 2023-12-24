@@ -17,10 +17,6 @@ void FrameBuffer::addColourTexture() {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, colourTexture, 0);
 
-    // Isn't necessary at the moment but I feel like it should be
-    // GLenum DrawBuffers[1] = {GL_COLOR_ATTACHMENT0};
-    // glDrawBuffers(1, DrawBuffers); // "1" is the size of DrawBuffers
-
     unbind();
 }
 

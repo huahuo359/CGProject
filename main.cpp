@@ -34,6 +34,9 @@ bool VertexInRange(glm::vec4 entityRange[], glm::vec4 player_vertice);
 const unsigned int SCR_WIDTH = 1600;
 const unsigned int SCR_HEIGHT = 1200;
 
+bool is_fired = false;
+bool is_firelight_pushed = false;
+
 // camera
 MY_Camera* camera;
 
@@ -92,6 +95,52 @@ void mainLoop() {
     highway_entity->setBoundSize(0.6f);
     entities.push_back(highway_entity);
 
+    MY_Model base = Loader::getLoader()->loadModel("res/base/base.obj");
+    Entity* base_entity = new Entity(&base);
+    base_entity->setScale(glm::vec3(8.0f,8.0f,8.0f));
+    base_entity->setPosition(terrain->getPositionFromPixel(600,500));
+    base_entity->setBoundSize(0.6f);
+    entities.push_back(base_entity);
+
+    MY_Model tree = Loader::getLoader()->loadModel("res/tree/tree.obj");
+    for(int i=0; i<25; i++) {
+        Entity* tree_entity = new Entity(&tree);
+        int sz_idx = i%3;
+        tree_entity->setScale(glm::vec3(2*sz[sz_idx],2*sz[sz_idx],2*sz[sz_idx]));
+
+        int xpos = rand()%1025-512;
+        int ypos = rand()%1025-512;
+        tree_entity->setPosition(terrain->getPositionFromPixel(xpos,ypos));
+        tree_entity->setBoundSize(0.6f);
+        entities.push_back(tree_entity);
+    }
+
+//    MY_Model rock = Loader::getLoader()->loadModel("res/rock/rock.obj");
+//    for(int i=0; i<25; i++) {
+//        Entity* rock_entity = new Entity(&rock);
+//        int sz_idx = i%3;
+//        rock_entity->setScale(glm::vec3(sz[sz_idx]/5,sz[sz_idx]/5,sz[sz_idx]/5));
+//
+//        int xpos = rand()%1025-512;
+//        int ypos = rand()%1025-512;
+//        rock_entity->setPosition(terrain->getPositionFromPixel(xpos,ypos));
+//        rock_entity->setBoundSize(0.6f);
+//        entities.push_back(rock_entity);
+//    }
+
+    MY_Model trunk = Loader::getLoader()->loadModel("res/trunk/trunk.obj");
+    for(int i=0; i<25; i++) {
+        Entity* trunk_entity = new Entity(&trunk);
+        int sz_idx = i%3;
+        trunk_entity->setScale(glm::vec3(2*sz[sz_idx],2*sz[sz_idx],2*sz[sz_idx]));
+
+        int xpos = rand()%1025-512;
+        int ypos = rand()%1025-512;
+        trunk_entity->setPosition(terrain->getPositionFromPixel(xpos,ypos));
+        trunk_entity->setBoundSize(0.6f);
+        entities.push_back(trunk_entity);
+    }
+
     new_window.set_key_callback([&](GLFWwindow* window, int key, int scancode, int action, int mods) {
         // Terminate program if escape is pressed
         if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
@@ -145,7 +194,7 @@ void mainLoop() {
     // Create light sources
     auto* sunny = new Light();
     sunny->position = glm::vec4(-1.25 * 200.0f / 10, 2.5 * 200.0f / 10, 3 * 200.0f / 10, 0.0f);
-    sunny->specular = glm::vec3(1.0f, 1.0f, 1.0f);
+    sunny->specular = glm::vec3(0.5f, 0.5f, 0.5f);
     sunny->diffuse = glm::vec3(0.7f, 0.7f, 0.7f);
     sunny->ambient = glm::vec3(0.1f, 0.1f, 0.1f);
     lights.push_back(sunny);
@@ -168,8 +217,22 @@ void mainLoop() {
     headlight2->radius = 10.0f;
     lights.push_back(headlight2);
 
+    auto* firelight = new Light();
+    firelight->position = glm::vec4 (firepos+glm::vec3 (0.0f,40.0f,0.0f),1.0f);
+    firelight->specular = glm::vec3 (0.8f,0.8f,0.4f);
+    firelight->diffuse = glm::vec3(0.8f, 0.8f, 0.4f);
+    firelight->coneDirection = glm::vec3(0.0f, -1.0f, 0.0f);
+    firelight->coneAngle = constants::PI / 2.f;
+    firelight->radius = 100.0f;
+//    lights.push_back(firelight);
+
     for(auto it : entities) {
-        it->placeBottomEdge(terrain->getHeight(it->getPosition().x, it->getPosition().z));
+        if(it->getModel() != &engine)
+            it->placeBottomEdge(terrain->getHeight(it->getPosition().x, it->getPosition().z));
+        else {
+            it->placeBottomEdge(terrain->getHeight(it->getPosition().x, it->getPosition().z));
+            it->move(glm::vec3(0.0f,12.0f,0.0f));
+        }
     }
 
     // Create the large lake
@@ -188,8 +251,10 @@ void mainLoop() {
     ParticleSystem snowSystem(50.0f, 2.0f, 0.02f, 50.0f, snow_texture);
 
     GLuint fire_texture = Loader::getLoader()->loadTexture("image/fire.png");
-    ParticleSystem fireSystem(500.0f, 10.0f, 0.01f, 1.0f, fire_texture);
+    ParticleSystem fireSystem(50.0f, 10.0f, 0.01f, 4.0f, fire_texture);
 
+    GLuint fire_texture_2 = Loader::getLoader()->loadTexture("image/fire2.png");
+    ParticleSystem fireSystem_2(50.0f, 10.0f, 0.01f, 4.0f, fire_texture_2);
     while (!glfwWindowShouldClose(new_window.get_window()))
     {
         GameTime::getGameTime()->update();
@@ -219,8 +284,25 @@ void mainLoop() {
 
             snowSystem.generateParticles(player->getPosition()+glm::vec3(0.0f,20.0f,0.0f), 0.1f,1.0f);
 
-            fireSystem.generateParticles(firepos+glm::vec3(0.0f,25.0f,0.0f), 1.0f,20.f);
-            fireSystem.generateParticles(firepos+glm::vec3(1.0f,25.0f,1.0f),1.0f,10.f);
+            if(is_fired) {
+                if(!is_firelight_pushed) {
+                    lights.push_back(firelight);
+                    is_firelight_pushed = true;
+                }
+
+                fireSystem.generateParticles(firepos+glm::vec3(0.0f,25.0f,0.0f), 1.0f,5.f);
+                fireSystem.generateParticles(firepos+glm::vec3(1.0f,25.0f,1.0f),1.0f,5.f);
+                fireSystem.generateParticles(firepos+glm::vec3(-1.0f,25.0f,-1.0f),1.0f,5.f);
+                fireSystem.generateParticles(firepos+glm::vec3(1.0f,25.0f,-1.0f),1.0f,5.f);
+                fireSystem.generateParticles(firepos+glm::vec3(-1.0f,25.0f,1.0f),1.0f,5.f);
+
+                fireSystem_2.generateParticles(firepos+glm::vec3(0.0f,25.0f,0.0f), 1.0f,5.f);
+                fireSystem_2.generateParticles(firepos+glm::vec3(1.0f,25.0f,1.0f),1.0f,5.f);
+                fireSystem_2.generateParticles(firepos+glm::vec3(-1.0f,25.0f,-1.0f),1.0f,5.f);
+                fireSystem_2.generateParticles(firepos+glm::vec3(1.0f,25.0f,-1.0f),1.0f,5.f);
+                fireSystem_2.generateParticles(firepos+glm::vec3(-1.0f,25.0f,1.0f),1.0f,5.f);
+            }
+
         } else {
             // near shot
 

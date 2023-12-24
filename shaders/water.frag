@@ -51,5 +51,5 @@ void main(void) {
 
     fragColour = mix(reflectionColour, refractionColour, fresnelFactor);
     fragColour = mix(fragColour, vec4(0.0, 0.3, 0.4, 1.0), 0.2);
-    fragColour = vec4(applyFog(fragColour.rgb, -vertex_view.z), 1.0);
+//    fragColour = vec4(applyFog(fragColour.rgb, -vertex_view.z), 1.0);
 }

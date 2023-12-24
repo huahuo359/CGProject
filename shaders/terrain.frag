@@ -95,9 +95,6 @@ vec3 applyLight(Light light, vec3 surfaceColor, vec3 normal, vec3 surface_pos) {
     float sDotN = max(0.0, dot(normal, light_dir));
     vec3 diffuse = sDotN * surfaceColor.rgb * light.diffuse;
 
-    // Specular is ignored for terrain.
-    // Extension: Use a specular map for this
-
     return ambient + attenuation*(diffuse);
 }
 

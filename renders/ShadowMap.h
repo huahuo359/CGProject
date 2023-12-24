@@ -24,8 +24,6 @@ class ShadowMap : public FrameBuffer {
     GLuint getTextureSize();
     glm::mat4 getView();
     glm::mat4 getProjection();
-
-    // Override default bind of FrameBuffer to update state.
-    // Unbind is unchanged
+    
     void bind() override;
 };
