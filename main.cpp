@@ -108,25 +108,25 @@ void mainLoop() {
         int sz_idx = i%3;
         tree_entity->setScale(glm::vec3(2*sz[sz_idx],2*sz[sz_idx],2*sz[sz_idx]));
 
-        int xpos = rand()%1025-512;
-        int ypos = rand()%1025-512;
+        int xpos = rand()%1024;
+        int ypos = rand()%1024;
         tree_entity->setPosition(terrain->getPositionFromPixel(xpos,ypos));
         tree_entity->setBoundSize(0.6f);
         entities.push_back(tree_entity);
     }
 
-//    MY_Model rock = Loader::getLoader()->loadModel("res/rock/rock.obj");
-//    for(int i=0; i<25; i++) {
-//        Entity* rock_entity = new Entity(&rock);
-//        int sz_idx = i%3;
-//        rock_entity->setScale(glm::vec3(sz[sz_idx]/5,sz[sz_idx]/5,sz[sz_idx]/5));
-//
-//        int xpos = rand()%1025-512;
-//        int ypos = rand()%1025-512;
-//        rock_entity->setPosition(terrain->getPositionFromPixel(xpos,ypos));
-//        rock_entity->setBoundSize(0.6f);
-//        entities.push_back(rock_entity);
-//    }
+    MY_Model rock = Loader::getLoader()->loadModel("res/rock/rock.obj");
+    for(int i=0; i<25; i++) {
+        Entity* rock_entity = new Entity(&rock);
+        int sz_idx = i%3;
+        rock_entity->setScale(glm::vec3(sz[sz_idx]/5,sz[sz_idx]/5,sz[sz_idx]/5));
+
+        int xpos = rand()%1024;
+        int ypos = rand()%1024;
+        rock_entity->setPosition(terrain->getPositionFromPixel(xpos,ypos));
+        rock_entity->setBoundSize(0.6f);
+        entities.push_back(rock_entity);
+    }
 
     MY_Model trunk = Loader::getLoader()->loadModel("res/trunk/trunk.obj");
     for(int i=0; i<25; i++) {
@@ -134,8 +134,8 @@ void mainLoop() {
         int sz_idx = i%3;
         trunk_entity->setScale(glm::vec3(2*sz[sz_idx],2*sz[sz_idx],2*sz[sz_idx]));
 
-        int xpos = rand()%1025-512;
-        int ypos = rand()%1025-512;
+        int xpos = rand()%1024;
+        int ypos = rand()%1024;
         trunk_entity->setPosition(terrain->getPositionFromPixel(xpos,ypos));
         trunk_entity->setBoundSize(0.6f);
         entities.push_back(trunk_entity);
@@ -182,12 +182,12 @@ void mainLoop() {
     bool flag = true;
 
     std::vector<std::string> skyboxTextures = {
-            "image/skybox/back.jpg",
-            "image/skybox/bottom.jpg",
-            "image/skybox/front.jpg",
-            "image/skybox/left.jpg",
             "image/skybox/right.jpg",
-            "image/skybox/top.jpg"
+            "image/skybox/left.jpg",
+            "image/skybox/top.jpg",
+            "image/skybox/bottom.jpg",
+            "image/skybox/back.jpg",
+            "image/skybox/front.jpg"
     };
     SkyboxRenderer skybox = SkyboxRenderer(skyboxTextures, 200.0f);
 

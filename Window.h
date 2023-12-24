@@ -59,7 +59,7 @@ struct Window {
     std::function<void(GLFWwindow*, int button, int action, int)> m_mouse_button_callback;
     std::function<void(GLFWwindow*, int x, int y)> m_reshape_callback;
 
-    int win_x = 1920;
-    int win_y = 1080;
+    int win_x = 640;
+    int win_y = 560;
     GLFWwindow* m_window;
 };
