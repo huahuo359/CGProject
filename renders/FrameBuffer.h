@@ -6,27 +6,21 @@
 class FrameBuffer {
   private:
     GLuint framebufferID;
-
     GLuint depthTexture;
-    GLuint depthBuffer;
-    GLuint colourTexture;
 
     GLuint width;
     GLuint height;
 
   public:
     FrameBuffer(uint32_t width, uint32_t height);
-    void addColourTexture();
     void addDepthTexture();
-    void addDepthBuffer();
     bool isOkay();
 
-    GLuint getColourTexture();
-    GLuint getDepthTexture();
-    GLuint getDepthBuffer();
+    inline GLuint getDepthTexture() const {return depthTexture; };
+    inline GLuint getDepthBuffer() const {return framebufferID; };
 
-    int getWidth();
-    int getHeight();
+    inline int getWidth() const {return width; };
+    inline int getHeight() const {return height; };
 
     virtual void bind();
     virtual void unbind();

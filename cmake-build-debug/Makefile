@@ -983,30 +983,6 @@ renders/TerrainRenderer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/renders/TerrainRenderer.cpp.s
 .PHONY : renders/TerrainRenderer.cpp.s
 
-renders/WaterRenderer.o: renders/WaterRenderer.cpp.o
-.PHONY : renders/WaterRenderer.o
-
-# target to build an object file
-renders/WaterRenderer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/renders/WaterRenderer.cpp.o
-.PHONY : renders/WaterRenderer.cpp.o
-
-renders/WaterRenderer.i: renders/WaterRenderer.cpp.i
-.PHONY : renders/WaterRenderer.i
-
-# target to preprocess a source file
-renders/WaterRenderer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/renders/WaterRenderer.cpp.i
-.PHONY : renders/WaterRenderer.cpp.i
-
-renders/WaterRenderer.s: renders/WaterRenderer.cpp.s
-.PHONY : renders/WaterRenderer.s
-
-# target to generate assembly for a file
-renders/WaterRenderer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/renders/WaterRenderer.cpp.s
-.PHONY : renders/WaterRenderer.cpp.s
-
 renders/particleRenderer.o: renders/particleRenderer.cpp.o
 .PHONY : renders/particleRenderer.o
 
@@ -1151,30 +1127,6 @@ shaders/TerrainShader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/shaders/TerrainShader.cpp.s
 .PHONY : shaders/TerrainShader.cpp.s
 
-shaders/WaterShader.o: shaders/WaterShader.cpp.o
-.PHONY : shaders/WaterShader.o
-
-# target to build an object file
-shaders/WaterShader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/shaders/WaterShader.cpp.o
-.PHONY : shaders/WaterShader.cpp.o
-
-shaders/WaterShader.i: shaders/WaterShader.cpp.i
-.PHONY : shaders/WaterShader.i
-
-# target to preprocess a source file
-shaders/WaterShader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/shaders/WaterShader.cpp.i
-.PHONY : shaders/WaterShader.cpp.i
-
-shaders/WaterShader.s: shaders/WaterShader.cpp.s
-.PHONY : shaders/WaterShader.s
-
-# target to generate assembly for a file
-shaders/WaterShader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/shaders/WaterShader.cpp.s
-.PHONY : shaders/WaterShader.cpp.s
-
 shaders/particleShader.o: shaders/particleShader.cpp.o
 .PHONY : shaders/particleShader.o
 
@@ -1297,9 +1249,6 @@ help:
 	@echo "... renders/TerrainRenderer.o"
 	@echo "... renders/TerrainRenderer.i"
 	@echo "... renders/TerrainRenderer.s"
-	@echo "... renders/WaterRenderer.o"
-	@echo "... renders/WaterRenderer.i"
-	@echo "... renders/WaterRenderer.s"
 	@echo "... renders/particleRenderer.o"
 	@echo "... renders/particleRenderer.i"
 	@echo "... renders/particleRenderer.s"
@@ -1318,9 +1267,6 @@ help:
 	@echo "... shaders/TerrainShader.o"
 	@echo "... shaders/TerrainShader.i"
 	@echo "... shaders/TerrainShader.s"
-	@echo "... shaders/WaterShader.o"
-	@echo "... shaders/WaterShader.i"
-	@echo "... shaders/WaterShader.s"
 	@echo "... shaders/particleShader.o"
 	@echo "... shaders/particleShader.i"
 	@echo "... shaders/particleShader.s"

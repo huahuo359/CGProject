@@ -8,8 +8,6 @@
 #include <glad/glad.h>
 
 ParticleRenderer::ParticleRenderer() {
-    // clang-format off
-    // Create a square mesh encompassing the viewport
     std::vector<float> vertices = {
             -1.0f, 1.0f, 0.0f,
             -1.0f, -1.0f, 0.0f,
@@ -28,7 +26,7 @@ ParticleRenderer::ParticleRenderer() {
             0, 1, 2,
             2, 3, 0
     };
-    // clang-format on
+
     quad = Loader::getLoader()->loadModelComponent(vertices, indices, texcoords);
 }
 

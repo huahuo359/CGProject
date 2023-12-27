@@ -9,29 +9,12 @@ ShadowMap::ShadowMap(Player* player, Light* light, GLuint textureSize)
 
     addDepthTexture();
     if (!isOkay()) {
-        std::cerr << "[FrameBuffer] FrameBuffer is not okay." << std::endl;
+        std::cerr << "FrameBuffer failed" << std::endl;
         exit(1);
     }
 }
 
-GLuint ShadowMap::getTextureID() {
-    return getDepthTexture();
-}
-
-GLuint ShadowMap::getTextureSize() {
-    return textureSize;
-}
-
 void ShadowMap::bind() {
     FrameBuffer::bind();
-    // Set the view matrix to be looking from sun's position to the player.
     view = glm::lookAt(player->getPosition() + lightDir, player->getPosition(), glm::vec3(0, 1, 0));
-}
-
-glm::mat4 ShadowMap::getView() {
-    return view;
-}
-
-glm::mat4 ShadowMap::getProjection() {
-    return projection;
 }

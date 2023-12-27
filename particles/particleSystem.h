@@ -19,8 +19,7 @@ private:
     float renderQueue;
 
 public:
-    ParticleSystem(
-            float particlesPerSecond, float particleSpeed, float gravityFactor, float lifeDuration, GLuint textureid);
+    ParticleSystem(float particlesPerSecond, float particleSpeed, float gravityFactor, float lifeDuration, GLuint textureid);
 
     void generateParticles(glm::vec3 emissionPoint, float sz, float vel_y);
 };

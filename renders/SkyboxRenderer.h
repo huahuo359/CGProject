@@ -14,16 +14,7 @@ class SkyboxRenderer {
     size_t indexCount;
 
   public:
-    /*
-    Images should be in order:
-        PosXFilename,
-        NegXFilename,
-        PosYFilename,
-        NegYFilename,
-        PosZFilename,
-        NegZFilename
-    */
-    SkyboxRenderer(const std::vector<std::string>& images, float SIZE);
-    GLuint getSkyboxTexture() const;
+    SkyboxRenderer(const std::vector<std::string>& images, float sz);
+    GLuint getSkyboxTexture() const {return texture; };
     void render(const glm::mat4& view, const glm::mat4&);
 };

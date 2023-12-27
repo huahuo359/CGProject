@@ -1,14 +1,13 @@
 #include "TerrainRenderer.h"
 
 void TerrainRenderer::render(const Terrain* terrain, const std::vector<Light*>& lights, const glm::mat4& view,
-    const glm::mat4& proj, const glm::vec4& clipPlane) {
+    const glm::mat4& proj) {
     shader.enable();
     shader.loadProjection(proj);
     shader.loadLights(lights);
     shader.loadView(view);
 
     shader.loadTerrain(terrain);
-    shader.loadClipPlane(clipPlane);
 
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, terrain->getTextureID(0));
@@ -38,15 +37,13 @@ void TerrainRenderer::render(const Terrain* terrain, const std::vector<Light*>& 
 }
 
 void TerrainRenderer::render(const Terrain* terrain, const std::vector<Light*>& lights, const glm::mat4& view,
-    const glm::mat4& proj, const glm::mat4& depthView, const glm::mat4& depthProj, GLuint shadowMap,
-    const glm::vec4& clipPlane) {
+    const glm::mat4& proj, const glm::mat4& depthView, const glm::mat4& depthProj, GLuint shadowMap) {
     shader.enable();
     shader.loadProjection(proj);
     shader.loadLights(lights);
     shader.loadView(view);
 
     shader.loadTerrain(terrain);
-    shader.loadClipPlane(clipPlane);
     // clang-format off
     glm::mat4 biasMatrix(
         0.5, 0.0, 0.0, 0.0,

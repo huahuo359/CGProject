@@ -6,6 +6,7 @@
 #include "Player.h"
 
 #include <glm/glm.hpp>
+#include "/usr/local/include/noise/noise.h"
 
 class MY_Camera {
   protected:
@@ -33,10 +34,14 @@ class PlayerCamera : public MY_Camera {
     float m_distance;
     float m_pitch;
     float m_angle_around;
+    noise::module::Perlin noise;
+    bool isshake=false;
 
     static constexpr float RESET_SPEED = constants::PI / 2.f;
 
   public:
     PlayerCamera(Player* player);
     void update(InputState& input) override;
+    void shake();
+    inline void SetShake(bool is) { this->isshake = is; }
 };

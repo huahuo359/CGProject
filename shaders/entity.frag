@@ -1,8 +1,3 @@
-
-// Calculates Phong colour at each fragment.
-// Ambient, diffuse and specular terms.
-// Uses interpolated position and normal values passed from vertex shader.
-
 #version 330
 
 in vec4 vertex;
@@ -21,7 +16,6 @@ uniform mat4 model;
 uniform mat4 view;
 uniform mat4 inv_view;
 
-// Light parameters
 #define MAX_LIGHTS 10
 uniform int num_lights;
 uniform struct Light {
@@ -34,16 +28,15 @@ uniform struct Light {
     vec3 coneDirection;
 } lights[MAX_LIGHTS];
 
-uniform vec3 mtl_ambient;   // Ambient surface colour
-uniform vec3 mtl_diffuse;   // Diffuse surface colour
-uniform vec3 mtl_specular;  // Specular surface colour
-uniform vec3 emission;      // Specular surface colour
+uniform vec3 mtl_ambient;
+uniform vec3 mtl_diffuse;
+uniform vec3 mtl_specular;
+uniform vec3 emission;
 
 uniform float shininess;
 uniform int render_shadows;
 
-uniform bool use_mtl = false;
-uniform float fog_density = 0.02;
+uniform bool use_mtl = true;
 
 vec2 poissonDisk[16] = vec2[]( 
    vec2( -0.94201624, -0.39906216 ), 
@@ -64,12 +57,6 @@ vec2 poissonDisk[16] = vec2[](
    vec2( 0.14383161, -0.14100790 ) 
 );
 
-float random(vec3 seed, int i){
-    vec4 seed4 = vec4(seed,i);
-    float dot_product = dot(seed4, vec4(12.9898,78.233,45.164,94.673));
-    return fract(sin(dot_product) * 43758.5453);
-}
-
 vec3 ApplyLight(Light light, vec3 surfaceColor, vec3 normal, vec4 vertex_world, vec4 vertex_view) {
     vec3 light_surface_dir;
     float attenuation = 1.0;
@@ -77,7 +64,7 @@ vec3 ApplyLight(Light light, vec3 surfaceColor, vec3 normal, vec4 vertex_world, 
     if(light.position.w == 0.0) {
         //directional light
         light_surface_dir = normalize(light.position.xyz);
-        attenuation = 1.0; //no attenuation for directional lights
+        attenuation = 1.0;
     } else {
         //point light
         light_surface_dir = normalize(vec3(light.position - vertex_world));
@@ -114,13 +101,6 @@ vec3 ApplyLight(Light light, vec3 surfaceColor, vec3 normal, vec4 vertex_world, 
     return emission + ambient + attenuation*(diffuse + specular);
 }
 
-vec3 applyFog( in vec3  rgb,       // original color of the pixel
-               in float distance ) // camera to point distance
-{
-    float fogAmount = 1.0 - exp( -distance*fog_density);
-    vec3  fogColor  = vec3(0.5,0.6,0.7);
-    return mix(rgb, fogColor, fogAmount);
-}
 
 void main(void) {
     vec4 vertex_view = view * vertex;

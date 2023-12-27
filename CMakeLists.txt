@@ -11,6 +11,7 @@ set(CMAKE_BINARY_DIR ${PROJECT_SOURCE_DIR})
 # 添加头文件
 set(GLAD_H ${PROJECT_SOURCE_DIR}/dependencies/include)
 set(LEARNOPENGL_INCLUDE ${PROJECT_SOURCE_DIR}/learnopengl)  # 新增这一行，指定learnopengl目录的路径
+#set(NOISE_H /usr)
 set(MY_INCLUDE
         entity/tiny_obj_loader.h
         entity/MY_Model.h
@@ -28,14 +29,12 @@ set(MY_INCLUDE
         renders/SkyboxRenderer.h
         renders/TerrainRenderer.h
         renders/FrameBuffer.h
-        renders/WaterRenderer.h
         renders/ShadowMap.h
 
         shaders/ShaderProgram.h
         shaders/TerrainShader.h
         shaders/EntityShader.h
         shaders/SkyboxShader.h
-        shaders/WaterShader.h
 
         Window.h)
 
@@ -54,14 +53,12 @@ set(MY_SRC
         renders/SkyboxRenderer.cpp
         renders/TerrainRenderer.cpp
         renders/FrameBuffer.cpp
-        renders/WaterRenderer.cpp
         renders/ShadowMap.cpp
 
         shaders/ShaderProgram.cpp
         shaders/TerrainShader.cpp
         shaders/EntityShader.cpp
         shaders/SkyboxShader.cpp
-        shaders/WaterShader.cpp
 
         Window.cpp)
 
@@ -74,11 +71,15 @@ set(GLFW_LINK ${PROJECT_SOURCE_DIR}/dependencies/library/libglfw.3.3.dylib)
 set(ASSIMP_LINK ${PROJECT_SOURCE_DIR}/dependencies/library/libassimp.dylib)
 set(LIB_LINK ${PROJECT_SOURCE_DIR}/dependencies/library/libzlibstatic.a)
 set(FMT_LINK ${PROJECT_SOURCE_DIR}/dependencies/include/fmt/build/libfmt.a)
+set(NOISE_LINK ${PROJECT_SOURCE_DIR}/dependencies/library/libnoise.dylib)
+set(NOISEUTIL_LINK ${PROJECT_SOURCE_DIR}/dependencies/library/libnoiseutils.dylib)
 
 link_libraries(${GLFW_LINK})
 link_libraries(${ASSIMP_LINK})
 link_libraries(${LIB_LINK})
 link_libraries(${FMT_LINK})
+link_libraries(${NOISE_LINK})
+link_libraries(${NOISEUTIL_LINK})
 
 
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})

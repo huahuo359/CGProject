@@ -22,6 +22,7 @@ class Entity {
 
     glm::vec4 vertices[8];
     bool is_player = false;
+    bool is_base = false;
     float boundsize;
 
   public:
@@ -43,6 +44,7 @@ class Entity {
     inline bool getIsPlayer() const { return is_player; }
     inline glm::vec4 getVertices(int index) const { return vertices[index]; }
     inline float getBoundSize() const { return boundsize; }
+    inline bool getIsbase() const { return this->is_base; }
 
     [[nodiscard]] glm::vec3 calculateDirectionVector() const;
 
@@ -55,6 +57,7 @@ class Entity {
     virtual void setRotationY(float);
     virtual void setRotationZ(float);
     inline void setBoundSize(float sz) { boundsize = sz; }
+    inline void setIsbase(bool is) { this->is_base = is; }
 
     // Set the value of rotation or position relatively (Takes into account current value)
     virtual void rotateX(float);

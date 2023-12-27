@@ -28,14 +28,12 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/ShadowMap.cpp" "CMakeFiles/main.dir/renders/ShadowMap.cpp.o" "gcc" "CMakeFiles/main.dir/renders/ShadowMap.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/SkyboxRenderer.cpp" "CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.o" "gcc" "CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/TerrainRenderer.cpp" "CMakeFiles/main.dir/renders/TerrainRenderer.cpp.o" "gcc" "CMakeFiles/main.dir/renders/TerrainRenderer.cpp.o.d"
-  "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/WaterRenderer.cpp" "CMakeFiles/main.dir/renders/WaterRenderer.cpp.o" "gcc" "CMakeFiles/main.dir/renders/WaterRenderer.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/particleRenderer.cpp" "CMakeFiles/main.dir/renders/particleRenderer.cpp.o" "gcc" "CMakeFiles/main.dir/renders/particleRenderer.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/AABBShader.cpp" "CMakeFiles/main.dir/shaders/AABBShader.cpp.o" "gcc" "CMakeFiles/main.dir/shaders/AABBShader.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/EntityShader.cpp" "CMakeFiles/main.dir/shaders/EntityShader.cpp.o" "gcc" "CMakeFiles/main.dir/shaders/EntityShader.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/ShaderProgram.cpp" "CMakeFiles/main.dir/shaders/ShaderProgram.cpp.o" "gcc" "CMakeFiles/main.dir/shaders/ShaderProgram.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/SkyboxShader.cpp" "CMakeFiles/main.dir/shaders/SkyboxShader.cpp.o" "gcc" "CMakeFiles/main.dir/shaders/SkyboxShader.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/TerrainShader.cpp" "CMakeFiles/main.dir/shaders/TerrainShader.cpp.o" "gcc" "CMakeFiles/main.dir/shaders/TerrainShader.cpp.o.d"
-  "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/WaterShader.cpp" "CMakeFiles/main.dir/shaders/WaterShader.cpp.o" "gcc" "CMakeFiles/main.dir/shaders/WaterShader.cpp.o.d"
   "/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/particleShader.cpp" "CMakeFiles/main.dir/shaders/particleShader.cpp.o" "gcc" "CMakeFiles/main.dir/shaders/particleShader.cpp.o.d"
   )
 

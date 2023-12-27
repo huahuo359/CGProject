@@ -41,13 +41,11 @@
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/SkyboxRenderer.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/TerrainRenderer.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/FrameBuffer.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/WaterRenderer.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/ShadowMap.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/ShaderProgram.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/TerrainShader.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/EntityShader.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/SkyboxShader.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/WaterShader.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/Window.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot"/>
 					<Add directory="/usr/local/include"/>
@@ -87,13 +85,11 @@
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/SkyboxRenderer.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/TerrainRenderer.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/FrameBuffer.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/WaterRenderer.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/ShadowMap.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/ShaderProgram.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/TerrainShader.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/EntityShader.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/SkyboxShader.h"/>
-					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/WaterShader.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/Window.h"/>
 					<Add directory="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot"/>
 					<Add directory="/usr/local/include"/>
@@ -287,12 +283,6 @@
 		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/TerrainRenderer.h">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/WaterRenderer.cpp">
-			<Option target="main"/>
-		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/WaterRenderer.h">
-			<Option target="main"/>
-		</Unit>
 		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/particleRenderer.cpp">
 			<Option target="main"/>
 		</Unit>
@@ -327,12 +317,6 @@
 			<Option target="main"/>
 		</Unit>
 		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/TerrainShader.h">
-			<Option target="main"/>
-		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/WaterShader.cpp">
-			<Option target="main"/>
-		</Unit>
-		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/WaterShader.h">
 			<Option target="main"/>
 		</Unit>
 		<Unit filename="/Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/particleShader.cpp">

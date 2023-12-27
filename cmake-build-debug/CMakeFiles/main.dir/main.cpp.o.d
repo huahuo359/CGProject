@@ -1047,6 +1047,48 @@ CMakeFiles/main.dir/main.cpp.o: \
   /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/GameTime.h \
   /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/Camera.h \
   /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/entity/InputState.h \
+  /usr/local/include/noise/noise.h \
+  /usr/local/include/noise/module/module.h \
+  /usr/local/include/noise/module/add.h \
+  /usr/local/include/noise/module/modulebase.h \
+  /usr/local/include/noise/module/../basictypes.h \
+  /usr/local/include/noise/module/../exception.h \
+  /usr/local/include/noise/module/../noisegen.h \
+  /usr/local/include/noise/basictypes.h \
+  /usr/local/include/noise/module/abs.h \
+  /usr/local/include/noise/module/billow.h \
+  /usr/local/include/noise/module/blend.h \
+  /usr/local/include/noise/module/cache.h \
+  /usr/local/include/noise/module/checkerboard.h \
+  /usr/local/include/noise/module/clamp.h \
+  /usr/local/include/noise/module/const.h \
+  /usr/local/include/noise/module/curve.h \
+  /usr/local/include/noise/module/cylinders.h \
+  /usr/local/include/noise/module/displace.h \
+  /usr/local/include/noise/module/exponent.h \
+  /usr/local/include/noise/module/invert.h \
+  /usr/local/include/noise/module/max.h \
+  /usr/local/include/noise/module/min.h \
+  /usr/local/include/noise/module/multiply.h \
+  /usr/local/include/noise/module/perlin.h \
+  /usr/local/include/noise/module/power.h \
+  /usr/local/include/noise/module/ridgedmulti.h \
+  /usr/local/include/noise/module/rotatepoint.h \
+  /usr/local/include/noise/module/scalebias.h \
+  /usr/local/include/noise/module/scalepoint.h \
+  /usr/local/include/noise/module/select.h \
+  /usr/local/include/noise/module/spheres.h \
+  /usr/local/include/noise/module/terrace.h \
+  /usr/local/include/noise/module/translatepoint.h \
+  /usr/local/include/noise/module/turbulence.h \
+  /usr/local/include/noise/module/voronoi.h \
+  /usr/local/include/noise/model/model.h \
+  /usr/local/include/noise/model/cylinder.h \
+  /usr/local/include/noise/model/../module/modulebase.h \
+  /usr/local/include/noise/model/line.h \
+  /usr/local/include/noise/model/plane.h \
+  /usr/local/include/noise/model/sphere.h \
+  /usr/local/include/noise/misc.h \
   /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/RenderManager.h \
   /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/EntityRenderer.h \
   /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/../shaders/EntityShader.h \
@@ -1295,9 +1337,6 @@ CMakeFiles/main.dir/main.cpp.o: \
   /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/../entity/Terrain.h \
   /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/SkyboxRenderer.h \
   /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/../shaders/SkyboxShader.h \
-  /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/WaterRenderer.h \
-  /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/../shaders/WaterShader.h \
-  /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/../shaders/ShaderProgram.h \
   /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/../entity/Entity.h \
   /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/../entity/Terrain.h \
   /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/FrameBuffer.h \
@@ -1313,6 +1352,7 @@ CMakeFiles/main.dir/main.cpp.o: \
   /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/particleRenderer.h \
   /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/../shaders/particleShader.h \
   /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/../entity/Camera.h \
+  /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/../shaders/ShaderProgram.h \
   /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/shaders/../particles/particle.h \
   /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/renders/ParticleManager.h \
   /Users/siruilai/Desktop/DesktopGroups/ComputerMajorCourses/Computer_Graphics/snow_shot/dependencies/include/glm/gtc/type_ptr.hpp \

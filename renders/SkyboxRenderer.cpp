@@ -1,17 +1,16 @@
 #include "SkyboxRenderer.h"
 #include "../entity/Loader.h"
 
-SkyboxRenderer::SkyboxRenderer(const std::vector<std::string>& images, float SIZE) {
-    // clang-format off
+SkyboxRenderer::SkyboxRenderer(const std::vector<std::string>& images, float sz) {
     std::vector<float> vertices = {
-        -SIZE, -SIZE, SIZE,
-        SIZE, -SIZE, SIZE,
-        SIZE, SIZE, SIZE,
-        -SIZE, SIZE, SIZE,
-        -SIZE, -SIZE, -SIZE,
-        SIZE, -SIZE, -SIZE,
-        SIZE, SIZE, -SIZE,
-        -SIZE, SIZE, -SIZE
+        -sz, -sz, sz,
+        sz, -sz, sz,
+        sz, sz, sz,
+        -sz, sz, sz,
+        -sz, -sz, -sz,
+        sz, -sz, -sz,
+        sz, sz, -sz,
+        -sz, sz, -sz
     };
 
     std::vector<unsigned int> indices = {
@@ -22,7 +21,7 @@ SkyboxRenderer::SkyboxRenderer(const std::vector<std::string>& images, float SIZ
         3,2,6, 6,7,3,
         4,5,1, 1,0,4
     };
-    // clang-format on
+
     vao = Loader::getLoader()->loadVAO(vertices, indices);
     indexCount = indices.size();
     texture = Loader::getLoader()->loadCubemapTexture(images);
@@ -44,8 +43,4 @@ void SkyboxRenderer::render(const glm::mat4& view, const glm::mat4& projection) 
     glBindVertexArray(0);
     shader.disable();
     glEnable(GL_CULL_FACE);
-}
-
-GLuint SkyboxRenderer::getSkyboxTexture() const {
-    return texture;
 }

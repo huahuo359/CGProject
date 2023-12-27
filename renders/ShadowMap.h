@@ -18,12 +18,12 @@ class ShadowMap : public FrameBuffer {
     glm::mat4 view;
 
   public:
-    ShadowMap(Player* player, Light* light, GLuint textureSize = 2048);
+    ShadowMap(Player* player, Light* light, GLuint textureSize = 1024);
 
-    GLuint getTextureID();
-    GLuint getTextureSize();
-    glm::mat4 getView();
-    glm::mat4 getProjection();
+    inline GLuint getTextureID() { return getDepthTexture(); };
+    inline GLuint getTextureSize() { return textureSize; };
+    inline glm::mat4 getView() { return view; };
+    inline glm::mat4 getProjection() const { return projection; };
     
     void bind() override;
 };

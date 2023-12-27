@@ -8,6 +8,9 @@
 #include <vector>
 #include <glad/glad.h>
 #include <glm/glm.hpp>
+//#include <noise/noise.h>
+//#include "/usr/local/include/noise/noise.h"
+//#include "/usr/local/include/noise/noiseutils.h"
 
 class Terrain : public Entity {
   protected:

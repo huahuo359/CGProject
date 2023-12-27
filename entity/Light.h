@@ -17,4 +17,6 @@ struct Light {
     // Angle and direction of cone for spotlights
     float coneAngle = constants::PI;
     glm::vec3 coneDirection = glm::vec3(0.0f);
+
+    inline float GetRadius() { return radius; }
 };

@@ -1,23 +1,7 @@
 #include "FrameBuffer.h"
 
-FrameBuffer::FrameBuffer(uint32_t width, uint32_t height)
-    : depthTexture(0), depthBuffer(0), colourTexture(0), width(width), height(height) {
+FrameBuffer::FrameBuffer(GLuint width, GLuint height): depthTexture(0), width(width), height(height) {
     glGenFramebuffers(1, &framebufferID);
-}
-
-void FrameBuffer::addColourTexture() {
-    bind();
-    glGenTextures(1, &colourTexture);
-
-    glBindTexture(GL_TEXTURE_2D, colourTexture);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, colourTexture, 0);
-
-    unbind();
 }
 
 void FrameBuffer::addDepthTexture() {
@@ -36,15 +20,6 @@ void FrameBuffer::addDepthTexture() {
     unbind();
 }
 
-void FrameBuffer::addDepthBuffer() {
-    bind();
-    glGenRenderbuffers(1, &depthBuffer);
-    glBindRenderbuffer(GL_RENDERBUFFER, depthBuffer);
-    glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, width, height);
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthBuffer);
-    unbind();
-}
-
 bool FrameBuffer::isOkay() {
     bind();
     bool result = true;
@@ -53,26 +28,6 @@ bool FrameBuffer::isOkay() {
     }
     unbind();
     return result;
-}
-
-GLuint FrameBuffer::getColourTexture() {
-    return colourTexture;
-}
-
-GLuint FrameBuffer::getDepthTexture() {
-    return depthTexture;
-}
-
-GLuint FrameBuffer::getDepthBuffer() {
-    return depthBuffer;
-}
-
-int FrameBuffer::getWidth() {
-    return width;
-}
-
-int FrameBuffer::getHeight() {
-    return height;
 }
 
 void FrameBuffer::bind() {

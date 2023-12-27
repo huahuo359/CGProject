@@ -3,7 +3,6 @@
 //
 #include "ParticleManager.h"
 
-// Initialise singleton
 ParticleManager* ParticleManager::particleManager = nullptr;
 
 ParticleManager* ParticleManager::getParticleManager() {

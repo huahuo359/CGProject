@@ -1,14 +1,14 @@
 #include "Camera.h"
 
-#include <iostream>
 #include <algorithm>
 #include "constants.h"
 #include "GameTime.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 
-#define DEG2RAD(x) ((x)*constants::PI / 180.0)
-#define RAD2DEG(x) ((x)*180.0 / constants::PI)
+const float shake_frequency = 5.0f;
+const float shake_amplitude = 1.0f;
+int shakeidx = 0;
 
 const glm::mat4& MY_Camera::getViewMtx() const {
     return m_view_matrix;
@@ -49,6 +49,9 @@ PlayerCamera::PlayerCamera(Player* player) {
     m_distance = 20.0f;
     m_pitch = constants::PI / 5.f;
     m_angle_around = 0.0f;
+    noise.SetFrequency(10.0f);
+    noise.SetPersistence(0.2f);
+    noise.SetOctaveCount(5);
 }
 
 void PlayerCamera::update(InputState& input) {
@@ -94,5 +97,20 @@ void PlayerCamera::update(InputState& input) {
     m_focal_point = m_player->getPosition();
     m_position = glm::vec3(-offsetX, vDist/8, -offsetZ) + m_focal_point;
 
+    if(isshake) {
+        if(shakeidx>100)
+            shakeidx = 0;
+        float new_x = noise.GetValue(double(shakeidx)/100,double(shakeidx)/100,double(shakeidx)/100)/5;
+        float new_y = noise.GetValue(double(shakeidx)/100,double(shakeidx)/100,double(shakeidx)/100)/5;
+        float new_z = noise.GetValue(double(shakeidx)/100,double(shakeidx)/100,double(shakeidx)/100)/5;
+        this->setPosition(glm::vec3(this->getPosition() + glm::vec3(new_x,new_y,new_z)));
+
+        shakeidx++;
+    }
+
     look(m_focal_point);
+}
+
+void PlayerCamera::shake() {
+
 }

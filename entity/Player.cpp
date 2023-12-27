@@ -213,7 +213,7 @@ bool Player::update(std::vector<Entity*> entities) {
 
     bool _isCollide=false;
     for(auto it : entities) {
-        if(!it->getIsPlayer()) {
+        if(!it->getIsPlayer() && !it->getIsbase()) {
             glm::vec4 temp_vertice[8];
             for(int i = 0; i<8; ++i) {
                 temp_vertice[i] = it->getVertices(i);
@@ -310,6 +310,10 @@ void Player::handleKeyboardEvents(GLFWwindow* /*window*/, int key, int /*scancod
 
         if (key == GLFW_KEY_F) {
             is_fired = true;
+        }
+
+        if (key == GLFW_KEY_C) {
+            is_fired = false;
         }
     }
 }

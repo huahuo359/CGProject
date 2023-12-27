@@ -30,9 +30,25 @@ MY_Model* Terrain::generateTerrainModel(const Image& heightMap) {
     std::vector<unsigned int> indices;
     const int TERRAIN_NUM_VERTS = heightMap.width;
 
+//    noise::module::Perlin perlinmod;
+//    utils::NoiseMap heightmap;
+//    utils::NoiseMapBuilderPlane heightmap_builder;
+//
+//    heightmap_builder.SetSourceModule(perlinmod);
+//    heightmap_builder.SetDestNoiseMap(heightmap);
+//    heightmap_builder.SetDestSize(TERRAIN_NUM_VERTS, TERRAIN_NUM_VERTS);
+//    heightmap_builder.SetBounds(2.0,6.0,1.0,5.0);
+//    heightmap_builder.Build();
+//
+//    utils::Image img;
+//    utils::RendererImage renderer;
+//    renderer.SetSourceNoiseMap(heightmap);
+//    renderer.SetDestImage(img);
+
     for (int z_off = 0; z_off < TERRAIN_NUM_VERTS; z_off++) {
         for (int x_off = 0; x_off < TERRAIN_NUM_VERTS; x_off++) {
             glm::vec3 colour = heightMap.getPixel(x_off, z_off);
+//            glm::vec3 colour = glm::vec3 (img.GetValue(x_off, z_off).red, img.GetValue(x_off, z_off).green, img.GetValue(x_off,z_off).blue);
             float height = (colour.r + colour.g + colour.b) / 3 * TERRAIN_MAX_HEIGHT;
 
             vertices.push_back((float)x_off / ((float)TERRAIN_NUM_VERTS - 1) * TERRAIN_SIZE);

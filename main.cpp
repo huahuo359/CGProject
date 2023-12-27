@@ -38,7 +38,7 @@ bool is_fired = false;
 bool is_firelight_pushed = false;
 
 // camera
-MY_Camera* camera;
+PlayerCamera* camera;
 
 void mainLoop() {
     InputState input;
@@ -62,7 +62,7 @@ void mainLoop() {
     Player* player = new Player(&player_mod, terrain, 1);
     player->setScale(glm::vec3(1.0f, 1.0f, 1.0f));
 
-    player->setPosition(terrain->getPositionFromPixel(555,751));
+    player->setPosition(terrain->getPositionFromPixel(200,300));
     player->setRotationY((GLfloat)5.0f * constants::PI / 8.0f);
     entities.push_back(player);
 
@@ -100,6 +100,7 @@ void mainLoop() {
     base_entity->setScale(glm::vec3(8.0f,8.0f,8.0f));
     base_entity->setPosition(terrain->getPositionFromPixel(600,500));
     base_entity->setBoundSize(0.6f);
+    base_entity->setIsbase(true);
     entities.push_back(base_entity);
 
     MY_Model tree = Loader::getLoader()->loadModel("res/tree/tree.obj");
@@ -108,38 +109,38 @@ void mainLoop() {
         int sz_idx = i%3;
         tree_entity->setScale(glm::vec3(2*sz[sz_idx],2*sz[sz_idx],2*sz[sz_idx]));
 
-        int xpos = rand()%1024;
-        int ypos = rand()%1024;
+        int xpos = rand()%1024-128;
+        int ypos = rand()%1024-128;
         tree_entity->setPosition(terrain->getPositionFromPixel(xpos,ypos));
         tree_entity->setBoundSize(0.6f);
         entities.push_back(tree_entity);
     }
 
-    MY_Model rock = Loader::getLoader()->loadModel("res/rock/rock.obj");
-    for(int i=0; i<25; i++) {
-        Entity* rock_entity = new Entity(&rock);
-        int sz_idx = i%3;
-        rock_entity->setScale(glm::vec3(sz[sz_idx]/5,sz[sz_idx]/5,sz[sz_idx]/5));
+//    MY_Model rock = Loader::getLoader()->loadModel("res/rock/rock.obj");
+//    for(int i=0; i<25; i++) {
+//        Entity* rock_entity = new Entity(&rock);
+//        int sz_idx = i%3;
+//        rock_entity->setScale(glm::vec3(sz[sz_idx]/5,sz[sz_idx]/5,sz[sz_idx]/5));
+//
+//        int xpos = rand()%1024-128;
+//        int ypos = rand()%1024-128;
+//        rock_entity->setPosition(terrain->getPositionFromPixel(xpos,ypos));
+//        rock_entity->setBoundSize(0.6f);
+//        entities.push_back(rock_entity);
+//    }
 
-        int xpos = rand()%1024;
-        int ypos = rand()%1024;
-        rock_entity->setPosition(terrain->getPositionFromPixel(xpos,ypos));
-        rock_entity->setBoundSize(0.6f);
-        entities.push_back(rock_entity);
-    }
-
-    MY_Model trunk = Loader::getLoader()->loadModel("res/trunk/trunk.obj");
-    for(int i=0; i<25; i++) {
-        Entity* trunk_entity = new Entity(&trunk);
-        int sz_idx = i%3;
-        trunk_entity->setScale(glm::vec3(2*sz[sz_idx],2*sz[sz_idx],2*sz[sz_idx]));
-
-        int xpos = rand()%1024;
-        int ypos = rand()%1024;
-        trunk_entity->setPosition(terrain->getPositionFromPixel(xpos,ypos));
-        trunk_entity->setBoundSize(0.6f);
-        entities.push_back(trunk_entity);
-    }
+//    MY_Model trunk = Loader::getLoader()->loadModel("res/trunk/trunk.obj");
+//    for(int i=0; i<25; i++) {
+//        Entity* trunk_entity = new Entity(&trunk);
+//        int sz_idx = i%3;
+//        trunk_entity->setScale(glm::vec3(2*sz[sz_idx],2*sz[sz_idx],2*sz[sz_idx]));
+//
+//        int xpos = rand()%1024-128;
+//        int ypos = rand()%1024-128;
+//        trunk_entity->setPosition(terrain->getPositionFromPixel(xpos,ypos));
+//        trunk_entity->setBoundSize(0.6f);
+//        entities.push_back(trunk_entity);
+//    }
 
     new_window.set_key_callback([&](GLFWwindow* window, int key, int scancode, int action, int mods) {
         // Terminate program if escape is pressed
@@ -235,20 +236,14 @@ void mainLoop() {
         }
     }
 
-    // Create the large lake
-    auto* water = new Entity();
-    water->setScale(glm::vec3(100.0f, 1.0f, 50.0f));
-    water->setPosition(terrain->getPositionFromPixel(650, 826));
-    water->setPosition(glm::vec3(water->getPosition().x, 0.4f, water->getPosition().z));
-
-    ShadowMap shadowmap(player, lights[0], 4096);
+    ShadowMap shadowmap(player, lights[0]);
     RenderManager manager;
 
     GLuint dust_texture = Loader::getLoader()->loadTexture("image/dust_single.png");
     ParticleSystem particleSystem(30.0f, 3.0f, 0.2f, 0.5f, dust_texture);
 
     GLuint snow_texture = Loader::getLoader()->loadTexture("image/snowflake.png");
-    ParticleSystem snowSystem(50.0f, 2.0f, 0.02f, 50.0f, snow_texture);
+    ParticleSystem snowSystem(150.0f, 2.0f, 0.02f, 25.0f, snow_texture);
 
     GLuint fire_texture = Loader::getLoader()->loadTexture("image/fire.png");
     ParticleSystem fireSystem(50.0f, 10.0f, 0.01f, 4.0f, fire_texture);
@@ -259,7 +254,7 @@ void mainLoop() {
     {
         GameTime::getGameTime()->update();
         camera->update(input);
-        manager.render(entities, lights, terrain, water, skybox, shadowmap, camera, projection, new_window.get_width(), new_window.get_height());
+        manager.render(entities, lights, terrain, skybox, shadowmap, camera, projection, new_window.get_width(), new_window.get_height());
 
         if(flag) {
             // close shot
@@ -290,6 +285,8 @@ void mainLoop() {
                     is_firelight_pushed = true;
                 }
 
+                camera->SetShake(true);
+
                 fireSystem.generateParticles(firepos+glm::vec3(0.0f,25.0f,0.0f), 1.0f,5.f);
                 fireSystem.generateParticles(firepos+glm::vec3(1.0f,25.0f,1.0f),1.0f,5.f);
                 fireSystem.generateParticles(firepos+glm::vec3(-1.0f,25.0f,-1.0f),1.0f,5.f);
@@ -301,6 +298,14 @@ void mainLoop() {
                 fireSystem_2.generateParticles(firepos+glm::vec3(-1.0f,25.0f,-1.0f),1.0f,5.f);
                 fireSystem_2.generateParticles(firepos+glm::vec3(1.0f,25.0f,-1.0f),1.0f,5.f);
                 fireSystem_2.generateParticles(firepos+glm::vec3(-1.0f,25.0f,1.0f),1.0f,5.f);
+            } else {
+                camera->SetShake(false);
+                for(auto it = lights.begin(); it!=lights.end(); ++it) {
+                    if((*it)->GetRadius() == 100.0f) {
+                        lights.erase(it);
+                        break;
+                    }
+                }
             }
 
         } else {
@@ -308,12 +313,11 @@ void mainLoop() {
 
         }
         
-        glFlush();
+//        glFlush();
         glfwSwapBuffers(new_window.get_window());
         glfwPollEvents();
     }
 //    delete player;
-//    delete water;
     for(auto it : entities) {
         delete it;
     }

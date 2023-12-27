@@ -98,8 +98,6 @@ MY_Model Loader::loadModel(const std::string& model_file) {
     std::vector<tinyobj::shape_t> shapes;
     std::vector<tinyobj::material_t> materials;
 
-    // If the object file is in a different directory, the material file path must be specified.
-    // Assumes material file is in the same directory as obj
     std::string model_file_path;
     if (model_file.find('/') != std::string::npos) {
         model_file_path = model_file.substr(0, model_file.find_last_of("\\/") + 1);
@@ -290,7 +288,6 @@ GLuint Loader::loadCubemapTexture(const std::vector<std::string>& filenames) {
             format = GL_RGBA;
         }
 
-        // The first cast works because the enums are defined sequentially.
         glTexImage2D(static_cast<GLenum>(GL_TEXTURE_CUBE_MAP_POSITIVE_X + i), 0, GL_RGB, image.width, image.height, 0,
             format, GL_UNSIGNED_BYTE, image.data);
         glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);

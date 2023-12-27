@@ -1,12 +1,11 @@
 #include "EntityRenderer.h"
 
 void EntityRenderer::render(const std::vector<Entity*>& entities, const std::vector<Light*>& lights,
-    const glm::mat4& view, const glm::mat4& proj, GLuint reflectionTexture, const glm::vec4& clipPlane) {
+    const glm::mat4& view, const glm::mat4& proj, GLuint reflectionTexture) {
     m_shader.enable();
     m_shader.loadProjection(proj);
     m_shader.loadLights(lights);
     m_shader.loadView(view);
-    m_shader.loadClipPlane(clipPlane);
 
     glActiveTexture(GL_TEXTURE1);
     glBindTexture(GL_TEXTURE_CUBE_MAP, reflectionTexture);
@@ -29,12 +28,11 @@ void EntityRenderer::render(const std::vector<Entity*>& entities, const std::vec
 
 void EntityRenderer::render(const std::vector<Entity*>& entities, const std::vector<Light*>& lights,
     const glm::mat4& view, const glm::mat4& proj, GLuint reflectionTexture, const glm::mat4& depthView,
-    const glm::mat4& depthProj, GLuint shadowMap, const glm::vec4& clipPlane) {
+    const glm::mat4& depthProj, GLuint shadowMap) {
     m_shader.enable();
     m_shader.loadProjection(proj);
     m_shader.loadLights(lights);
     m_shader.loadView(view);
-    m_shader.loadClipPlane(clipPlane);
 
     glm::mat4 biasMatrix(0.5, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.5, 0.5, 0.5, 1.0);
 

@@ -41,8 +41,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/main.dir/renders/SkyboxRenderer.cpp.o.d"
   "CMakeFiles/main.dir/renders/TerrainRenderer.cpp.o"
   "CMakeFiles/main.dir/renders/TerrainRenderer.cpp.o.d"
-  "CMakeFiles/main.dir/renders/WaterRenderer.cpp.o"
-  "CMakeFiles/main.dir/renders/WaterRenderer.cpp.o.d"
   "CMakeFiles/main.dir/renders/particleRenderer.cpp.o"
   "CMakeFiles/main.dir/renders/particleRenderer.cpp.o.d"
   "CMakeFiles/main.dir/shaders/AABBShader.cpp.o"
@@ -55,8 +53,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/main.dir/shaders/SkyboxShader.cpp.o.d"
   "CMakeFiles/main.dir/shaders/TerrainShader.cpp.o"
   "CMakeFiles/main.dir/shaders/TerrainShader.cpp.o.d"
-  "CMakeFiles/main.dir/shaders/WaterShader.cpp.o"
-  "CMakeFiles/main.dir/shaders/WaterShader.cpp.o.d"
   "CMakeFiles/main.dir/shaders/particleShader.cpp.o"
   "CMakeFiles/main.dir/shaders/particleShader.cpp.o.d"
 )
