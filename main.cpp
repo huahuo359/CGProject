@@ -46,6 +46,7 @@ glm::vec3 lightDir(-0.2f, -1.0f, -0.3f);
 
 // Light attributes
 glm::vec3 lightPos(0.0f, 0.0f, -10.0f);
+bool AABB_flag = false;
 
 
 
@@ -660,6 +661,158 @@ class Elevator {
     /* load 太空电梯场景 */
 };
 
+class ShipYard {
+public:
+    Shader spaceShader;
+    GLuint TextureDiffuse;
+    GLuint TextureNormal;
+    GLuint TextureSpecular;
+    ObjLoader obj;
+
+    ShipYard(): spaceShader("shaders/space.vs", "shaders/space.fs"), obj("MegaShipYard/megashipyard.obj") {
+      
+        TextureDiffuse = loadDDS("MegaShipYard/megashipyard_diffuse.dds");
+        TextureNormal = loadDDS("MegaShipYard/megashipyard_normal.dds");
+        TextureSpecular = loadDDS("MegaShipYard/megashipyard_specular.dds");
+
+    }
+
+
+
+    void Draw() {
+        spaceShader.use();
+        spaceShader.setVec3("light.ambient", glm::vec3(0.75f, 0.75f, 0.75f)); 
+        spaceShader.setVec3("light.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+        spaceShader.setVec3("light.specular", glm::vec3(0.5f, 0.5f, 0.5f));
+        // spaceShader.setVec3("light.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
+        spaceShader.setVec3("viewPos", camera.Position);;
+
+        // set textures
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, TextureDiffuse);
+        spaceShader.setInt("texture_diffuse", 0);
+
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, TextureNormal);
+        spaceShader.setInt("texture_normal", 1);
+
+        glActiveTexture(GL_TEXTURE2);
+        glBindTexture(GL_TEXTURE_2D, TextureSpecular);
+        spaceShader.setInt("texture_specular", 2);
+
+        glm::mat4 view;
+        view = glm::lookAt(camera.Position, camera.Position + camera.Front, camera.Up);
+        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f));
+        glm::mat4 model = glm::mat4(1.0f);
+
+        
+        float angle = (GLfloat)glfwGetTime() * 3.5f;
+        model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+        float xspace, yspace, zspace;
+        
+        xspace = -1.0f;
+        yspace = -4.5f;
+        zspace = -5.0f;
+        model = glm::translate(model, glm::vec3(xspace/0.05f, yspace/0.05f, zspace/0.05f));
+       
+
+        spaceShader.setMat4("projection", projection); 
+        spaceShader.setMat4("view", view);
+        spaceShader.setMat4("model", model);
+
+
+
+        spaceShader.setVec3("light.direction", glm::vec3(Earth::xearth-xspace, Earth::yearth-yspace, Earth::zearth-zspace));
+
+        obj.Draw();
+
+    }
+    
+
+
+};
+
+
+class StarBase {
+public:
+    Shader spaceShader;
+    GLuint TextureDiffuse;
+    GLuint TextureNormal;
+    GLuint TextureSpecular;
+    ObjLoader obj;
+    float xspace, yspace, zspace;
+      // 默认构造函数
+    StarBase(): StarBase(-4.0f, -4.5f, -5.0f) {}
+
+
+    StarBase(float xspace, float yspace, float zspace):xspace(xspace), yspace(yspace), zspace(zspace),spaceShader("shaders/space.vs", "shaders/space.fs"), obj("starbase/starbase_08.obj") {
+        // this->xspace = xspace;
+        // this->yspace = yspace;
+        // this->zspace = zspace;
+        TextureDiffuse = loadDDS("starbase/starbase_08_diffuse.dds");
+        TextureNormal = loadDDS("starbase/starbase_08_normal.dds");
+        TextureSpecular = loadDDS("starbase/starbase_08_specular.dds");
+
+    }
+
+    
+
+    void Draw() {
+        spaceShader.use();
+        spaceShader.setVec3("light.ambient", glm::vec3(0.75f, 0.75f, 0.75f)); 
+        spaceShader.setVec3("light.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+        spaceShader.setVec3("light.specular", glm::vec3(0.5f, 0.5f, 0.5f));
+        // spaceShader.setVec3("light.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
+        spaceShader.setVec3("viewPos", camera.Position);;
+
+        // set textures
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, TextureDiffuse);
+        spaceShader.setInt("texture_diffuse", 0);
+
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, TextureNormal);
+        spaceShader.setInt("texture_normal", 1);
+
+        glActiveTexture(GL_TEXTURE2);
+        glBindTexture(GL_TEXTURE_2D, TextureSpecular);
+        spaceShader.setInt("texture_specular", 2);
+
+        glm::mat4 view;
+        view = glm::lookAt(camera.Position, camera.Position + camera.Front, camera.Up);
+        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f));
+        glm::mat4 model = glm::mat4(1.0f);
+
+        
+        float angle = (GLfloat)glfwGetTime() * 3.5f;
+        model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+        
+        
+        // xspace = -1.0f;
+        // yspace = -6.5f;
+        // zspace = -5.0f;
+        model = glm::translate(model, glm::vec3(xspace/0.05f, yspace/0.05f, zspace/0.05f));
+        model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
+       
+
+        spaceShader.setMat4("projection", projection); 
+        spaceShader.setMat4("view", view);
+        spaceShader.setMat4("model", model);
+
+
+
+        spaceShader.setVec3("light.direction", glm::vec3(Earth::xearth-xspace, Earth::yearth-yspace, Earth::zearth-zspace));
+
+        obj.Draw();
+
+    }
+    
+
+
+};
+
 class SpaceStation {
     /* load 空间站的模型 */
 public:
@@ -707,14 +860,97 @@ public:
 
         
         float angle = (GLfloat)glfwGetTime() * 3.5f;
-        model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
-        model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.3f));
+        model = glm::scale(model, glm::vec3(0.05f, 0.05f, 0.05f));
+        float xspace, yspace, zspace;
+        
+        xspace = Earth::xearth + 2*std::cos(3.14159f);
+        yspace = 2.0f;
+        zspace = Earth::zearth + 2*std::sin(3.14159f);
+        model = glm::translate(model, glm::vec3(xspace/0.05f, yspace/0.05f, zspace/0.05f));
+        model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
+       
 
         spaceShader.setMat4("projection", projection); 
         spaceShader.setMat4("view", view);
         spaceShader.setMat4("model", model);
 
-        spaceShader.setVec3("light.direction", glm::vec3(0.0f, 0.0f, -10.0f));
+
+
+        spaceShader.setVec3("light.direction", glm::vec3(Earth::xearth-xspace, Earth::yearth-yspace, Earth::zearth-zspace));
+
+        obj.Draw();
+
+    }
+    
+    
+
+};
+
+// 定位导弹，可以直接追踪UFO
+class Missile {
+    /* load 空间站的模型 */
+public:
+    Shader spaceShader;
+    GLuint TextureDiffuse;
+    GLuint TextureNormal;
+    GLuint TextureSpecular;
+    ObjLoader obj;
+    float xspace, yspace, zspace;
+
+    Missile(): spaceShader("shaders/space.vs", "shaders/space.fs"), obj("missile/missile_01.obj") {
+       
+        TextureDiffuse = loadDDS("missile/missile_01_diffuse.dds");
+        TextureNormal = loadDDS("missile/missile_01_normal.dds");
+        TextureSpecular = loadDDS("missile/missile_01_specular.dds");
+
+    }
+
+    void Draw() {
+        spaceShader.use();
+        spaceShader.setVec3("light.ambient", glm::vec3(0.55f, 0.55f, 0.55f)); 
+        spaceShader.setVec3("light.diffuse", glm::vec3(1.0f, 1.0f, 1.0f));
+        spaceShader.setVec3("light.specular", glm::vec3(0.5f, 0.5f, 0.5f));
+        // spaceShader.setVec3("light.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
+        spaceShader.setVec3("viewPos", camera.Position);;
+
+        // set textures
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, TextureDiffuse);
+        spaceShader.setInt("texture_diffuse", 0);
+
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, TextureNormal);
+        spaceShader.setInt("texture_normal", 1);
+
+        glActiveTexture(GL_TEXTURE2);
+        glBindTexture(GL_TEXTURE_2D, TextureSpecular);
+        spaceShader.setInt("texture_specular", 2);
+
+        glm::mat4 view;
+        view = glm::lookAt(camera.Position, camera.Position + camera.Front, camera.Up);
+        glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+        view       = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f));
+        glm::mat4 model = glm::mat4(1.0f);
+
+        
+        float angle = (GLfloat)glfwGetTime() * 3.5f;
+        model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+        
+        
+        xspace = -1.0f;
+        yspace = -3.0f;
+        zspace = -5.0f;
+        model = glm::translate(model, glm::vec3(xspace/0.5f, yspace/0.5f, zspace/0.5f));
+       // model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
+       
+
+        spaceShader.setMat4("projection", projection); 
+        spaceShader.setMat4("view", view);
+        spaceShader.setMat4("model", model);
+
+
+
+        spaceShader.setVec3("light.direction", glm::vec3(Earth::xearth-xspace, Earth::yearth-yspace, Earth::zearth-zspace));
 
         obj.Draw();
 
@@ -733,10 +969,10 @@ public:
     glm::vec3 direction;    // 子弹移动方向
     bool flag;  // 子弹发生一次碰撞后就不会再次移动
 
-    Bullet(GLfloat x, GLfloat y, GLfloat z, glm::vec3 direction): x(x), y(y), z(z), direction(direction) {
+
+    Bullet(GLfloat x, GLfloat y, GLfloat z, glm::vec3 direction): x(x), y(y), z(z), direction(direction){
         flag = true;
     }
-
 
 };
 
@@ -942,7 +1178,8 @@ public:
 
         glEnable(GL_DEPTH_TEST);
         glBindVertexArray(cubeVAO);
-        glDrawElements(GL_LINES, 24, GL_UNSIGNED_INT, 0);
+        if(AABB_flag)
+            glDrawElements(GL_LINES, 24, GL_UNSIGNED_INT, 0);
         //glBindVertexArray(0);
 
 
@@ -1207,7 +1444,8 @@ class UFO {
 
         glEnable(GL_DEPTH_TEST);
         glBindVertexArray(cubeVAO);
-        glDrawElements(GL_LINES, 24, GL_UNSIGNED_INT, 0);
+        if(AABB_flag)
+            glDrawElements(GL_LINES, 24, GL_UNSIGNED_INT, 0);
         //glBindVertexArray(0);
 
 
@@ -1357,7 +1595,7 @@ public:
             UFOs[i].direction = direction;
            //glm::vec3 pos = glm::vec3(Stones[i].Stonex, Stones[i].Stoney, Stones[i].Stonez);
             if(UFOs[i].move_flag) {
-                pos += 0.005f*UFOs[i].direction;
+                pos += 0.002f*UFOs[i].direction;
                 UFOs[i].Stonex = pos.x;
                 UFOs[i].Stoney = pos.y;
                 UFOs[i].Stonez = pos.z;
@@ -1568,7 +1806,8 @@ public:
 
         glEnable(GL_DEPTH_TEST);
         glBindVertexArray(cubeVAO);
-        glDrawElements(GL_LINES, 24, GL_UNSIGNED_INT, 0);
+        if(AABB_flag)
+            glDrawElements(GL_LINES, 24, GL_UNSIGNED_INT, 0);
         //glBindVertexArray(0);
 
 
@@ -1849,6 +2088,7 @@ public:
 
 bool gameFlag = true;
 bool plane_flag = true; // 如果发生的碰撞，飞行器不可以向前移动    
+bool missile_flag = false;
 
 
 // 管理游戏场景中的各个部件
@@ -1859,13 +2099,21 @@ class ObjectManager {
         Sun sun;
         Earth earth;
         Moon moon;
-        //SpaceStation space;
+        SpaceStation space;
         Plane plane;
         StoneManager stones;
         UFOManager ufos;
+        ShipYard yard;
+        Missile missile;
+        StarBase starBase;
+        StarBase starbase2;
+   
 
         ObjectManager() {
             vector<const GLchar*> faces;
+            starbase2.xspace = 2.0f;
+            starbase2.yspace = -4.5f;
+            starbase2.zspace = -5.0f;
 
             faces.push_back("image/skybox/1.png");
             faces.push_back("image/skybox/2.png");
@@ -1886,7 +2134,6 @@ class ObjectManager {
 
         // 进行碰撞检测
         void ImpactCheck() {
-            
             // 确定太阳的坐标信息
             glm::vec3 sun_coord(Sun::xsun, Sun::ysun, Sun::zsun-2.0f);
             GLfloat r_sun = 1.0f;
@@ -2169,6 +2416,11 @@ void mainLoop(GLFWwindow* window ) {
             gameObj.stones.Draw();
             gameObj.ufos.Draw();
             bullets.Draw();
+            gameObj.space.Draw();
+            gameObj.yard.Draw();
+            //gameObj.missile.Draw();
+            gameObj.starBase.Draw();
+            gameObj.starbase2.Draw();
         
 
         } else {
@@ -2292,6 +2544,13 @@ void processInput(GLFWwindow *window)
         }
     }
 
+    if(glfwGetKey(window, GLFW_KEY_3)) {
+        AABB_flag = true;
+    }
+
+    if(glfwGetKey(window, GLFW_KEY_4)) {
+        AABB_flag = false;
+    }
 }
 
 
