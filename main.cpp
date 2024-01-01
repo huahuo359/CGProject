@@ -2505,7 +2505,7 @@ void processInput(GLFWwindow *window)
             Plane::Planey = pos.y;
             Plane::Planez = pos.z;
         } else {
-            pos -= 0.08f * Plane::direction;
+            pos -= 0.01f * Plane::direction;
             Plane::Planex = pos.x;
             Plane::Planey = pos.y;
             Plane::Planez = pos.z;
