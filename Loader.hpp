@@ -139,27 +139,25 @@ public:
                     buffer.push_back(1.0f - textureCoords[2*textureIndex[i] + 1]);
                 }
 
-                // buffer 中添加法向量
+               
                 buffer.push_back(normalVectors[3 * normalIndex[i] + 0]);
                 buffer.push_back(normalVectors[3 * normalIndex[i] + 1]);
                 buffer.push_back(normalVectors[3 * normalIndex[i] + 2]);
             }
 
-              //分配缓冲池
+          
             glGenVertexArrays(1, &VAO);
             glGenBuffers(1, &VBO);
-            //加载缓存
+        
             glBindVertexArray(VAO);
             glBindBuffer(GL_ARRAY_BUFFER, VBO);
             glBufferData(GL_ARRAY_BUFFER, buffer.size() * sizeof(GLfloat), buffer.data(), GL_STATIC_DRAW);
-            //设置点的属性
-            //坐标
+           
             glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (void*)0);
             glEnableVertexAttribArray(0);
-            //材质坐标
+         
             glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (void*)(3 * sizeof(float)));
             glEnableVertexAttribArray(1);
-            //法向量
             glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (void*)(5 * sizeof(float)));
             glEnableVertexAttribArray(2);
 
