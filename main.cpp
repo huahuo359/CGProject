@@ -166,7 +166,7 @@ GLFWwindow* Init()
     glfwSetScrollCallback(window, scroll_callback);
 
     
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
  
     // if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -2462,7 +2462,7 @@ void processInput(GLFWwindow *window)
         camera.ProcessKeyboard(RIGHT, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
         camera.ProcessKeyboard(UP, deltaTime);
-    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
+    if (glfwGetKey(window, GLFW_KEY_RIGHT_SHIFT) == GLFW_PRESS)
         camera.ProcessKeyboard(DOWN, deltaTime);
     
     // 增加 plane 移动的键盘控制
