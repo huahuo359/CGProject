@@ -2057,14 +2057,11 @@ public:
     }
 
     void Draw() {
-        // Draw skybox first
-        glDepthMask(GL_FALSE);// Remember to turn depth writing off
+        glDepthMask(GL_FALSE);
         skyboxShader.use();		
         // 这样设置 view 可以让天空盒看起来是无限大的
-        glm::mat4 view = glm::mat4(glm::mat3(camera.GetViewMatrix()));	// Remove any translation component of the view matrix
+        glm::mat4 view = glm::mat4(glm::mat3(camera.GetViewMatrix()));
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-        // glUniformMatrix4fv(glGetUniformLocation(skyboxShader.program, "view"), 1, GL_FALSE, glm::value_ptr(view));
-        // glUniformMatrix4fv(glGetUniformLocation(skyboxShader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
         // skybox cube
         skyboxShader.setMat4("view", view);
         skyboxShader.setMat4("projection", projection);
