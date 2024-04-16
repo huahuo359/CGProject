@@ -30,7 +30,7 @@ void main()
     // 获取法向
     vec3 norm = texture(texture_normal, TexCoord).rgb * 2.0 - 1.0;
 
-
+    norm = normalize(norm);
     // Ambient
     vec3 ambient = light.ambient * vec3(texture(texture_diffuse, TexCoord));
 
@@ -48,4 +48,5 @@ void main()
 
 
 	FragColor = vec4(ambient + diffuse + specular, 1.0f);
+    //FragColor = vec4(ambient, 1.0f);
 }
